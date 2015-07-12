@@ -1,0 +1,28 @@
+# Description: Base system of NuTyX, contains all folders and startup scripts.
+
+PKGMK_GROUPS=(man)
+name=nutyx
+version=8.0.20150712
+release=1
+
+source=(http://downloads.nutyx.org/files/nutyx-basicfs-20150712.tar.bz2)
+build () {
+cd nutyx-basicfs/nutyx-houaphan-basicfs/rootfs
+mv * $PKG/
+mkdir $PKG/{dev,sys,proc,run,tmp,home,srv,mnt}
+mknod -m 600 $PKG/dev/console c 5 1
+mknod -m 666 $PKG/dev/null c 1 3
+
+mkdir $PKG/var/tmp
+mkdir -p $PKG/usr/{,local/}lib
+chmod 1777 $PKG/{,var/}tmp
+mkdir -v $PKG/var/{mail,spool}
+mkdir -pv $PKG/var/run/lock
+
+case $(uname -m) in
+x86_64) ln -sv lib $PKG/lib64
+        ln -sv lib $PKG/usr/lib64
+        ln -sv lib $PKG/usr/local/lib64;;
+esac
+echo "$version" > $PKG/var/lib/pkg/nutyx-version
+}
