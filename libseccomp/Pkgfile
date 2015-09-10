@@ -1,0 +1,23 @@
+# Description: Enhanced seccomp library
+# URL: URL: http://sourceforge.net/projects/libseccomp/
+# NuTyX package info file (http://nutyx.org)
+# Packager: # NuTyX package info file (http://nutyx.org)
+# Depends on: 
+name=libseccomp
+version=2.1.1
+release=1
+
+source=(
+http://downloads.sourceforge.net/project/$name/$name-$version/$name-$version.tar.gz)
+
+
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install    
+}
+
+
+
+# NuTyX Pkgfile (http://nutyx.org)

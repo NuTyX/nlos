@@ -1,0 +1,16 @@
+# Description: ODBC is an open specification for providing application developers with a predictable API with which to access Data Sources
+# URL: http://www.unixodbc.org/
+# Packager: pierre at nutyx dot org
+
+name=unixodbc
+version=2.3.2
+release=1
+
+source=(http://www.unixodbc.org/unixODBC-$version.tar.gz)
+build() { 
+cd unixODBC-$version
+./configure --prefix=/usr --sysconfdir=/etc/unixODBC \
+--enable-gui=no
+make
+make DESTDIR=$PKG install
+}
