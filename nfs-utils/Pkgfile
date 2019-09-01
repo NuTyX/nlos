@@ -1,0 +1,47 @@
+description="Userspace server and client tools necessary to use the kernel's NFS abilities."
+url="http://nfs.sourceforge.net"
+
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(libtirpc rpcbind rpcsvc-proto)
+run=(rpcbind)
+
+name=nfs-utils
+version=2.4.1
+nutyx_version=11.1
+
+source=(http://downloads.tuxfamily.org/nutyx/files/nutyx-${nutyx_version}.tar.xz
+	http://downloads.sourceforge.net/nfs/$name-$version.tar.xz)
+
+run=(rpcbind)
+
+prepare() {
+
+if ! (getent group nogroup > /dev/null); then
+   groupadd -g 99 nogroup
+fi
+if ! (getent passwd nobody > /dev/null); then
+   useradd -c "Unprivileged Nobody" -d /dev/null \
+   -g nogroup -s /bin/false -u 99 nobody
+fi
+}
+build() {
+# build package
+
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc         \
+--sbindir=/sbin           \
+--disable-nfsv4           \
+--disable-gss
+
+make
+mkdir $PKG/sbin
+make DESTDIR=$PKG install
+chmod u+w,go+r $PKG/sbin/mount.nfs
+chown nobody.nogroup $PKG/var/lib/nfs
+
+# Services
+cd ../nutyx-${nutyx_version}
+make DESTDIR=$PKG install-nfs-server
+}
