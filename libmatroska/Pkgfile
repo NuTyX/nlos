@@ -1,0 +1,29 @@
+description="Matroska library"
+url="https://github.com/Matroska-Org/libmatroska"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Fabienwang.Spiky"
+
+makedepends=(cmake)
+run=(libebml)
+
+name=libmatroska
+version=1.7.1
+
+source=(https://github.com/Matroska-Org/libmatroska/archive/refs/tags/release-$version.zip)
+
+build() {
+  cd $name-release-$version
+  mkdir build
+  cd build
+  
+  cmake .. -G Ninja \
+    -DCMAKE_BUILD_TYPE=None \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DBUILD_SHARED_LIBS=ON
+  cmake --build .
+
+  DESTDIR=$PKG  cmake --build . --target install
+
+}
