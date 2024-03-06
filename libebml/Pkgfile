@@ -1,0 +1,29 @@
+description="Extensible Binary Meta Language library"
+url="https://github.com/Matroska-Org/libebml"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(cmake)
+run=()
+
+name=libebml
+version=1.4.5
+                                                                                                                                                
+source=(https://github.com/Matroska-Org/libebml/archive/refs/tags/release-$version.tar.gz)
+
+prepare() {
+mv $name-release-$version $name-$version
+}
+
+build() {
+  cd $name-$version
+  mkdir build
+  cd build
+  cmake .. \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+    -DBUILD_SHARED_LIBS=ON
+
+  make
+  make DESTDIR=$PKG install
+} 
