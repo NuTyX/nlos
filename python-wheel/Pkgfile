@@ -1,0 +1,39 @@
+description='A built-package format for Python'
+url='https://pypi.python.org/pypi/wheel'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python python-flit-core)
+
+name=python-wheel
+_name="wheel"
+alias=(${_name})
+
+version=0.43.0
+
+source=(https://files.pythonhosted.org/packages/source/${name:7:1}/${name#*-}/${name#*-}-$version.tar.gz)
+
+PKGMK_IGNORE_UNPACK="yes"
+prepare() {
+  localedef -i en_US -f UTF-8 en_US.UTF-8
+  LC_ALL=en_US.UTF-8 LANG=en_US.UTF-8 \
+  bsdtar -xf $PKGMK_SOURCE_DIR/${name#*-}-$version.tar.gz
+}
+
+build() {
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}
+
