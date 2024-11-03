@@ -1,0 +1,26 @@
+description="A parallel, SMP-based, bzip2-compatible compression utility"
+url="http://lbzip2.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+makedepends=(automake autoconf sed grep m4 perl)
+
+name=lbzip2
+version=2.5
+release=4
+
+source=(lbzip2-gnulib-build-fix.patch
+https://deb.debian.org/debian/pool/main/l/$name/${name}_${version}.orig.tar.bz2)
+
+build() {
+
+cd $name-$version
+
+patch -Np1 -i ../lbzip2-gnulib-build-fix.patch
+
+./configure --prefix=/usr
+
+make
+make DESTDIR=$PKG install
+}
