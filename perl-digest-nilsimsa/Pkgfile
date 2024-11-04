@@ -1,0 +1,25 @@
+description="Perl version of Nilsimsa code"
+url="https://metacpan.org/pod/Digest::Nilsimsa"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B"
+
+run=(perl)
+
+name=perl-digest-nilsimsa
+version=0.06
+release=2
+
+source=(http://www.cpan.org/authors/id/V/VI/VIPUL/Digest-Nilsimsa-$version.tar.gz)
+
+build() {
+cd Digest-Nilsimsa-$version
+PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+sed -E 's@(^OPTIMIZE.*)@\1 -Wno-implicit-function-declaration@' -i Makefile
+
+make
+
+make DESTDIR=$PKG install
+find $PKG \
+        -name '*.bs' -or \
+        -name .packlist | xargs rm
+}
