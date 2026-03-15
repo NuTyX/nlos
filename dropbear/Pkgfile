@@ -1,0 +1,27 @@
+description='Lightweight SSH server'
+url='https://github.com/mkj/dropbear'
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(autoconf automake m4 sed grep)
+
+name=dropbear
+version=2025.89
+
+source=(https://github.com/mkj/dropbear/archive/DROPBEAR_${version}.tar.gz)
+prepare() {
+mv $name-DROPBEAR_${version} $name-$version
+cd $name-$version
+autoupdate
+autoheader
+}
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr \
+  --sbindir=/usr/bin
+
+  make
+
+  make DESTDIR=$PKG install
+}
