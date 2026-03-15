@@ -1,0 +1,24 @@
+description="Dash is a POSIX compliant shell"
+url="http://gondor.apana.org.au/~herbert/dash/"
+
+contributors="Greg,Spiky"
+packager="tnut <tnut@nutyx.org>"
+
+name=dash
+version=0.5.12
+release=2
+makedepends=(libedit)
+source=(http://gondor.apana.org.au/~herbert/dash/files/dash-$version.tar.gz)
+
+
+build(){
+
+	cd $name-$version
+	./configure \
+		--bindir=/bin \
+		--mandir=/usr/share/man \
+		--exec-prefix="" \
+		--with-libedit
+	make
+	make DESTDIR=$PKG install
+}
