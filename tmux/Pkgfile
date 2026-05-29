@@ -1,0 +1,21 @@
+description="A terminal multiplexer"
+url="https://tmux.github.io"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(libevent)
+
+name=tmux
+version=3.6a
+release=2
+
+source=(https://github.com/tmux/tmux/releases/download/$version/$name-$version.tar.gz)
+
+
+build() {
+	cd $name-$version
+	./configure --prefix=/usr
+	make
+	make DESTDIR=$PKG install
+}
+
