@@ -1,0 +1,25 @@
+description='A C++ library to decode QRCode'
+url='https://github.com/nu-book/zxing-cpp'
+
+license="Apache"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=zxing-cpp
+version=2.3.0
+
+makedepends=(cmake)
+
+source=(https://github.com/nu-book/zxing-cpp/archive/v$version/$name-$version.tar.gz)
+
+build() {
+  cmake -B build -S $name-$version \
+   -DCMAKE_INSTALL_PREFIX=/usr \
+   -DCMAKE_BUILD_TYPE=None \
+   -DBUILD_EXAMPLES=OFF \
+   -DBUILD_UNIT_TESTS=OFF
+  cmake --build build
+
+  DESTDIR=$PKG cmake --install build
+}
