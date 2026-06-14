@@ -1,0 +1,25 @@
+description='Hardware Identification Databases'
+url='https://github.com/vcrhonek/hwdata'
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(git)
+
+alias=(hwids)
+
+name=hwdata
+version=0.408
+
+source=(https://github.com/vcrhonek/hwdata/archive/refs/tags/v${version}.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--disable-blacklist
+
+make
+make DESTDIR=$PKG install
+}
