@@ -1,0 +1,43 @@
+description="GTK+ implementation of wxWidgets API for GUI"
+url="https://wxwidgets.org"
+
+license="custom: WxWindows"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Rems,Spiky"
+
+makedepends=(gtk2 gtk3 gstreamer-plugins-base libnotify xorg-libsm
+             xorg-libxxf86vm xorg-glu webkit2gtk-4)
+
+name=wxwidgets
+version=3.2.10
+release=1
+
+source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$version/wxWidgets-$version.tar.bz2)
+
+build() {
+
+  cd wxWidgets-${version}
+  ./autogen.sh
+  ./configure --prefix=/usr \
+              --libdir=/usr/lib \
+              --with-gtk=3 \
+              --with-opengl \
+              --enable-unicode \
+              --enable-graphics_ctx \
+              --enable-mediactrl \
+              --with-regex=builtin \
+              --with-libpng=sys \
+              --with-libxpm=sys \
+              --with-libjpeg=sys \
+              --with-libtiff=sys \
+              --disable-precomp-headers
+  make
+  make -C locale allmo
+}
+
+package() {
+
+	cd wxWidgets-$version
+	make DESTDIR=$PKG install
+}
