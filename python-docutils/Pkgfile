@@ -1,0 +1,32 @@
+description="Set of tools for processing plaintext docs into formats such as HTML, XML, or LaTeX"
+url="http://docutils.sourceforge.net"
+
+contributors="Rocket,Greg,Rems,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-docutils
+_name="docutils"
+alias=(${_name})
+
+version=0.23
+
+source=(https://downloads.sourceforge.net/docutils/docutils-$version.tar.gz)
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}
