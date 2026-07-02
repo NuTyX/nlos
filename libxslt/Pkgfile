@@ -1,0 +1,48 @@
+description="XSLT libraries used for extending libxml2 libraries to support XSLT files."
+url="http://xmlsoft.org/XSLT/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rÿ©My,Tnut"
+
+makedepends=(automake autoconf m4 sed grep
+             libxml2 libgcrypt python)
+
+run=(libxslt.lib)
+
+name=libxslt
+version=1.1.45
+
+PKGMK_GROUPS=(lib man devel doc)
+source=(https://download.gnome.org/sources/$name/1.1/$name-$version.tar.xz)
+
+build() {
+ cd $name-$version
+ ./configure --prefix=/usr \
+   --disable-static        \
+   --docdir=/usr/share/doc/$name-$version \
+   PYTHON=/usr/bin/python3
+ make
+ make DESTDIR=$PKG install
+}
+
+lib() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.lib${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib/lib{e,}xslt*
+#rm -r usr/lib/libxslt-plugins
+rm usr/lib/libexslt* usr/lib/libxslt*
+rm -d usr/lib || true
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib/pkgconfig usr/include \
+usr/lib/xsltConf.sh
+rm -r usr/{include,lib/{pkgconfig,xsltConf.sh}}
+rm -d usr/lib || true
+}
+package() {
+rm $PKG/usr/lib/lib{e,}xslt.la
+}
