@@ -1,0 +1,14 @@
+description='C++ library for interacting with JSON'
+url='https://github.com/open-source-parsers/jsoncpp'
+
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(meson ninja python)
+
+name=jsoncpp
+version=1.9.6
+release=2
+
+source=(https://github.com/open-source-parsers/$name/archive/$version/$name-$version.tar.gz)
+
+build=meson
