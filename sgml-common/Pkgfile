@@ -1,0 +1,26 @@
+description="Tools for maintaining centralized SGML catalogs."
+url="http://www.docbook.org/xml/"
+packager="spiky <spiky@nutyx.org>"
+
+
+makedepends=(autoconf automake sed grep)
+
+name=sgml-common
+version=0.6.3
+release=3
+
+source=( http://anduin.linuxfromscratch.org/BLFS/sgml-common/sgml-common-$version.tgz
+         sgml-common-$version-manpage-1.patch)
+
+build(){
+    cd $name-$version
+    patch -Np1 -i ../sgml-common-$version-manpage-1.patch &&
+    autoreconf -f -i
+    ./configure --prefix=/usr \
+                --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+
+    # fix doc dir
+    mv $PKG/usr/doc $PKG/usr/share/doc
+}
