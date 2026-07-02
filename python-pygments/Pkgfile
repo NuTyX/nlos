@@ -1,0 +1,37 @@
+description="Python 3 syntax highlighter"
+url="http://pygments.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-hatchling)
+
+name=python-pygments
+_name="pygments"
+alias=(${_name})
+
+version=2.20.0
+
+source=(https://pypi.org/packages/source/p/pygments/pygments-${version}.tar.gz)
+
+build() {
+
+ cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+
+}
+uptodate() {
+lynx -read_timeout=20 -dump -listonly -nonumbers \
+https://pypi.org/project/Pygments/|grep Pygments-|tail -1|cut -d "-" -f2|sed s@.tar.gz@@
+}
