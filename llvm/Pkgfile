@@ -1,0 +1,51 @@
+description="Low Level Virtual Machine, collection of modular and \
+reusable compiler and toolchain."
+url="https://llvm.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Remy,Tnut"
+
+makedepends=(grep python cmake ninja libxml2 git)
+
+name=llvm
+version=22.1.6
+
+PKGMK_GROUPS=(lib man devel doc)
+_url="https://github.com/llvm/llvm-project/releases/download/llvmorg-$version"
+
+source=(${_url}/$name-project-$version.src.tar.xz)
+
+build() {
+
+export NINJAJOBS=10
+
+cd $name-project-$version.src
+
+
+grep -rl '#!.*python' | xargs sed -i '1s/python$/python3/'
+
+sed 's/utility/tool/' -i llvm/utils/FileCheck/CMakeLists.txt
+
+mkdir llvm/build
+cd    llvm/build
+
+CC=gcc CXX=g++ \
+cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+  -D CMAKE_SKIP_INSTALL_RPATH=ON   \
+  -D LLVM_ENABLE_FFI=ON       \
+  -D CMAKE_BUILD_TYPE=Release \
+  -D LLVM_BUILD_LLVM_DYLIB=ON \
+  -D LLVM_LINK_LLVM_DYLIB=ON  \
+  -D LLVM_ENABLE_RTTI=ON      \
+  -D LLVM_TARGETS_TO_BUILD="host;AMDGPU;BPF" \
+  -D LLVM_ENABLE_PROJECTS=clang        \
+  -D LLVM_ENABLE_RUNTIMES=compiler-rt  \
+  -D LLVM_BINUTILS_INCDIR=/usr/include \
+  -D LLVM_INCLUDE_BENCHMARKS=OFF \
+  -D LLVM_BUILD_TESTS=OFF          \
+  -W no-dev -G Ninja ..
+
+ninja
+
+DESTDIR=$PKG ninja install
+}
