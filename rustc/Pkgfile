@@ -1,0 +1,114 @@
+description="The Rust programming language is designed to be a safe, \
+concurrent, practical language."
+url="https://static.rust-lang.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre.,Rémy,Tnut"
+
+alias=(rust)
+
+makedepends=(make-ca cmake curl llvm python libssh2)
+
+name=rustc
+version=1.96.0
+
+source=(https://static.rust-lang.org/dist/$name-$version-src.tar.xz
+       https://github.com/lfs-book/rust-openssl/archive/v0.10.78/rust-openssl-0.10.78.tar.gz)
+
+prepare() {
+cd $name-$version-src
+mv ../rust-openssl-0.10.78 .
+cat >> src/tools/cargo/Cargo.toml << EOF
+[patch.crates-io]
+openssl = { path = "../../../rust-openssl-0.10.78/openssl" }
+openssl-sys = { path = "../../../rust-openssl-0.10.78/openssl-sys" }
+EOF
+
+sed -ri src/tools/cargo/Cargo.lock \
+    -e '/name = "openssl-sys"/,/^$/{/source|checksum/d;s/0.9.112/0.9.114/}' \
+    -e '/name = "openssl"/,/^$/{/source|checksum/d;s/0.10.76/0.10.78/}'     \
+    -e '/name = "openssl-macros"/,/^$/{/source|checksum/d}'
+}
+
+
+build() {
+
+export MAKEFLAGS=-j15
+   cd $name-$version-src
+   cat <<EOF > config.toml
+# Tell x.py the editors have reviewed the content of this file
+# and updated it to follow the major changes of the building system,
+# so x.py will not warn us to do such a review.
+change-id = 140732
+
+# see src/bootstrap/config.toml.example for more possible options
+[llvm]
+# by default, rust will build for a myriad of architectures
+targets = "X86"
+
+# When using system llvm prefer shared libraries
+link-shared = true
+
+# Do not download pre-built LLVM, instead either use the system
+# LLVM or build LLVM from the shipped source.
+download-ci-llvm = false
+
+[build]
+# omit HTML docs to save time and space (comment this to build them)
+docs = false
+
+# install cargo as well as rust
+extended = true
+
+# Do not query new versions of dependencies online.
+locked-deps = true
+
+# Specify which extended tools (those from the default install).
+tools = ["cargo", "clippy", "rustfmt"]
+
+# Use the source code shipped in the tarball for the dependencies.
+# The combination of this and the "locked-deps" entry avoids downloading
+# many crates from Internet, and makes the Rustc build more stable.
+vendor = true
+
+[install]
+prefix = "/usr"
+docdir = "share/doc/rustc"
+
+[rust]
+channel = "stable"
+rpath = false
+
+# BLFS does not install the FileCheck executable from llvm,
+# so disable codegen tests
+codegen-tests = false
+
+# Don't download compiler components from the upstream CI:
+# it's only intended for developers working on standard library
+# and tools, and it only works with the Rust Git repository.
+download-rustc = false
+
+# Don't build lld which does not belong to this package and seems not
+# so useful for BLFS.  Even if it turns out to be really useful we'd build
+# it as a part of the LLVM package instead.
+lld = false
+
+[target.x86_64-unknown-linux-gnu]
+# NB the output of llvm-config (i.e. help options) may be
+# dumped to the screen when config.toml is parsed.
+llvm-config = "/usr/bin/llvm-config"
+
+[target.i686-unknown-linux-gnu]
+# NB the output of llvm-config (i.e. help options) may be
+# dumped to the screen when config.toml is parsed.
+llvm-config = "/usr/bin/llvm-config"
+
+EOF
+
+  export RUSTFLAGS="$RUSTFLAGS -C link-args=-lffi"
+  python3 ./x.py build --exclude src/tools/miri
+  export LIBSSH2_SYS_USE_PKG_CONFIG=1 
+  DESTDIR=$PKG python3 ./x.py install
+
+  rm -rfv $PKG/tmp
+}
