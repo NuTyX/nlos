@@ -1,0 +1,16 @@
+description='QML image editing component'
+url='https://invent.kde.org/libraries/kquickimageeditor'
+
+license="LGPL-2.0-only LGPL-3.0-only"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=kquickimageeditor
+version=0.6.2.1
+
+makedepends=(opencv kconfig kirigami qt6-base qt6-declarative extra-cmake-modules)
+
+source=(https://download.kde.org/stable/$name/${name}-$version.tar.xz)
+
+build=kde6
