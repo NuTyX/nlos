@@ -1,0 +1,33 @@
+description='Abstraction for system notifications'
+url='https://community.kde.org/Frameworks'
+
+license="LGPL-2.0-only LGPL-3.0-only"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+set=(kde6-frameworks)
+
+name=knotifications
+version=6.29.0
+release=1
+
+makedepends=(qt6-base qt6-tools qt6-declarative extra-cmake-modules
+             kconfig libcanberra)
+
+source=(https://download.kde.org/stable/frameworks/${version%.*}/${name}-$version.tar.xz)
+
+build() {
+  cmake -B build -S $name-$version    \
+  -D CMAKE_INSTALL_PREFIX=/usr        \
+  -D CMAKE_SKIP_INSTALL_RPATH=ON      \
+  -D CMAKE_INSTALL_LIBDIR=lib         \
+  -D BUILD_TESTING=OFF                \
+  -D BUILD_PYTHON_BINDINGS=OFF        \
+  -D CMAKE_BUILD_TYPE=Release         \
+  -W no-dev
+
+  cmake --build build
+
+  DESTDIR=$PKG cmake --install build
+}
