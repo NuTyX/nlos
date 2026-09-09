@@ -1,0 +1,21 @@
+description="Deletes unneeded files to free disk space and maintain privacy"
+url="https://bleachbit.sourceforge.net/"
+
+license="GPL-3.0-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Schrodinger72,Tnut"
+
+run=(python python-gobject python-chardet gtk3 desktop-file-utils
+     hicolor-icon-theme)
+
+name=bleachbit
+version=6.0.3
+
+PKGMK_KEEP_SOURCES="no"
+source=(https://github.com/bleachbit/bleachbit/archive/refs/tags/v${version}.tar.gz)
+
+build() {
+  cd $name-$version
+  make prefix=/usr DESTDIR=$PKG install
+}
