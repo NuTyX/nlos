@@ -1,0 +1,26 @@
+description="Library for handling mail messages and newsgroup articles"
+url="https://kontact.kde.org/"
+
+license="GPL-2.0-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Fabienwang,Tnut"
+
+makedepends=(qt6-base qt6-tools extra-cmake-modules kcodecs)
+
+set=(kde6-frameworks)
+
+name=kmime
+version=6.29.0
+release=1
+
+source=(compat.patch
+        https://download.kde.org/stable/frameworks/${version%.*}/${name}-$version.tar.xz)
+
+prepare() {
+cd $name-$version
+patch -Rp1 -i ../compat.patch
+sed -e 's|KF_DEP_VERSION VERSION_LESS 6.27|TRUE|' -i CMakeLists.txt
+}
+
+build=kde6
