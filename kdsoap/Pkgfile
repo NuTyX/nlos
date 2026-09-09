@@ -1,0 +1,26 @@
+description='Qt-based client-side and server-side SOAP component'
+url="https://github.com/KDAB/KDSoap"
+
+license="GPL3,LGPL,custom"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=kdsoap
+version=2.3.0
+
+makedepends=(cmake qt6-base)
+
+source=(https://github.com/KDAB/KDSoap/releases/download/$name-$version/$name-$version.tar.gz)
+
+build() {
+ mkdir build
+ cd    build
+ cmake -DCMAKE_INSTALL_PREFIX=/usr \
+       -DKDSoap_QT6=ON             \
+       -DCMAKE_BUILD_TYPE=None     \
+       ../$name-$version
+  
+ make
+ make DESTDIR=$PKG install
+}
