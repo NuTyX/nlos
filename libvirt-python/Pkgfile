@@ -1,0 +1,36 @@
+description="libvirt python binding"
+url="https://pypi.python.org/pypi/libvirt-python"
+
+license="LGPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Yaolinux,DocWOPR,Tnut"
+makedepends=(python-setuptools libvirt)
+run=( libvirt)
+
+name=libvirt-python
+_name="libvirt-python"
+alias=(${_name})
+
+version=12.6.0
+release=1
+
+source=(https://gitlab.com/libvirt/libvirt-python/-/archive/v$version/$name-v$version.tar.gz
+)
+build() {
+cd ${_name}-v$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}
