@@ -1,0 +1,33 @@
+description='Various text handling addons'
+url='https://invent.kde.org/libraries/ktextaddons'
+
+license="GPL-2.0-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+set=(kde6)
+
+name=ktextaddons
+version=2.1.2
+
+makedepends=(qt6-base qt6-speech qt6-tools extra-cmake-modules karchive kconfig
+             kconfigwidgets ki18n kio kwidgetsaddons kxmlgui sonnet qtkeychain-qt6
+             syntax-highlighting ktextwidgets)
+
+source=(https://download.kde.org/stable/$name/$name-$version.tar.xz)
+
+build() {
+ mkdir build
+ cd    build
+ cmake -DCMAKE_INSTALL_PREFIX=/usr \
+       -DBUILD_DESIGNERPLUGIN=ON   \
+       -DBUILD_TESTING=OFF         \
+       -DBUILD_QCH=ON              \
+       -DCMAKE_INSTALL_LIBDIR=lib  \
+       -DQT_MAJOR_VERSION=6        \
+       ../$name-$version
+  
+ make
+ make DESTDIR=$PKG install
+}
