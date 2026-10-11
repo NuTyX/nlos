@@ -45,9 +45,20 @@ drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus/mainloop/__pycache__/
 -rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus/server.py
 -rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus/service.py
 -rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus/types.py
-drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/INSTALLER
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/METADATA
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/RECORD
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/REQUESTED (EMPTY)
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.4.0.dist-info/WHEEL
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/INSTALLER
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/METADATA
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/RECORD
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/REQUESTED (EMPTY)
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/WHEEL
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/COPYING
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/LICENSES/
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/LICENSES/MIT.txt
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/COPYING
+drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/AFL-2.1.txt
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/GPL-2.0-or-later.txt
+-rw-r--r--	root/root	usr/lib/python3.14/site-packages/dbus_python-1.5.0.dist-info/licenses/subprojects/dbus-gmain/LICENSES/MIT.txt

@@ -8,20 +8,19 @@ makedepends=(python-setuptools dbus glib python-meson)
 run=(python)
 
 name=python-dbus
-_name="python-dbus"
+_name="python_dbus"
 alias=(${_name})
 
-version=1.4.0
-release=4
+version=1.5.0
 
 _name=dbus-python
-alias=(dbus-python)
+alias=(dbus_python)
 
-source=( http://dbus.freedesktop.org/releases/${_name}/${_name}-$version.tar.xz)
+source=(https://dbus.freedesktop.org/releases/dbus-python/dbus_python-$version.tar.gz)
 
 build() {
 
-      cd ${_name}-$version
+      cd dbus_python-$version
 
   pip3 wheel -w dist \
     --no-build-isolation \
