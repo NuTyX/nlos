@@ -1,13 +1,13 @@
 description="Filter that can be run between an arbitrary application and UTF8 emulator."
 url="https://invisible-island.net/luit/luit.html"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
 
 PKGMK_GROUPS=(doc man)
 
 name=xorg-luit
-version=20250912
+version=20260907
 
 _name=${name/xorg-/}
 makedepends=(xorg-libfontenc)
