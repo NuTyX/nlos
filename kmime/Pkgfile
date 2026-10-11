@@ -11,7 +11,7 @@ makedepends=(qt6-base qt6-tools extra-cmake-modules kcodecs)
 set=(kde6-frameworks)
 
 name=kmime
-version=6.30.0
+version=6.31.0
 release=1
 
 source=(compat.patch
