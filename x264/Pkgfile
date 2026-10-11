@@ -1,22 +1,23 @@
 description="Library for encoding H264/AVC video streams"
 url="http://www.videolan.org/developers/x264.html"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Greg,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
 
-makedepends=(nasm l-smash)
+makedepends=(git nasm l-smash)
 
 name=x264
-version=20191217-2245
-release=2
+version=b35605ac
+release=1
 
-source=(http://ftp.videolan.org/pub/videolan/x264/snapshots/x264-snapshot-$version-stable.tar.bz2)
+source=(https://code.videolan.org/videolan/x264.git)
 
 build() {
-cd x264-snapshot-${version}-stable
+cd $name-$version
 ./configure \
 --prefix=/usr \
 --enable-pic \
+--enable-lto \
 --enable-shared
 
 make
