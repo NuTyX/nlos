@@ -9,8 +9,10 @@ drwxr-xr-x	root/root	usr/include/shiboken6/
 -rw-r--r--	root/root	usr/include/shiboken6/helper.h
 -rw-r--r--	root/root	usr/include/shiboken6/pep384ext.h
 -rw-r--r--	root/root	usr/include/shiboken6/pep384impl.h
+-rw-r--r--	root/root	usr/include/shiboken6/pep384impl_p.h
 -rw-r--r--	root/root	usr/include/shiboken6/pyobjectholder.h
 -rw-r--r--	root/root	usr/include/shiboken6/sbkarrayconverter.h
+-rw-r--r--	root/root	usr/include/shiboken6/sbkarrayspan_p.h
 -rw-r--r--	root/root	usr/include/shiboken6/sbkbindingutils.h
 -rw-r--r--	root/root	usr/include/shiboken6/sbkcontainer.h
 -rw-r--r--	root/root	usr/include/shiboken6/sbkconverter.h
@@ -36,6 +38,7 @@ drwxr-xr-x	root/root	usr/include/shiboken6/
 -rw-r--r--	root/root	usr/include/shiboken6/sbkwindows.h
 -rw-r--r--	root/root	usr/include/shiboken6/shiboken.h
 -rw-r--r--	root/root	usr/include/shiboken6/shibokenbuffer.h
+-rw-r--r--	root/root	usr/include/shiboken6/shibokenclasshelpermacros.h
 -rw-r--r--	root/root	usr/include/shiboken6/shibokenmacros.h
 -rw-r--r--	root/root	usr/include/shiboken6/signature.h
 -rw-r--r--	root/root	usr/include/shiboken6/signature_p.h

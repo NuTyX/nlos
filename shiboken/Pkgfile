@@ -3,8 +3,8 @@ url='https://www.qt.io'
 
 license="GPL-3.0-only LGPL-3.0-only LicenseRef-Qt-Commercial Qt-GPL-exception-1.0"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(git ninja cmake libxslt qt6-declarative qt6-3d qt6-charts qt6-speech qt6-serialport
              qt6-shadertools qt6-tools qt6-location qt6-webengine qt6-sensors qt6-quick3d
@@ -13,14 +13,9 @@ makedepends=(git ninja cmake libxslt qt6-declarative qt6-3d qt6-charts qt6-speec
 source=(https://code.qt.io/pyside/pyside-setup.git)
 
 name=shiboken
-version=6.11.2
+version=6.12.0
+release=1
 
-prepare() {
-  cd $name-$version
-  # Fix header install dir
-  git cherry-pick -n d252378a3980c99e23340e6b722631182814d8bb \
-  71c4d1750463c99ab9cbff7e1d7162210506f225
-}
 build() {
   cmake -B build -S $name-$version -G Ninja \
     -DCMAKE_INSTALL_PREFIX=/usr    \
