@@ -323,6 +323,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/applets/22x22/video-display-symbolic
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/22x22/window-pin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/22x22/window-unpin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/22x22/yakuake-symbolic.svg
+-rw-r--r--	root/root	usr/share/icons/oxygen/applets/22x22/zeal-tray.svg
 drwxr-xr-x	root/root	usr/share/icons/oxygen/applets/24x24/
 lrwxrwxrwx	root/root	usr/share/icons/oxygen/applets/24x24/actor-symbolic.svg -> contacts-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/24x24/akregator-symbolic.svg
@@ -626,6 +627,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/applets/24x24/video-display-symbolic
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/24x24/window-pin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/24x24/window-unpin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/24x24/yakuake-symbolic.svg
+-rw-r--r--	root/root	usr/share/icons/oxygen/applets/24x24/zeal-tray.svg
 drwxr-xr-x	root/root	usr/share/icons/oxygen/applets/32x32/
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/akregator-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/audio-off-symbolic.svg
@@ -725,6 +727,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/applets/32x32/redshift-status-on.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/window-pin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/window-unpin-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/yakuake-symbolic.svg
+-rw-r--r--	root/root	usr/share/icons/oxygen/applets/32x32/zeal-tray.svg
 drwxr-xr-x	root/root	usr/share/icons/oxygen/applets/64x64/
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/64x64/monitor-symbolic.svg
 -rw-r--r--	root/root	usr/share/icons/oxygen/applets/64x64/osd-duplicate-symbolic.svg
@@ -5749,6 +5752,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/256x256/apps/knetattach.png -> 
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/mameexecutor.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/multimedia-volume-control.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/org.kde.dolphin.png
+-rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/org.kde.koko.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/org.kde.krecorder.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/org.kde.neochat.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/org.kde.tokodon.png
@@ -5756,6 +5760,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/256x256/apps/knetattach.png -> 
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/partitionmanager.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/picmi.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/planner.png
+-rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/plasma-studio.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/plasmadiscover.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/preferences-desktop-display-color.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/256x256/apps/preferences-desktop-display.png
@@ -8811,6 +8816,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/48x48/apps/network-manager.png 
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/okteta.png
 lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/48x48/apps/okular.png -> graphics-viewer-document.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/org.kde.dolphin.png
+-rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/org.kde.koko.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/org.kde.krecorder.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/org.kde.neochat.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/48x48/apps/org.kde.tokodon.png
@@ -9860,6 +9866,7 @@ lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/64x64/apps/office-calendar.png 
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/okteta.png
 lrwxrwxrwx	root/root	usr/share/icons/oxygen/base/64x64/apps/okular.png -> graphics-viewer-document.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/org.kde.dolphin.png
+-rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/org.kde.koko.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/org.kde.krecorder.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/org.kde.neochat.png
 -rw-r--r--	root/root	usr/share/icons/oxygen/base/64x64/apps/org.kde.tokodon.png
