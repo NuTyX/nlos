@@ -1,13 +1,13 @@
 description="Generic SCSI utilities"
 url="https://sg.danny.cz/sg/sg3_utils.html"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
 name=sg3-utils
 version=1.49
 
-makedepends=(autoconfig automake libtool)
+makedepends=(autoconf automake libtool)
 
 source=(https://sg.danny.cz/sg/p/sg3_utils-$version.tar.xz)
 
