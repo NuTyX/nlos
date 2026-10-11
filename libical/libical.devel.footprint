@@ -96,6 +96,7 @@ drwxr-xr-x	root/root	usr/include/libical/
 -rw-r--r--	root/root	usr/include/libical/icalvalue.h
 -rw-r--r--	root/root	usr/include/libical/icalvalue_cxx.hpp
 -rw-r--r--	root/root	usr/include/libical/icalvcal.h
+-rw-r--r--	root/root	usr/include/libical/icalversion.h
 -rw-r--r--	root/root	usr/include/libical/icptrholder_cxx.hpp
 -rw-r--r--	root/root	usr/include/libical/libical_deprecated.h
 -rw-r--r--	root/root	usr/include/libical/libical_ical_export.h
