@@ -30,6 +30,7 @@ drwxr-xr-x	root/root	usr/include/KF6/KCoreAddons/
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KProcessList
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KRandom
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KRuntimePlatform
+-rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KSafeStringError
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KSandbox
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KSharedDataCache
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/KShell
@@ -67,6 +68,7 @@ drwxr-xr-x	root/root	usr/include/KF6/KCoreAddons/
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/kprocesslist.h
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/krandom.h
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/kruntimeplatform.h
+-rw-r--r--	root/root	usr/include/KF6/KCoreAddons/ksafestringerror.h
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/ksandbox.h
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/kshareddatacache.h
 -rw-r--r--	root/root	usr/include/KF6/KCoreAddons/kshell.h
