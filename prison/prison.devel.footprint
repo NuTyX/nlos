@@ -27,3 +27,8 @@ drwxr-xr-x	root/root	usr/lib/cmake/KF6Prison/
 -rw-r--r--	root/root	usr/lib/cmake/KF6Prison/KF6PrisonConfigVersion.cmake
 -rw-r--r--	root/root	usr/lib/cmake/KF6Prison/KF6PrisonTargets-release.cmake
 -rw-r--r--	root/root	usr/lib/cmake/KF6Prison/KF6PrisonTargets.cmake
+drwxr-xr-x	root/root	usr/lib/cmake/KF6PrisonScanner/
+-rw-r--r--	root/root	usr/lib/cmake/KF6PrisonScanner/KF6PrisonScannerConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF6PrisonScanner/KF6PrisonScannerConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF6PrisonScanner/KF6PrisonScannerTargets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/KF6PrisonScanner/KF6PrisonScannerTargets.cmake
