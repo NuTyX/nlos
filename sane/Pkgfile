@@ -6,7 +6,7 @@ license="GPL-2.0-or-later, LicenseRef-GPL-2.0-or-later-with-linking-exception"
 packager="spiky <spiky@nutyx.org>"
 contributors="Pierre,Tnut"
 
-makedepends=(libusb-compat libjpeg-turbo libtiff gtk2 libexif cups net-snmp avahi
+makedepends=(libusb-compat libjpeg-turbo libtiff libexif cups net-snmp avahi
 	poppler-glib autoconf-archive)
 
 name=sane
