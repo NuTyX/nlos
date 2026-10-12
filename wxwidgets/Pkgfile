@@ -6,11 +6,11 @@ license="custom: WxWindows"
 packager="tnut <tnut@nutyx.org>"
 contributors="Pierre,Greg,Rems,Spiky"
 
-makedepends=(gtk2 gtk3 gstreamer-plugins-base libnotify xorg-libsm
+makedepends=(gtk3 gstreamer-plugins-base libnotify xorg-libsm
              xorg-libxxf86vm xorg-glu webkit2gtk-4)
 
 name=wxwidgets
-version=3.2.10
+version=3.2.12
 release=1
 
 source=(https://github.com/wxWidgets/wxWidgets/releases/download/v$version/wxWidgets-$version.tar.bz2)
