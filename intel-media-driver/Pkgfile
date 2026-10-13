@@ -9,7 +9,7 @@ contributors="Tnut"
 makedepends=(cmake intel-gmmlib libva xorg-libpciaccess)
 
 name=intel-media-driver
-version=26.2.4
+version=26.3.5
 
 source=(https://github.com/intel/media-driver/archive/refs/tags/intel-media-$version.tar.gz)
 
