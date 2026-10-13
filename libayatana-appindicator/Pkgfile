@@ -11,7 +11,7 @@ makedepends=(extra-cmake-modules glib gtk3 gobject-introspection
 run=(libdbusmenu-gtk libayatana-indicator)
 
 name=libayatana-appindicator
-version=0.6.0
+version=0.6.1
 
 source=(https://github.com/AyatanaIndicators/$name/archive/refs/tags/$version.tar.gz)
 
