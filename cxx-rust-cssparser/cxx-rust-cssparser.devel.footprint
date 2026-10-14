@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	usr/include/
+drwxr-xr-x	root/root	usr/include/cxx-rust-cssparser/
+-rw-r--r--	root/root	usr/include/cxx-rust-cssparser/Color.h
+-rw-r--r--	root/root	usr/include/cxx-rust-cssparser/CssParser.h
+-rw-r--r--	root/root	usr/include/cxx-rust-cssparser/Selector.h
+-rw-r--r--	root/root	usr/include/cxx-rust-cssparser/Value.h
+-rw-r--r--	root/root	usr/include/cxx-rust-cssparser/cssparser_export.h
+drwxr-xr-x	root/root	usr/lib/cmake/
+drwxr-xr-x	root/root	usr/lib/cmake/cxx-rust-cssparser/
+-rw-r--r--	root/root	usr/lib/cmake/cxx-rust-cssparser/cxx-rust-cssparserConfig.cmake
+-rw-r--r--	root/root	usr/lib/cmake/cxx-rust-cssparser/cxx-rust-cssparserConfigVersion.cmake
+-rw-r--r--	root/root	usr/lib/cmake/cxx-rust-cssparser/cxx-rust-cssparserTargets-release.cmake
+-rw-r--r--	root/root	usr/lib/cmake/cxx-rust-cssparser/cxx-rust-cssparserTargets.cmake
