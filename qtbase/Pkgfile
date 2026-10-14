@@ -18,7 +18,7 @@ makedepends=(git pcre2 xorgproto xorg-libxkbfile xorg-xtrans xorg-libx11 xorg-li
              glib dbus xorg-fontconfig xorg-libsm xorg-libxrandr xorg-libxv
              xorg-libxi unixodbc libjpeg-turbo alsa-lib xdg-utils hicolor-icon-theme
              desktop-file-utils mesa xorg-libxcursor xorg-libxrender libpng mariadb
-             icu libglade xorg-libxfixes xorg-libxinerama libxkbcommon harfbuzz mtdev
+             icu xorg-libxfixes xorg-libxinerama libxkbcommon harfbuzz mtdev
              postgresql cups python gperf ruby pulseaudio bluez libtiff libmng openal
              libxslt xorg-libxcomposite gstreamer gstreamer-plugins-base
              gstreamer-plugins-good gstreamer-plugins-bad pulseaudio hunspell
