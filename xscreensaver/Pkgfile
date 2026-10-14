@@ -4,7 +4,7 @@ url="http://www.jwz.org/xscreensaver/"
 packager="spiky <spiky@nutyx.org>"
 contributors="Pierre,Greg,Tnut"
 
-makedepends=(bc libglade xorg-libxmu xorg-libxt xorg-libxpm gtk3
+makedepends=(bc xorg-libxmu xorg-libxt xorg-libxpm gtk3
              libxcrypt systemd)
 run=(gdk-pixbuf-xlib xorg-glu)
 
