@@ -1,27 +1,27 @@
 description="XML to PO template files and back"
 url="http://itstool.org/"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Schrodinger72,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Schrodinger72,Spiky"
 
 makedepends=(autoconf automake libtool sed
-             docbook-xml docbook-xsl libxml2 python)
+             docbook-xml docbook-xsl libxml2 python
+             python-lxml)
 
 name=itstool
 version=2.0.7
-release=4
+release=5
 
-source=(fix-crash-wrong-encoding.patch
-	http://files.itstool.org/itstool/$name-$version.tar.bz2)
+source=($name-$version-lxml-1.patch
+        https://github.com/$name/$name/archive/$version/$name-$version.tar.gz)
 prepare() {
 cd $name-$version
-patch -Np1 -i ../fix-crash-wrong-encoding.patch
-autoreconf -fvi
+patch -Np1 -i ../$name-$version-lxml-1.patch
 }
 
 build() {
   cd $name-$version
-  PYTHON=/usr/bin/python3 ./configure --prefix=/usr
+  PYTHON=/usr/bin/python3 ./autogen.sh --prefix=/usr
   make
   make DESTDIR=$PKG install
 }
