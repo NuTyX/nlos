@@ -5,7 +5,7 @@ packager="spiky <spiky@nutyx.org>"
 contributors="Greg,Tnut"
 
 makedepends=(sdl1-net zlib sdl1-sound
-            libglade libpng alsa-lib xorg-glu)
+            libpng alsa-lib xorg-glu)
 
 name=dosbox
 version=0.74.3
