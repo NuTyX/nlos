@@ -1,0 +1,73 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libQt6Graphs.prl
+lrwxrwxrwx	root/root	usr/lib/libQt6Graphs.so -> libQt6Graphs.so.6
+lrwxrwxrwx	root/root	usr/lib/libQt6Graphs.so.6 -> libQt6Graphs.so.6.12.0
+-rwxr-xr-x	root/root	usr/lib/libQt6Graphs.so.6.12.0
+-rw-r--r--	root/root	usr/lib/libQt6Graphs2DImpl.prl
+lrwxrwxrwx	root/root	usr/lib/libQt6Graphs2DImpl.so -> libQt6Graphs2DImpl.so.6
+lrwxrwxrwx	root/root	usr/lib/libQt6Graphs2DImpl.so.6 -> libQt6Graphs2DImpl.so.6.12.0
+-rwxr-xr-x	root/root	usr/lib/libQt6Graphs2DImpl.so.6.12.0
+-rw-r--r--	root/root	usr/lib/libQt6GraphsWidgets.prl
+lrwxrwxrwx	root/root	usr/lib/libQt6GraphsWidgets.so -> libQt6GraphsWidgets.so.6
+lrwxrwxrwx	root/root	usr/lib/libQt6GraphsWidgets.so.6 -> libQt6GraphsWidgets.so.6.12.0
+-rwxr-xr-x	root/root	usr/lib/libQt6GraphsWidgets.so.6.12.0
+drwxr-xr-x	root/root	usr/lib/qt6/
+drwxr-xr-x	root/root	usr/lib/qt6/modules/
+-rw-r--r--	root/root	usr/lib/qt6/modules/Graphs.json
+-rw-r--r--	root/root	usr/lib/qt6/modules/Graphs2DImpl.json
+-rw-r--r--	root/root	usr/lib/qt6/modules/GraphsWidgets.json
+drwxr-xr-x	root/root	usr/lib/qt6/qml/
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs/
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/Graphs.qmltypes
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs/designer/
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/Bars3DSpecifics.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/GraphsCameraSection.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/GraphsSection.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/GraphsViewSpecifics.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/Scatter3DSpecifics.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/Surface3DSpecifics.qml
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/AreaSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/BarSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/Bars3D.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/LineSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/PieSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/Scatter3D.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/ScatterSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/SplineSeries.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/default/Surface3D.qml
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/areaseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/areaseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/bars3d-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/bars3d-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/barseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/barseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/lineseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/lineseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/pieseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/pieseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/scatter3d-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/scatter3d-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/scatterseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/scatterseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/splineseries-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/splineseries-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/surface3d-icon.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/images/surface3d-icon16.png
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/qtgraphs.metainfo
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/designer/qtgraphs2d.metainfo
+-rwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs/libgraphsplugin.so
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs/qmldir
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs2D/
+drwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/Graphs2DImpl.qmltypes
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/PointMarker.qml
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/ZoomAreaDelegate.qml
+-rwxr-xr-x	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/libqtgraphs2dimplplugin.so
+-rw-r--r--	root/root	usr/lib/qt6/qml/QtGraphs2D/impl/qmldir
+drwxr-xr-x	root/root	usr/lib/qt6/sbom/
+-rw-r--r--	root/root	usr/lib/qt6/sbom/qtgraphs-6.12.0.spdx
+drwxr-xr-x	root/root	usr/usr/
+drwxr-xr-x	root/root	usr/usr/bin/
