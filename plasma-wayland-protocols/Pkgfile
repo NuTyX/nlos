@@ -3,11 +3,11 @@ url="https://www.kde.org/"
 
 license="LGPL"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 name=plasma-wayland-protocols
-version=1.21.0
+version=1.23.0
 
 makedepends=(extra-cmake-modules qt6-base)
 
