@@ -3,14 +3,18 @@ url='https://invent.kde.org/libraries/kquickimageeditor'
 
 license="LGPL-2.0-only LGPL-3.0-only"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 name=kquickimageeditor
-version=0.6.2.1
+version=0.7.0.1
 
-makedepends=(opencv kconfig kirigami qt6-base qt6-declarative extra-cmake-modules)
+makedepends=(highway kconfig kirigami qt6-base qt6-declarative
+             extra-cmake-modules)
 
 source=(https://download.kde.org/stable/$name/${name}-$version.tar.xz)
 
+prepare() {
+ sed -e 's|OpenCV 4.7|OpenCV 5|' -i $name-$version/CMakeLists.txt
+}
 build=kde6
