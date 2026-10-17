@@ -3,21 +3,44 @@ url="https://gitlab.gnome.org/GNOME/glibmm"
 
 packager="tnut <tnut@nutyx.org>"
 
-makedepends=(meson ninja libsigc++ glib perl-xml-parser mm-common)
+makedepends=(meson ninja libsigc++ libsigc++-3 glib perl-xml-parser mm-common)
 
 name=glibmm
-version=2.66.10
+version="2.66.10+2.90.0"
 
 source=($url.git)
+build() {
+# version 2.90.x
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
 
-build=meson
+# Change the version branch
+tag="${version%+*}"
+cd $name-$version
+git checkout $tag
+cd -
+rm -r builddir
 
-uptodate(){
-local latest lastversion url
-url="https://download.gnome.org/sources/$name"
-latest="`lynx -read_timeout=20 -dump -listonly -nonumbers \
-$url/?C=N\;O=D|grep [0-9]/$|head -1`"
-lastversion="`lynx -read_timeout=20 -dump -listonly -nonumbers \
-$latest/?C=N\;O=D|grep LATEST|grep [0-9]$|cut -d "-" -f3`"
-echo "$lastversion"
+# version 2.66.x
+
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig usr/lib/glibmm-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/glibmm-*
+}
+doc() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_PACKAGE_EXT}$version-$release \
+usr/share
+rm -r usr/share
 }
