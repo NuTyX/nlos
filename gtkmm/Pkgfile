@@ -1,14 +1,49 @@
-description="C++ bindings for gtk3"
-url="http://gtkmm.sourceforge.net/"
+description="C++ bindings for gtk3 and gtk4"
+url="https://gtkmm.sourceforge.net/"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Fanch,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Spiky"
 
-makedepends=(gtk3 pangomm cairomm atkmm meson ninja)
+makedepends=(git meson ninja gtk3 gtk4 pangomm cairomm atkmm)
 
 name=gtkmm
-version=3.24.11
+version=3.24.11+4.24.0
+tag="${version##*+}"
 
-source=(https://download.gnome.org/sources/gtkmm/${version%.*}/${name}-$version.tar.xz)
+source=(https://gitlab.gnome.org/GNOME/$name.git)
 
-build=meson
+build() {
+# version 4.24.x
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+
+# Change the version branch
+tag="${version%+*}"
+cd $name-$version
+git checkout $tag
+cd -
+rm -r builddir
+
+# version 3.24.x
+
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig usr/lib/$name-* usr/lib/gdkmm-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/$name-* usr/lib/gdkmm-*
+}
+doc() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_PACKAGE_EXT}$version-$release \
+usr/share
+rm -r usr/share
+}
