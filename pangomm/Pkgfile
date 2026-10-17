@@ -7,18 +7,43 @@ contributors="Pierre,Rems,Spiky"
 makedepends=(meson ninja pango glibmm cairomm)
 
 name=pangomm
-version=2.58.0
+version="2.46.5+2.58.0"
+tag="${version##*+}"
+source=(https://gitlab.gnome.org/GNOME/$name.git)
 
-source=(https://download.gnome.org/sources/$name/${version%.*}/$name-$version.tar.xz)
 
-build=meson
+build() {
+# version 2.58.x
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
 
-uptodate(){
-local latest lastversion url
-url="https://download.gnome.org/sources/$name"
-latest="`lynx -read_timeout=20 -dump -listonly -nonumbers \
-$url/?C=N\;O=D|grep [0-9]/$|head -1`"
-lastversion="`lynx -read_timeout=20 -dump -listonly -nonumbers \
-$latest/?C=N\;O=D|grep LATEST|grep [0-9]$|cut -d "-" -f3`"
-echo "$lastversion"
+# Change the version branch
+tag="${version%+*}"
+cd $name-$version
+git checkout $tag
+cd -
+rm -r builddir
+
+# version 2.46.x
+
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig usr/lib/$name-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/$name-*
+}
+doc() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_PACKAGE_EXT}$version-$release \
+usr/share
+rm -r usr/share
 }
