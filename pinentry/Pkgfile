@@ -2,13 +2,14 @@ description="a collection of simple PIN or passphrase entry dialogs which utiliz
 url="http://www.gnupg.org/"
 
 license="GPL2"
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
-makedepends=(libcap libsecret libassuan)
+makedepends=(libsecret libassuan)
 
 name=pinentry
 version=1.3.3
+release=2
 
 source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)
 
