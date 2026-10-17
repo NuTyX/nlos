@@ -1,16 +1,50 @@
 description="C++ bindings to Cairo vector graphics library"
-url="http://cairographics.org/"
+url="https://cairographics.org/"
 
 maintainer="Murray Cumming <murrayc@murrayc.com>"
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
-makedepends=(meson ninja cairo libsigc++)
+makedepends=(git meson ninja mm-common cairo libsigc++ libsigc++-3)
 
 name=cairomm
-version=1.14.6
+version=1.14.6+1.18.1
+tag="${version##*+}"
 
-source=(http://cairographics.org/releases/$name-$version.tar.xz)
+source=(https://gitlab.freedesktop.org/cairo/$name.git)
 
-build=meson
+build() {
+# version 1.18.x
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
 
+# Change the version branch
+tag="${version%+*}"
+cd $name-$version
+git checkout $tag
+cd -
+rm -r builddir
+
+# version 1.14.x
+
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig usr/lib/cairomm-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/cairomm-*
+}
+doc() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_PACKAGE_EXT}$version-$release \
+usr/share
+rm -r usr/share
+}
