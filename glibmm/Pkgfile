@@ -34,8 +34,8 @@ devel() {
 cd $PKG
 bsdtar -cf \
 $PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
-usr/include usr/lib/pkgconfig usr/lib/glibmm-*
-rm -r usr/include usr/lib/pkgconfig usr/lib/glibmm-*
+usr/include usr/lib/pkgconfig usr/lib/$name-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/$name-*
 }
 doc() {
 cd $PKG
