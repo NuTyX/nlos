@@ -140,7 +140,6 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_9500-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_9500_mfp-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_E65150_E65160-ps.ppd.gz
--rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_X557-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_cm1015-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_cm1017-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_cm1312_mfp-pcl3.ppd.gz
@@ -251,6 +250,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_5800-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_6800-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_6801-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_8801-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_e47528-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_e57540-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_e77422-ps.ppd.gz
@@ -282,6 +282,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_x677-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_x67755-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_x67765-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_mfp_x778-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_pro_4201-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_pro_m252-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-color_laserjet_pro_m453-4-ps.ppd.gz
@@ -342,6 +343,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_t795ps_44in-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_t920-postscript.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_t930-postscript.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_xl_3800_mfp-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_z2600_postscript-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_z5200_postscript-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-designjet_z5400-postscript.ppd.gz
@@ -384,6 +386,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_2600_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_2640_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_2700_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_2900_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_3000_j310_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_3050_j610_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_3050a_j611_series.ppd.gz
@@ -419,6 +422,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_400.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_400l.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_4100_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_4300_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_450.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_4510_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_4530_series.ppd.gz
@@ -435,6 +439,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_505j.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_510.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5100.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5100_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_520.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5200_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_540.ppd.gz
@@ -452,6 +457,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5700.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5730_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5800.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5800_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5810_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5820_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_5850.ppd.gz
@@ -558,6 +564,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_plus_4100_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_plus_6000_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_plus_6400_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_plus_ink_advantage_6100_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-deskjet_plus_ink_advantage_6500_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_100_d410_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_110_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_120_series.ppd.gz
@@ -570,14 +578,20 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_5640_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_5660_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6000_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6100_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6100e_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6400_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6500_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_6500e_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_7640_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_8000_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_inspire_7200_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_inspire_7900_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_photo_6200_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_photo_7100_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_photo_7200_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_photo_7800_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_photo_7900_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-envy_pro_6400_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-ink_tank_110_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-ink_tank_310_series.ppd.gz
@@ -717,6 +731,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5200l-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5200lx-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5200lx.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5501-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5502-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5l.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5mp-pcl3.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5mp-ps.ppd.gz
@@ -727,6 +743,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5si_mopier-pcl3.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_5si_mopier-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_600_m601_m602_m603-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_6500-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_6501-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_6l.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_6mp-pcl3.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_6mp-ps.ppd.gz
@@ -744,6 +762,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_8150_mfp-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_8150_mfp.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_8150_series-pcl3.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_8501-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_9000_mfp-pcl3.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_9000_mfp-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_9000_series-pcl3.ppd.gz
@@ -773,6 +792,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_cp1025.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_cp1025nw.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_cp1520_series-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_cp_1025nw.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_d50452-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_e40040-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_e50145-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_e60055-e60075-ps.ppd.gz
@@ -787,6 +808,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_e82650-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_e82660-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_e82670-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_5602-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_6600-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_e52645-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_e731-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_e826-ps.ppd.gz
@@ -794,6 +817,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_m528-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_m630-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_m830-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_x530-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_flow_mfp_x627-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m1005.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m101-m106.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m109-m112.ppd.gz
@@ -839,6 +864,11 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m9050_mfp-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m9059_mfp-pcl3.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_m9059_mfp-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_5601-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_5602-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_6600-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_8601-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_d53052-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_e42540-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_e72425-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_e72430-ps.ppd.gz
@@ -870,6 +900,10 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_m631_m632_m633-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_m634_m635_m636-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_m725-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_x529-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_x530-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_x627-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_mfp_x728.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_p1005.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_p1006.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_p1007.ppd.gz
@@ -916,6 +950,9 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4002-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4003-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4004-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4006-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4007-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_4008-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_m118-m119-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_m148-m149-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_m148f-m149f-ps.ppd.gz
@@ -937,12 +974,16 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4102-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4103-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4104-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4112-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4113-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_4114-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125a.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125nr.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125nw.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125r.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125rnw.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m125s.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m126_plus_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m126a.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m126nw.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_pro_mfp_m127fn.ppd.gz
@@ -979,6 +1020,7 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_m1219nfg_mfp.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_m1219nfs_mfp.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_p1102.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_p1102w.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_p1106.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_p1106w.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_professional_p1107.ppd.gz
@@ -1002,6 +1044,10 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_tank_mfp_1005.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_tank_mfp_160x.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_tank_mfp_260x.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_x503-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_x504-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_x602-ps.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-laserjet_x603-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-lj_300_400_color_m351_m451-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-lj_300_400_color_mfp_m375_m475-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-mopier_240-pcl3.ppd.gz
@@ -1073,6 +1119,8 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_8700.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_9010_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_9100_series-pcl3.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_9120_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_9120e_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_color_mfp_x585.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_color_x555-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_d_series.ppd.gz
@@ -1139,9 +1187,15 @@ drwxr-xr-x	root/root	usr/share/ppd/HP/
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_8740-ps.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9010_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9020_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9110_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9110b_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9110e_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9120_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9120b_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9120e_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9130_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9130b_series.ppd.gz
+-rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9130e_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9720_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9720e_series.ppd.gz
 -rw-r--r--	root/root	usr/share/ppd/HP/hp-officejet_pro_9730_series.ppd.gz

@@ -10,8 +10,8 @@ makedepends=(grep autoconf libtool
 
 
 name=hplip
-version=3.24.4
-release=2
+version=3.26.6
+release=1
 
 source=(consolidate.patch
         http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
