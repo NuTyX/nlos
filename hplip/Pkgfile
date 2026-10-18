@@ -11,7 +11,9 @@ makedepends=(grep autoconf libtool
 
 name=hplip
 version=3.26.6
-release=1
+release=2
+
+PKGMK_GROUPS=(doc)
 
 source=(consolidate.patch
         http://downloads.sourceforge.net/$name/$name-$version.tar.gz)
@@ -55,7 +57,6 @@ package() {
  
  # remove rc script
  rm -vrf $PKG/etc/init.d
- rm -r $PKG/usr/lib/systemd
 
  # add mixed license file
  install -Dt $PKG/usr/share/licenses/$name -m644 COPYING
