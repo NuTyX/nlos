@@ -9,8 +9,8 @@ contributors="Spiky"
 makedepends=(cups xorg-fontconfig ghostscript lcms2 qpdf hicolor-icon-theme libjxl pdfio poppler)
 
 name=libcupsfilters
-version=2.2.1
-release=2
+version=2.1.2
+release=1
 
 source=(https://github.com/OpenPrinting/libcupsfilters/releases/download/$version/$name-$version.tar.xz)
 
