@@ -10,8 +10,7 @@ name=python-pluggy
 _name="pluggy"
 alias=(${_name})
 
-version=1.6.0
-release=4
+version=1.7.0
 
 source=(https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-$version.tar.gz)
 
