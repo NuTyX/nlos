@@ -10,7 +10,7 @@ license="MIT"
 makedepends=(openssl libidn2 libpsl zlib zstd)
 
 name=curl
-version=8.22.0
+version=8.23.0
 
 set=(chroot)
 
