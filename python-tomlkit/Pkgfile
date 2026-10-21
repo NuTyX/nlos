@@ -10,7 +10,7 @@ name=python-tomlkit
 _name="tomlkit"
 alias=(${_name})
 
-version=0.15.1
+version=0.15.2
 
 source=(https://files.pythonhosted.org/packages/source/t/tomlkit/tomlkit-$version.tar.gz)
 
