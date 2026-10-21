@@ -11,7 +11,7 @@ name=python-hatchling
 _name="hatchling"
 alias=(${_name})
 
-version=1.32.3
+version=1.32.4
 
 source=( https://files.pythonhosted.org/packages/source/h/hatchling/hatchling-$version.tar.gz)
 
