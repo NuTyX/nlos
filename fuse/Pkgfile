@@ -1,0 +1,46 @@
+description="Library that makes it possible to implement a filesystem in a userspace program."
+url="https://fuse.sourceforge.net/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(python meson ninja doxygen)
+
+name=fuse
+version=3.18.3
+
+source=(https://github.com/libfuse/libfuse/releases/download/fuse-$version/fuse-$version.tar.gz)
+
+PKGMK_MESON_OPTIONS="--sbindir=/usr/bin   \
+--localstatedir=/var \
+--libdir=/usr/lib"
+
+prepare() {
+
+sed -i '/^udev/,$ s/^/#/' $name-$version/util/meson.build
+
+}
+
+build=meson
+
+package() {
+ rm -rf $PKG/tmp
+ chmod u+s $PKG/usr/bin/fusermount3
+ mkdir -pv $PKG/etc
+ cat > $PKG/etc/fuse.conf << "EOF"
+# Set the maximum number of FUSE mounts allowed to non-root users.
+# The default is 1000.
+#
+#mount_max = 1000
+
+# Allow non-root users to specify the 'allow_other' or 'allow_root'
+# mount options.
+#
+#user_allow_other
+EOF
+
+ install -v -m755 -d $PKG/usr/share/doc/$name
+ install -v -m644    $name-$version/doc/{README.NFS,kernel.txt} \
+                    $PKG/usr/share/doc/$name
+ cp -Rv $name-$version/doc/html  $PKG/usr/share/doc/$name
+}

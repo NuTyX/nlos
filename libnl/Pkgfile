@@ -1,0 +1,30 @@
+description="Collection of Libraries providing APIs to netlink protocol based Linux kernel interfaces"
+url="http://people.suug.ch/~tgr/libnl"
+
+license="LGPL2.1"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(bison flex)
+
+name=libnl
+version=3.12.0
+
+source=(https://github.com/thom311/libnl/releases/download/libnl3_12_0/$name-doc-$version.tar.gz
+        https://github.com/thom311/libnl/releases/download/libnl3_12_0/$name-$version.tar.gz)
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--disable-static
+make
+make DESTDIR=$PKG install
+
+# Doc
+mkdir -p $PKG/usr/share/doc/
+mv ../$name-doc-$version \
+$PKG/usr/share/doc/
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,17 @@
+description="Xorg vmware video driver."
+packager="spiky <spiky@nutyx.org>"
+
+name=xorg-xf86-video-vmware
+version=13.4.0
+release=3
+
+_name=${name/xorg-/}
+makedepends=(mesa xorg-server)
+
+source=(http://ftp.x.org/pub/individual//driver/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/xorg/modules/drivers/vmware_drv.la
+}

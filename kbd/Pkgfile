@@ -1,0 +1,40 @@
+description="The Kbd package contains key-table files, console fonts, and keyboard utilities"
+url="ftp://devel.altlinux.org/legion/kbd/"
+
+maintainer="Risto Kankkunen's"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(autoconf check m4 perl)
+
+set=(core)
+
+name=kbd
+version=2.10.0
+
+PKGMK_LOCALES=()
+
+source=(https://www.kernel.org/pub/linux/utils/kbd/kbd-$version.tar.xz \
+	https://www.linuxfromscratch.org/patches/lfs/development/$name-$version-backspace-1.patch)
+
+build()
+{
+cd kbd-$version
+
+patch -Np1 -i ../$name-$version-backspace-1.patch
+
+sed -i 's/\(RESIZECONS_PROGS=\)yes/\1no/g' configure
+sed -i 's/resizecons.8 //' docs/man/man8/Makefile.in
+
+./configure --prefix=/usr --disable-vlock \
+            --disable-tests
+
+make
+make check || true
+make DESTDIR=$PKG install
+
+mkdir -pv $PKG/usr/share/doc/$name
+cp -R -v docs/doc/* \
+$PKG/usr/share/doc/$name
+
+}

@@ -1,0 +1,21 @@
+description="File compressor using lzo lib"
+url="http://www.lzop.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Tnut"
+
+makedepends=(lzo)
+
+name=lzop
+version=1.04
+release=5
+
+source=(http://www.lzop.org/download/${name}-${version}.tar.gz)
+
+
+build() {
+  cd ${name}-${version}
+  ./configure --prefix=/usr --mandir=/usr/share/man
+  make
+  make DESTDIR=$PKG install
+}

@@ -1,0 +1,30 @@
+description="X11 miscellaneous 'fixes' extension library"
+url="https://xorg.freedesktop.org"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre B, Spiky"
+
+name=xorg-libxfixes
+version=6.0.2
+release=1
+
+_name=libXfixes
+alias=(libXfixes libxfixes)
+
+makedepends=(xorgproto xorg-libx11)
+source=($url/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXfixes-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

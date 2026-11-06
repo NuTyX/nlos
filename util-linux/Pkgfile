@@ -1,0 +1,56 @@
+description="System utilities for handling file systems consoles partitions and messages."
+url="https://freshmeat.net/projects/util-linux/"
+
+maintainer="Karel Zak kzak at redhat dot com"
+packager="tnut <tnut@nutyx.org>"
+contributors="Greg,Fabienwang,Spiky"
+
+makedepends=(file ncurses readline zlib libxcrypt)
+
+set=(core)
+
+name=util-linux
+version=2.42.4
+release=1
+
+source=(https://www.kernel.org/pub/linux/utils/util-linux/v${version:0:4}/util-linux-$version.tar.xz
+        $name-$version-consolidate-1.patch)
+
+PKGMK_GROUPS=(devel doc man)
+PKGMK_LOCALES=()
+PKGMK_DEPENDS=(libcap systemd)
+
+
+build()
+{
+cd util-linux-$version
+patch -Np1 -i ../$name-$version-consolidate-1.patch
+sed -i "s@exec_prefix}/sbin@exec_prefix}/bin@" configure
+mkdir -pv $PKG/var/lib/hwclock
+./configure ADJTIME_PATH=/var/lib/hwclock/adjtime \
+	--docdir=/usr/share/doc/$name \
+	--disable-liblastlog2\
+	--disable-chfn-chsh  \
+          --bindir=/usr/bin    \
+          --libdir=/usr/lib    \
+	--sbindir=/usr/bin   \
+	--disable-login      \
+	--disable-nologin    \
+	--disable-su         \
+	--disable-setpriv    \
+	--disable-runuser    \
+	--disable-pylibmount \
+	--disable-static     \
+	--without-python
+
+make
+make DESTDIR=$PKG  install
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/${name}.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig
+rm -r usr/{include,lib/pkgconfig}
+}

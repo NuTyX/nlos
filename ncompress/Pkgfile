@@ -1,0 +1,21 @@
+description="a fast, simple LZW file compressor"
+url='https://github.com/vapier/ncompress'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=ncompress
+version=5.0
+release=3
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/vapier/$name/archive/v$version.tar.gz)
+
+build() {
+cd $name-$version
+make
+make DESTDIR=$PKG PREFIX=/usr install_core
+
+mv $PKG/usr/bin/uncompress{,.real}
+}

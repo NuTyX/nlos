@@ -1,0 +1,36 @@
+description="Video Acceleration (VA) API for Linux"
+url="https://github.com/intel/libva"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Remy,Tnut"
+license="MIT"
+name=libva
+version=2.24.1
+tag=$version
+
+makedepends=(xorg-libdrm xorg-libxfixes wayland xorg-libx11
+             xorg-libxext libglvnd)
+
+source=($url.git)
+
+build() {
+cd $name-$version
+
+mkdir libva-build
+cd    libva-build
+
+meson setup ..  \
+       --prefix=/usr          \
+       --buildtype=release
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+# Obsolets libs
+#rm $PKG/usr/lib/libva-drm.la
+#rm $PKG/usr/lib/libva-x11.la
+#rm $PKG/usr/lib/libva.la
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}

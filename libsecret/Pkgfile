@@ -1,0 +1,44 @@
+description="The libsecret package contains a GObject based library for accessing the Secret Service API."
+url="http://www.gnome.org/"
+
+license="GPL2.1 APACHE"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(gtk-doc intltool libxslt docbook-xsl
+             glib gobject-introspection libgcrypt vala)
+
+name=libsecret
+version=0.21.8.2
+
+source=(https://download.gnome.org/sources/$name/${version:0:4}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+
+mkdir bld
+cd    bld
+
+meson setup ..  \
+ --prefix=/usr  \
+-Dgtk_doc=false \
+-Dmanpage=true
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 ../COPYING.TESTS $PKG/usr/share/licenses/$name/COPYING.TESTS
+}
+
+uptodate(){
+local latest lastversion url
+url="https://download.gnome.org/sources/$name"
+latest="`lynx -read_timeout=20 -dump -listonly -nonumbers \
+$url/?C=N\;O=D|grep [0-9]/$|head -1`"
+lastversion="`lynx -read_timeout=20 -dump -listonly -nonumbers \
+$latest/?C=N\;O=D|grep LATEST|grep [0-9]$|cut -d "-" -f3`"
+echo "$lastversion"
+}

@@ -1,0 +1,21 @@
+description="Building blocks for modern adaptive GNOME applications"
+url="https://gnome.pages.gitlab.gnome.org/libadwaita/"
+
+license="GPL2"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(meson sassc gobject-introspection vala gtk4 appstream)
+
+name=libadwaita
+version=1.10.0
+
+source=(https://gitlab.gnome.org/GNOME/libadwaita/-/archive/$version/$name-$version.tar.gz)
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}
+

@@ -1,0 +1,22 @@
+description='The Linux-native asynchronous I/O facility (aio) library'
+url='https://pagure.io/libaio'
+
+contributors="Greg, Rems"
+packager="tnut <tnut@nutyx.org>"
+
+name=libaio
+version=0.3.113
+release=2
+
+source=($url/archive/$name-$version/$name-$name-$version.tar.gz)
+
+build() {
+cd $name-$name-$version
+CFLAGS="-march=${PKGMK_ARCH/_/-} -mtune=generic -O2 -pipe"
+
+make
+make prefix=$PKG/usr install
+
+install -vDm 644 {ChangeLog,README.md} -t $PKG/usr/share/doc/$name/
+install -vDm 644 man/*.3 -t $PKG/usr/share/man/man3/
+}

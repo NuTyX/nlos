@@ -1,0 +1,26 @@
+description="Extraction utility used for extracting files from RAR archives."
+url="http://www.rarlab.com/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+license="custom"
+
+name=unrar
+version=7.3.1
+
+source=(
+http://www.rarlab.com/rar/unrarsrc-$version.tar.gz
+)
+
+build() {
+cd $name
+make -f makefile
+install -Dm755 unrar $PKG/usr/bin/unrar
+
+# doc & license
+mkdir -p $PKG/usr/share/doc/$name
+install -m644 readme.txt \
+$PKG/usr/share/doc/$name
+
+install -Dm644 license.txt $PKG/usr/share/licenses/$name/LICENSE
+}

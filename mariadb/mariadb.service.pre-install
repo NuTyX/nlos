@@ -1,0 +1,11 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if ! (getent group mysql > /dev/null); then
+	printf "${INFO}Creating mysql group${NORMAL}\n"
+	groupadd -g 40 mysql
+fi
+if ! (getent passwd mysql > /dev/null); then
+	printf "${INFO}Creating mysql user${NORMAL}\n"
+	useradd  -c 'MySQL Server' -d /srv/mysql \
+	-g mysql -s /usr/bin/false -u 40 mysql
+fi

@@ -1,0 +1,17 @@
+description="Small library for playing system sounds"
+url="https://wiki.gnome.org/Projects/GSound"
+
+license="LGPL"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Jayce,Spiky"
+
+makedepends=(glib libcanberra)
+
+name=gsound
+version=1.0.3
+release=2
+
+source=(https://download.gnome.org/sources/${name}/${version%.*}/${name}-$version.tar.xz)
+
+build=meson

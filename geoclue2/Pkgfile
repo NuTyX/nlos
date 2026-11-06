@@ -1,0 +1,26 @@
+description="Modular geoinformation service built on the D-Bus messaging system."
+url="https://gitlab.freedesktop.org/geoclue/geoclue/-/wikis/home"
+
+license="GPL-2.0-or-later, LGPL-2.1-or-later"
+
+maintainer="Zeeshan Ali <zeeshanak at gnome dot org>"
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Spiky"
+
+makedepends=(git meson ninja systemd avahi libsoup3 json-glib modemmanager
+             libnotify geoip python gobject-introspection intltool)
+
+PKGMK_MESON_OPTIONS="-D dbus-srv-user=geoclue"
+
+name=geoclue2
+version=2.8.2
+release=1
+
+source=(https://gitlab.freedesktop.org/geoclue/geoclue.git)
+
+build=meson
+
+package() {
+  echo 'd /var/lib/geoclue 0755 geoclue geoclue' | \
+  install -Dm644 /dev/stdin $PKG/usr/lib/tmpfiles.d/geoclue.conf
+}

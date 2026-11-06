@@ -1,0 +1,25 @@
+description='Provides APIs for Wayland'
+url='https://www.qt.io/'
+
+license="LGPL3, GPL3, FDL, Custom"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(qt6)
+
+name=qt6-wayland
+version=6.12.0
+release=1
+
+makedepends=(cmake ninja qt6-base
+             qt6-declarative xorg-libxcomposite)
+
+source=(
+https://download.qt.io/official_releases/qt/${version:0:4}/$version/submodules/qtwayland-everywhere-src-$version.tar.xz)
+
+build() {
+ cmake -S qtwayland-everywhere-src-$version -B build -G Ninja
+ cmake --build build
+ DESTDIR=$PKG cmake --install build
+}

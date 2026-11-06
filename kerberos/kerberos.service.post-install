@@ -1,0 +1,35 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+
+if [ ! -f etc/krb5.conf ]; then
+  cat > /etc/krb5.conf << "EOF"
+# Begin /etc/krb5.conf
+
+[libdefaults]
+    default_realm = <EXAMPLE.ORG>
+    encrypt = true
+
+[realms]
+    <EXAMPLE.ORG> = {
+        kdc = <belgarath.example.org>
+        admin_server = <belgarath.example.org>
+        dict_file = /usr/share/dict/words
+    }
+
+[domain_realm]
+    .<example.org> = <EXAMPLE.ORG>
+
+[logging]
+    kdc = SYSLOG:INFO:AUTH
+    admin_server = SYSLOG:INFO:AUTH
+    default = SYSLOG:DEBUG:DAEMON
+
+# End /etc/krb5.conf
+EOF
+   printf "${INFO} /etc/krb5.conf created ${NORMAL}\n"
+   printf "${INFO} YOU MUST adapt /etc/krb5.conf to your needs.${NORMAL}\n"
+   printf "${INFO} Substitute your domain and proper hostname for the occurrences of the <belgarath> and <example.org> names.${NORMAL}\n"
+fi 
+systemctl enable krb5-kdc.service
+systemctl enable krb5-kpropd.service
+systemctl enable krb5-kadmind.service

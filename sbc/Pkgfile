@@ -1,0 +1,22 @@
+description="Digital audio encoder and decoder used to transfer data to Bluetooth audio output devices."
+url="https://fr.wikipedia.org/wiki/SBC_%28codec%29"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(libsndfile)
+name=sbc
+version=2.2
+
+source=(http://www.kernel.org/pub/linux/bluetooth/$name-$version.tar.xz)
+
+build()
+{
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+
+rm $PKG/usr/lib/libsbc.la
+}

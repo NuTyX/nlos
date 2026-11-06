@@ -1,0 +1,48 @@
+description="Linker, assembler, and other tools for handling object files."
+url="https://sources.redhat.com/binutils/"
+
+maintainer="Tristan Gingold ( gingold at adacore dot com ),Alan Modra ( amodra at bigpond dot net dot au )"
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=binutils
+version=2.47
+
+set=(chroot core)
+
+makedepends=(perl texinfo)
+source=(http://ftp.gnu.org/gnu/binutils/binutils-$version.tar.xz)
+
+build()
+{
+cd binutils-$version
+
+mkdir -v build
+cd build
+
+../configure --prefix=/usr \
+--enable-gold \
+--enable-ld=default \
+--enable-plugins \
+--enable-shared \
+--disable-werror \
+--enable-64-bit-bfd \
+--with-system-zlib \
+--enable-gprofng=no
+
+
+make tooldir=/usr
+
+make tooldir=/usr DESTDIR=$PKG install -j1
+
+
+}
+devel()
+{
+cd $PKG
+bsdtar -r -f \
+$PKGMK_PACKAGE_DIR/${name}.${group}${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/ldscripts
+rm -r usr/include \
+usr/lib/ldscripts
+}

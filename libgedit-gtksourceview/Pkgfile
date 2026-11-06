@@ -1,0 +1,31 @@
+description='A source code editing widget'
+url='https://gedit-technology.net/'
+
+license="LGPL2.1"
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(gtk3 libxml2 libgedit-amtk libgedit-gfls)
+
+name=libgedit-gtksourceview
+version=299.7.1
+
+source=(https://gitlab.gnome.org/World/gedit/$name/-/archive/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+mkdir build-libgedit
+cd    build-libgedit
+
+meson setup .. \
+       --prefix=/usr          \
+       --buildtype=release \
+       -Dgtk_doc=false
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../LICENSES/LGPL-2.1-or-later.txt $PKG/usr/share/licenses/$name/LGPL-2.1-or-later.txt
+}

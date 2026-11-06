@@ -1,0 +1,67 @@
+description="Network connection manager and user applications"
+url="https://gitlab.freedesktop.org/NetworkManager/NetworkManager"
+
+license="LGPL-2.1-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Rems,Tnut"
+
+makedepends=(libndp libgudev dbus-glib iptables libnl
+             nss wireless-tools polkit upower vala grep
+             gobject-introspection newt python
+             python-gobject gtk-doc meson ninja)
+run=(wpa-supplicant)
+
+alias=(NetworkManager)
+
+_name=NetworkManager
+
+name=networkmanager
+version=1.58.1
+
+PKGMK_GROUPS=(devel doc man)
+
+source=($url.git)
+
+PKGMK_MESON_OPTIONS="-Dsession_tracking=systemd -Dlibaudit=no -Dlibpsl=false \
+-Dnmtui=true -Dselinux=false -Dqt=false -Dovs=false -Dppp=false -Dmodem_manager=false \
+-Dnm_cloud_setup=false -Ddocs=false -Dvapi=true -D nbft=false -D clat=false "
+
+prepare() {
+
+ cd ${name}-$version
+ grep -rl '^#!.*python$' | xargs sed -i '1s/python/&3/'
+ sed -i "s/2\.0/3\.0/g" tools/generate-docs-nm-settings-docs-gir.py
+}
+
+build=meson
+
+package() {
+# create a VPN directory
+install -d $PKG/etc/$_name/VPN
+
+# create keyfile plugin system-settings directory
+install -d $PKG/etc/${_name}/system-connections
+
+# Minimum config to make NetworkManager working
+cat >> $PKG/etc/${_name}/${_name}.conf << "EOF"
+[main]
+plugins=keyfile
+EOF
+
+# Allow polkit to manage authorizations
+cat > $PKG/etc/${_name}/conf.d/polkit.conf << "EOF"
+[main]
+auth-polkit=true
+EOF
+
+mkdir -p $PKG/usr/share/polkit-1/rules.d
+cat > $PKG/usr/share/polkit-1/rules.d/org.freedesktop.NetworkManager.rules << "EOF"
+polkit.addRule(function(action, subject) {
+    if (action.id.indexOf("org.freedesktop.NetworkManager.") == 0 && subject.isInGroup("netdev")) {
+        return polkit.Result.YES;
+    }
+});
+EOF
+
+}

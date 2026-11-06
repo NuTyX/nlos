@@ -1,0 +1,46 @@
+description='Provides a standard for creating app stores across distributions'
+url='https://distributions.freedesktop.org/wiki/AppStream'
+
+license="LGPL2.1"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(meson xmlto gobject-introspection gtk-doc itstool vala gperf
+             curl librsvg libfyaml libsoup3 libxmlb libepoxy docbook-xsl)
+
+name=appstream
+version=1.1.6
+
+source=(https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz)
+
+prepare() {
+mv AppStream-$version $name-$version
+cd $name-$version
+
+sed -i 's/xsl-ns/xsl/' docs/meson.build
+}
+
+build() {
+cd $name-$version
+mkdir build
+cd    build
+
+meson setup .. \
+      --prefix=/usr \
+      --libexecdir=lib \
+      -Dstemming=false \
+      -Ddocs=false \
+      -Dinstall-docs=false \
+      -D apidocs=false         \
+      -D bash-completion=false \
+      -Dqt=false  \
+      -Dvapi=true \
+      -Dcompose=true \
+      -Dblake3-support=false
+
+ninja
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}

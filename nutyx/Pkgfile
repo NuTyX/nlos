@@ -1,0 +1,46 @@
+description="Base system of NuTyX, contains all folders and startup scripts."
+url="https://github.com/nutyx"
+
+packager="tnut <tnut@nutyx.org>"
+maintainer="tnut <tnut@nutyx.org>"
+
+makedepends=(zstd util-linux)
+
+set=(chroot)
+
+name=nutyx
+version=26.09.0
+
+# nutyx patch version
+# [ "$release" != "1" ] && patchname="$name-$version-consolidate-$release.patch"
+
+PKGMK_GROUPS=(man)
+PKGMK_IGNORE_RUNTIMEDEPS=yes
+
+source=(https://nutyx.org/graphics/logo_nutyx_120.png
+        https://download.sourceforge.net/nutyx/files/$name-$version.tar.xz)
+[ -z "$patchname" ] || source+=" $patchname"
+
+build () {
+cd $name-$version
+[ -z "$patchname" ] || patch -Np1 -i ../$patchname
+make DESTDIR=$PKG install
+BRANCH="systemd"
+# post-install autogen
+echo "if [ -f usr/lib/os-release ]; then
+  sed -i "/VERSION/d" usr/lib/os-release
+  sed -i "/URL/d" usr/lib/os-release
+  sed -i "/LOGO/d" usr/lib/os-release
+  echo \"VERSION=$BRANCH
+VERSION_ID=\"$version\"
+LOGO=nutyx.png
+HOME_URL=\"https://www.nutyx.org\"\" >>  usr/lib/os-release
+fi" > $PKGMK_ROOT/$name.post-install
+
+}
+package() {
+ install -Dm644 logo_nutyx_120.png \
+ $PKG/usr/share/icons/hicolor/128x128/places/nutyx.png
+
+ ln -sv ../../bin/busybox $PKG/usr/bin/which
+}

@@ -1,0 +1,42 @@
+description="Distributed version control system designed to handle small to very large projects."
+url="http://git-scm.com/"
+
+maintainer="Junio C Hamano, Linus Torvalds"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rems,Fabienwang,Tnut"
+
+makedepends=(gettext python)
+name=git
+version=2.56.0
+
+source=(https://mirrors.edge.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
+
+build() {
+cd $name-$version
+
+./configure --prefix=/usr \
+--libexecdir=/usr/lib \
+--with-gitconfig=/etc/gitconfig \
+--with-python=python3 --with-libpcre2
+
+NO_RUST=1 make
+NO_RUST=1 make DESTDIR=$PKG install
+
+mkdir -p $PKG/usr/share/{man,doc/$name}
+
+cd $SRC
+for i in man* *.html howto RelNotes technical
+do
+	cp -a $i \
+	$PKG/usr/share/doc/$name
+done
+
+mv man* \
+$PKG/usr/share/man
+
+chown -R root:root $PKG/usr/share/{man,doc}
+
+find $PKG/usr/share/doc/$name -type d -exec chmod 755 {} \;
+find $PKG/usr/share/doc/$name -type f -exec chmod 644 {} \;
+
+}

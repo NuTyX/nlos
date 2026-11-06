@@ -1,0 +1,8 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if [ ! -f etc/proftpd.conf ]; then
+      cp etc/proftpd.conf{.example,}
+      printf "${INFO} /etc/proftpd.conf created ${NORMAL}\n"
+      printf "${INFO} Double check /etc/proftpd.conf and adapted to your needs ${NORMAL}\n"
+fi
+

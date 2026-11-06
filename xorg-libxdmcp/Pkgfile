@@ -1,0 +1,31 @@
+description="X11 Display Manager Control Protocol library"
+url="https://gitlab.freedesktop.org/xorg/lib/libxdmcp"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
+
+name=xorg-libxdmcp
+_name=libXdmcp
+version=1.1.5
+release=1
+
+alias=(libXdmcp libxdmcp)
+
+makedepends=(xorgproto)
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXdmcp-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

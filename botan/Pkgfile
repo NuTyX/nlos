@@ -1,0 +1,25 @@
+description='A C++ crypto library'
+url='https://botan.randombit.net/'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(gmp python)
+run=()
+
+name=botan
+version=3.13.0
+
+source=(https://botan.randombit.net/releases/Botan-$version.tar.xz)
+
+build() {
+cd Botan-$version
+
+./configure.py \
+    --prefix=/usr \
+    --with-bzip \
+    --with-zlib 
+
+make
+make DESTDIR=$PKG install
+}

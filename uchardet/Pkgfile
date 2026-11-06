@@ -1,0 +1,23 @@
+description="Encoding detector library ported from Mozilla"
+url="https://www.freedesktop.org/wiki/Software/uchardet"
+
+contributors="Greg,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(cmake)
+
+name=uchardet
+version=0.0.8
+release=2
+
+source=(https://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+
+build() {
+	cd $name-$version
+	cmake \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_INSTALL_LIBDIR=lib \
+		-DCMAKE_BUILD_TYPE=Release
+	make
+	make DESTDIR=$PKG install
+}

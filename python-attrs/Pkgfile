@@ -1,0 +1,36 @@
+description='The Attrs package is a theme for the sphinx documentation system.'
+url='https://www.attrs.org'
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-hatch-fancy-pypi-readme python-hatch-vcs)
+
+name=python-attrs
+_name="attrs"
+alias=(${_name})
+
+version=26.1.0
+
+source=(https://files.pythonhosted.org/packages/source/a/attrs/attrs-$version.tar.gz)
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf
+
+install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

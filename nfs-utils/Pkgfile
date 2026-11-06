@@ -1,0 +1,59 @@
+description="Userspace server and client tools necessary to use the kernel's NFS abilities."
+url="https://nfs.sourceforge.net"
+
+license="GPL-2.0-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(util-linux libnl libxml2 sqlite libevent libtirpc rpcbind rpcsvc-proto)
+run=(rpcbind)
+
+name=nfs-utils
+version=3.1.1
+
+scriptsversion=20260315
+
+source=(https://sourceforge.net/projects/nutyx/files/sources/nutyx-scripts/nutyx-scripts-$scriptsversion.tar.xz
+	     https://downloads.sourceforge.net/nfs/$name-$version.tar.gz)
+
+run=(rpcbind)
+
+prepare() {
+cd $name-$version
+sed -i "s|sbindir = /sbin|sbindir = /usr/bin|g" utils/*/Makefile.am
+autoreconf -vfi
+}
+
+build() {
+# build package
+
+cd $name-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc         \
+--sbindir=/usr/bin        \
+--disable-nfsv4           \
+--disable-gss             \
+LIBS="-lsqlite3 -levent_core" \
+--with-systemd
+
+make
+make DESTDIR=$PKG install
+chmod u+w,go+r $PKG/usr/bin/mount.nfs
+chown nobody.nogroup $PKG/var/lib/nfs
+
+# Services
+cd ../nutyx-scripts-$scriptsversion
+make DESTDIR=$PKG install-sysd-nfs-server
+make DESTDIR=$PKG install-sysd-nfs-client
+}
+service() {
+cd $PKG
+bsdtar -r -f \
+$PKGMK_PACKAGE_DIR/${name}.${group}${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib/systemd/system/nfs-server.service usr/lib/systemd/system/proc-fs-nfsd.mount \
+usr/lib/systemd/system/rpc-statd.service
+
+rm -r usr/lib/systemd/system/nfs-server.service usr/lib/systemd/system/proc-fs-nfsd.mount \
+usr/lib/systemd/system/rpc-statd.service
+}

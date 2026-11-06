@@ -1,0 +1,36 @@
+description="A software-based implementation of the codec specified in the emerging JPEG-2000 Part1 std"
+url="http://www.ece.uvic.ca/~frodo/jasper/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+makedepends=(cmake libjpeg-turbo doxygen)
+
+name=jasper
+version=4.2.9
+release=3
+
+source=(https://github.com/mdadams/jasper/archive/version-${version}.tar.gz
+        jasper-1.900.1-fix-filename-buffer-overflow.patch)
+
+prepare() {
+cd $name-version-$version
+#patch -p1 < ../jasper-1.900.1-fix-filename-buffer-overflow.patch
+sed -r 's|(CMAKE_SKIP_BUILD_RPATH) FALSE|\1 TRUE|g' -i CMakeLists.txt
+}
+
+build() {
+	mkdir BUILD
+	cd BUILD
+
+	cmake -DCMAKE_INSTALL_PREFIX=/usr \
+	-DCMAKE_INSTALL_LIBDIR=lib     \
+	-DCMAKE_BUILD_TYPE=Release     \
+	-DJAS_ENABLE_LIBJPEG=ON        \
+	-DCMAKE_SKIP_INSTALL_RPATH=YES \
+	-DJAS_ENABLE_DOC=NO            \
+	-DCMAKE_INSTALL_DOCDIR=/usr/share/doc/$name \
+      	../$name-version-$version
+	make
+	make DESTDIR=$PKG install
+}

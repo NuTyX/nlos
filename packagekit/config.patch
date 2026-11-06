@@ -1,0 +1,25 @@
+--- a/meson_options.txt	2026-03-23 15:15:00.981473393 +0100
++++ b/meson_options.txt	2026-03-23 15:16:08.275335877 +0100
+@@ -12,6 +12,7 @@
+     type : 'array',
+     choices : ['alpm',
+                'apt',
++               'cards',
+                'dnf',
+                'dnf5',
+                'dummy',
+--- a/etc/PackageKit.conf	2026-03-23 15:15:00.974701909 +0100
++++ b/etc/PackageKit.conf	2026-03-23 15:16:51.165739732 +0100
+@@ -9,10 +9,10 @@
+ # The order they are specified is the order they are tried, so for the
+ # value "foo,bar" first "foo" will be attempted and then "bar" if the
+ # libpk_backend_foo.so module load failed.
+-#DefaultBackend=auto
++DefaultBackend=cards
+ 
+ # Unlock the backend after this many seconds idle.
+-#BackendShutdownTimeout=5
++BackendShutdownTimeout=5
+ 
+ # Shut down the daemon after this many seconds idle. 0 means don't shutdown.
+ #ShutdownTimeout=300

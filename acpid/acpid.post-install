@@ -1,0 +1,6 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+[ -f etc/acpi/events/lid ] || cp -a etc/acpi/events/lid{.example,}
+[ -f etc/acpi/lid.sh ] || cp -a etc/acpi/lid.sh{.example,}
+printf "${INFO} /etc/acpi/lid.sh and /etc/acpi/events/lid created ${NORMAL}\n"
+printf "${INFO} Adapt them to your needs ${NORMAL}\n"

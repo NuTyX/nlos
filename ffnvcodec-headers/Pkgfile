@@ -1,0 +1,29 @@
+description="FFmpeg version of headers required to interface with Nvidias codec APIs"
+url="https://git.videolan.org/?p=ffmpeg/nv-codec-headers"
+
+contributors="Rems,Fabienwang"
+packager="spiky <spiky@nutyx.org>"
+
+name=ffnvcodec-headers
+version=13.1.15.0
+
+source=()
+
+PKGMK_DEPENDS=(git make-ca expat)
+
+prepare() {
+  git clone https://github.com/FFmpeg/nv-codec-headers.git $name-$version
+  cd $name-$version
+  git checkout e844e5b26f46bb77479f063029595293aa8f812d
+}
+
+build() {
+  cd $name-$version
+
+  sed -i -e 's|/include|/include/ffnvcodec|g' ffnvcodec.pc.in
+  make PREFIX=/usr
+  sed -n '4,25p' include/ffnvcodec/nvEncodeAPI.h > LICENSE # Extract license
+  sed -i '1,22s/^.\{,3\}//' LICENSE || true # Delete C comments if it can
+  make PREFIX=/usr DESTDIR="${PKG}" install
+  install -Dm 644 LICENSE -t "${PKG}"/usr/share/licenses/$name/
+}

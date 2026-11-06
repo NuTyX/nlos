@@ -1,0 +1,38 @@
+description="A string template engine based on the Django template system and written in Qt5"
+url="https://www.gitorious.org/grantlee/pages/Home"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+makedepends=(qtscript cmake doxygen)
+set=(kde6)
+
+name=grantlee-qt
+version=5.3.1
+release=4
+
+source=(https://github.com/steveire/grantlee/releases/download/v${version}/grantlee-$version.tar.gz)
+
+build() {
+
+  mkdir build
+  cd build
+
+  cmake ../grantlee-$version \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DBUILD_TESTS=OFF
+  make
+  make DESTDIR=$PKG install
+}
+
+uptodate() {
+feed=https://github.com/steveire/grantlee/releases.atom 
+exec="lynx -read_timeout=20 -dump -listonly -nonumbers $feed"
+ligne=1 # nombre de notification ? afficher
+$exec $feed | grep title | \
+sed "s@<title>@@" | sed "s@</title>@@" | \
+sed "s@v@@" | sed "s@ @@g" | \
+head -n $(($ligne+1 )) | \
+tail -n $(($ligne))
+}

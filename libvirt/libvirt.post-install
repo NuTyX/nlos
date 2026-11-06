@@ -1,0 +1,10 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+printf "${INFO}
+
+Your account need to be part of the 'kvm' group
+to be able to use virtualisation:
+
+  gpasswd -a <username> $UN
+
+${NORMAL}\n

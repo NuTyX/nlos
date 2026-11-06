@@ -1,0 +1,36 @@
+description="Allows spanning of file systems across multiple physical disks and partitions."
+url="http://sourceware.org/lvm2/"
+
+license="GPL2 LGPL2.1 BSD:2-Clause"
+
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(systemd libaio util-linux)
+
+name=lvm2
+version=2.03.43
+
+source=(https://sourceware.org/ftp/lvm2/LVM2.$version.tgz)
+build() {
+cd LVM2.$version
+./configure        \
+--prefix=/usr      \
+--sbindir=/usr/bin \
+--libdir=/usr/lib  \
+--with-udev-prefix=/usr \
+--with-libexecdir=/usr/lib/lvm2 \
+--exec-prefix=     \
+--with-confdir=/etc \
+--with-modulesdir=/usr/lib/modules \
+--mandir=/usr/share/man \
+--enable-cmdlib \
+--enable-pkgconfig \
+--with-systemdsystemunitdir=/usr/lib/systemd/system \
+--enable-udev_sync
+make
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 COPYING.BSD $PKG/usr/share/licenses/$name/COPYING.BSD
+}

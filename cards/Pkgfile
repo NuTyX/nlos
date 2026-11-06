@@ -1,0 +1,69 @@
+description="A set of utilities to manage software packages on NuTyX distribution."
+url="https://github.com/NuTyX/cards"
+
+maintainer="tnut at nutyx dot org"
+packager="tnut <tnut@nutyx.org>"
+
+alias=(card)
+
+
+PKGMK_IGNORE_RUNTIMEDEPS="no"
+makedepends=(curl git bzip2 gettext xz util-linux lua)
+run_devel=(curl.devel gcc.devel glibc.devel libarchive.devel \
+openssl.devel zlib.devel bzip2.devel xz.devel zstd.devel)
+
+PKGMK_GROUPS=(devel doc man lib)
+PKGMK_LOCALES=()
+
+name=cards
+version=3.7.1
+set=(chroot)
+
+[ "$release" != "1" ] &&  patchname="$name-$version-consolidate-$release.patch"
+
+source=($url.git)
+
+[ -z "$patchname" ] || source+=" $patchname"
+
+build () {
+
+unset MAKEFLAGS
+
+cd $name-$version
+[ -z "$patchname" ] || patch -Np1 -i ../$patchname
+
+
+make all
+make DESTDIR=$PKG install
+
+mkdir -p $PKG/usr/share/doc/$name
+
+if [ -e ChangeLog ]; then
+  install -m644 ChangeLog \
+  $PKG/usr/share/doc/$name/ChangeLog
+else
+  git log > $PKG/usr/share/doc/$name/ChangeLog
+fi
+}
+lib() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.lib${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib
+
+rm usr/lib/libcards*
+rm -d usr/lib || true
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include \
+usr/bin/pkgmk \
+etc/pkgmk.conf.example \
+usr/lib/pkgconfig
+
+rm -rf usr/bin/pkgmk usr/lib/pkgconfig \
+usr/include etc/pkgmk.conf.example
+}

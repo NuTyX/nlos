@@ -1,0 +1,25 @@
+description="Btrfs filesystem utilities"
+url="http://btrfs.wiki.kernel.org/"
+
+license="GPL2"
+
+contributors="Alienus,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(systemd zstd e2fsprogs lzo util-linux zlib)
+
+name=btrfs-progs
+version=7.1
+
+source=(https://www.kernel.org/pub/linux/kernel/people/kdave/$name/$name-v$version.tar.xz)
+
+build(){
+cd $name-v$version
+./configure \
+--prefix=/usr \
+--disable-documentation \
+--disable-python
+make
+make DESTDIR=$PKG install
+
+}

@@ -1,0 +1,30 @@
+description="X11 XFree86 video mode extension library"
+url="https://xorg.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-libxxf86vm
+version=1.1.7
+
+_name=libXxf86vm
+
+alias=(${_name})
+
+makedepends=(xorgproto xorg-libx11 xorg-libxext)
+source=($url/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXxf86vm-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

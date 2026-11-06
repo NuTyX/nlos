@@ -1,0 +1,22 @@
+description="C library for encoding data in a QR Code symbol."
+url="http://megaui.net/fukuchi/works/qrencode/index.en.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(libpng sdl)
+
+name=qrencode
+version=4.1.1
+release=2
+
+source=(http://megaui.net/fukuchi/works/${name}/${name}-${version}.tar.bz2)
+
+build() {
+  cd $SRC/$name-$version
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+# Obsolet libs
+rm $PKG/usr/lib/libqrencode.la
+}

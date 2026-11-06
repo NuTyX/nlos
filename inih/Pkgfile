@@ -1,0 +1,31 @@
+description='A simple .INI file parser written in C'
+url='https://github.com/benhoyt/inih'
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(meson ninja python)
+
+name=inih
+version=62
+
+source=(https://github.com/benhoyt/inih/archive/refs/tags/r${version}.tar.gz)
+
+prepare() {
+mv $name-r$version $name-$version
+}
+
+build(){
+cd $name-$version
+
+mkdir build
+cd build
+
+  meson setup .. \
+  --prefix=/usr \
+  --buildtype=release      \
+  -Ddefault_library=shared \
+  -Ddistro_install=true
+
+  ninja
+  DESTDIR=$PKG ninja install
+}

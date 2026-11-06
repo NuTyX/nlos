@@ -1,0 +1,14 @@
+description="Simple GObject game controller library"
+url="https://wiki.gnome.org/Apps/Games"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+name=libmanette
+version=0.2.13
+
+makedepends=(meson ninja vala libevdev libgudev gobject-introspection hidapi)
+
+source=(https://download.gnome.org/sources/$name/${version:0:3}/$name-$version.tar.xz)
+
+build=meson

@@ -1,0 +1,28 @@
+description="Light eye-candy fully themable animated dock"
+url="https://github.com/Cairo-Dock/cairo-dock-core"
+
+license="GPL-3.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Dania,Spiky"
+
+makedepends=(cairo cmake curl dbus-glib xorg-glu gtk3 xorg-libxcomposite)
+
+name=cairo-dock
+version=3.6.2
+release=2
+
+source=($url/archive/refs/tags/$version.tar.gz)
+PKGMK_GROUPS=(devel man)
+
+build() {
+
+  cmake -B build                   \
+    -S $name-core-$version         \
+    -D CMAKE_BUILD_TYPE=None       \
+    -D enable-desktop-manager=True \
+    -D enable-systemd-service=True \
+    -D CMAKE_INSTALL_PREFIX='/usr'
+  cmake --build build
+  DESTDIR=$PKG cmake --install build
+}

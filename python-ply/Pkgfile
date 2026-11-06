@@ -1,0 +1,33 @@
+description="Implementation of lex and yacc parsing tools"
+url="http://www.dabeaz.com/ply/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Remy,Tnut"
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-ply
+_name="ply"
+alias=(${_name})
+
+version=3.11
+release=18
+
+source=(https://pypi.io/packages/source/p/ply/ply-$version.tar.gz)
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

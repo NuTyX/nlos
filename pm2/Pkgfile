@@ -1,0 +1,24 @@
+description="Advanced, production process manager for Node.js"
+url="https://pm2.keymetrics.io/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(node)
+
+name=pm2
+version=7.0.4
+
+source=(pm2
+        https://registry.npmjs.org/$name/-/$name-$version.tgz)
+
+PKGMK_IGNORE_UNPACK="yes"
+PKGMK_GROUPS=()
+
+build() {
+
+npm install -g --user root --prefix "$PKG/usr" $name-$version.tgz
+
+chmod -R u=rwX,go=rX $PKG
+install -Dm644 pm2 $PKG/usr/lib/systemd/system/pm2.service
+}

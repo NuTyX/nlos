@@ -1,0 +1,37 @@
+description="Meson is an open source build system meant to be both extremely fast, as user friendly as possible"
+url="http://mesonbuild.com/"
+
+contributors="Jayce,Greg,Fabienwang,Tnut"
+packager="spiky <spiky@nutyx.org>"
+license="Apache"
+
+name=meson
+_name="meson"
+alias=(${_name})
+
+version=1.12.1
+
+PKGMK_DEPENDS=(sqlite expat libffi python python-pip python-wheel python-setuptools)
+source=(skip-test.diff
+	https://github.com/mesonbuild/$name/releases/download/$version/$name-$version.tar.gz)
+prepare()
+{
+ cd $name-$version
+ patch -Np1 -i ../skip-test.diff
+}
+build() {
+  cd $name-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    --ignore-installed\
+    ${_name}
+
+  install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,31 @@
+description="Daemon that generates an unpredictable stream of random numbers and feeds the /dev/random"
+url="https://www.issihosts.com/haveged/"
+
+contributors="Berlius,Greg,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+name=haveged
+version=1.9.26
+
+scripts_version=20260315
+
+source=(http://download.sourceforge.net/nutyx/nutyx-scripts-${scripts_version}.tar.xz
+        https://github.com/jirka-h/$name/archive/v$version.tar.gz)
+
+build () {
+
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --sbindir=/usr/bin
+
+    make
+    make DESTDIR=$PKG install
+
+    mkdir -pv    $PKG/usr/share/doc/$name
+    cp -v README $PKG/usr/share/doc/$name
+	
+    # Service
+    cd ../nutyx-scripts-${scripts_version}
+    make DESTDIR=$PKG install-sysd-haveged
+
+}

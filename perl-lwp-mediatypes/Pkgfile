@@ -1,0 +1,22 @@
+description="Guess the media type of a file or a URL"
+url="https://metacpan.org/pod/LWP::MediaTypes"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+run=(perl)
+
+name=perl-lwp-mediatypes
+version=6.05
+
+source=(http://search.cpan.org/CPAN/authors/id/O/OA/OALDERS/LWP-MediaTypes-$version.tar.gz)
+
+build() {
+cd LWP-MediaTypes-$version
+perl Makefile.PL INSTALLDIRS=vendor
+make
+make DESTDIR=$PKG install
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -delete
+}

@@ -1,0 +1,25 @@
+description="A full-featured mastering suite for authoring disassembling and analyzing Video CDs"
+url="http://www.vcdimager.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rems,Tnut"
+
+makedepends=(libcdio libxml2 popt)
+
+name=vcdimager
+version=2.0.1
+release=9
+
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.gz
+        libxml214.patch)
+
+prepare() {
+cd $name-$version
+
+patch -Np1 -i ../libxml214.patch
+}
+
+package() {
+# Obsolet lib
+rm $PKG/usr/lib/libvcdinfo.la
+}

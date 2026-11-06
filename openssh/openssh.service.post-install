@@ -1,0 +1,9 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if [ ! -f etc/ssh/sshd_config ]; then
+	cp etc/ssh/sshd_config{.default,}
+	echo "PermitRootLogin no" >> etc/ssh/sshd_config
+	printf "${INFO} /etc/ssh/sshd_config created ${NORMAL}\n"
+	printf "${INFO} Double check /etc/ssh/sshd_config and adapted to your needs ${NORMAL}\n"
+fi
+systemctl enable sshd

@@ -1,0 +1,32 @@
+description='Map widget for GTK 4'
+url='https://gitlab.gnome.org/GNOME/libshumate'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+license="LGPL"
+
+makedepends=(gobject-introspection gi-docgen vala meson
+             glib cairo sqlite gtk4 libsoup3 protobuf-c)
+
+name=libshumate
+version=1.7.0
+tag=$version
+
+source=($url.git)
+
+build() {
+
+meson setup $name-$version build \
+       --prefix=/usr \
+            --buildtype=release    \
+            --wrap-mode=nodownload \
+            -Dgtk_doc=false
+
+meson compile -C build
+
+DESTDIR=$PKG meson install -C build
+
+cd $name-$version
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

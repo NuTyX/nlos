@@ -1,0 +1,48 @@
+# http://www.linuxfromscratch.org/blfs/view/svn/x/mesa.html
+
+description="Mesa is an OpenGL compatible 3D graphics library."
+url="https://www.xorg-mesa3d.org"
+
+license="custom"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rems,Tnut"
+
+makedepends=(meson ninja libclc python-ply rust-bindgen cbindgen python-pycparser
+             xorgproto pkgconf libtool xorg-xrandr wayland python-mako
+             wayland-protocols xorg-libx11 xorg-libdrm xorg-libxext
+             xorg-libxdamage expat llvm elfutils xorg-libxshmfence python-yaml
+             libva libvdpau valgrind lm-sensors xorg-libxvmc libunwind vulkan-icd-loader glslang)
+
+run=(libglvnd)
+
+name=mesa
+version=26.2.4
+release=2
+
+source=(LICENSE
+        https://mesa.freedesktop.org/archive/mesa-$version.tar.xz)
+
+CFLAGS+=" -g1"
+CXXFLAGS+=" -g1"
+
+PKGMK_MESON_OPTIONS="-Dgallium-drivers=all -D gallium-extra-hud=true \
+-Damdgpu-virtio=true -Dgallium-rusticl-enable-drivers="asahi,freedreno,radeonsi" -Dgallium-rusticl=true \
+-Dvulkan-drivers=all -Dvideo-codecs=all -Dmicrosoft-clc=disabled -Dlibunwind=disabled \
+-Dvulkan-layers="device-select,intel-nullhw,overlay,screenshot,anti-lag,vram-report-limit" \
+-Dvulkan-manifest-per-architecture=false -Dvalgrind=enabled -Dintel-rt=enabled \
+-Dvideo-codecs=all -Dandroid-libbacktrace=disabled \
+-Dgles1=disabled"
+
+build=meson
+
+package() {
+install -m644 -Dt $PKG/usr/share/licenses/$name \
+LICENSE
+
+install -v -dm755 $PKG/usr/share/doc/mesa
+cp -rfv $name-$version/docs/* $PKG/usr/share/doc/mesa
+
+# indirect rendering symlink
+ln -s libGLX_mesa.so.0 $PKG/usr/lib/libGLX_indirect.so.0
+}

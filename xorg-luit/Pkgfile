@@ -1,0 +1,35 @@
+description="Filter that can be run between an arbitrary application and UTF8 emulator."
+url="https://invisible-island.net/luit/luit.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+PKGMK_GROUPS=(doc man)
+
+name=xorg-luit
+version=20260907
+
+_name=${name/xorg-/}
+makedepends=(xorg-libfontenc)
+
+source=(https://invisible-mirror.net/archives/${_name}/${_name}-$version.tgz)
+
+build=xorg
+
+prepare() {
+	cd ${_name}-$version
+	line1="#ifdef _XOPEN_SOURCE"
+	line2="#  undef _XOPEN_SOURCE"
+	line3="#  define _XOPEN_SOURCE 600"
+	line4="#endif"
+	sed -i -e "s@#ifdef HAVE_CONFIG_H@$line1\n$line2\n$line3\n$line4\n\n&@" sys.c
+	unset line1 line2 line3 line4
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//app"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/${_name}-"|sed "s@$ext\$@@"|sed "s@$url/${_name}-@@"|head -1
+}

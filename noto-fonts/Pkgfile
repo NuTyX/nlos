@@ -1,0 +1,22 @@
+description="Google Noto TTF fonts"
+url="https://github.com/notofonts/notofonts.github.io"
+
+license="Apache 2.0"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Fabien,Pierre,Tnut"
+
+makedepends=(git xorg-fontconfig)
+
+name=noto-fonts
+version=2026.08.01
+
+source=($url.git)
+
+build() {
+  cd noto-fonts-$version
+
+  mkdir -p $PKG/usr/share/fonts/noto
+  install -Dm644 fonts/*/unhinted/ttf/Noto*.tt[fc] -t $PKG/usr/share/fonts/noto
+  install -m644 fonts/*/hinted/ttf/Noto*.tt[fc] -t $PKG/usr/share/fonts/noto
+}

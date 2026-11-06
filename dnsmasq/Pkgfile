@@ -1,0 +1,25 @@
+description="Dnsmasq provides network infrastructure for small networks: DNS, DHCP, router advertisement and network boot."
+url="https://thekelleys.org.uk/dnsmasq"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Sundev79,Tnut"
+makedepends=(nettle)
+
+name=dnsmasq
+version=2.92rel2
+release=4
+
+source=(https://thekelleys.org.uk/dnsmasq/$name-$version.tar.xz 
+        $name-config.patch dnsmasq.init nettle-4.0.patch)
+
+build() {
+   cd $name-$version
+   patch -p1 -i $SRC/$name-config.patch
+   patch -Np1 -i ../nettle-4.0.patch
+   make COPTS="-DHAVE_DNSSEC" PREFIX=/usr
+   make COPTS="-DHAVE_DNSSEC" PREFIX=/usr BINDIR=/usr/bin DESTDIR=$PKG install
+
+   install -d $PKG/{var/lib/dhcp,etc,usr/share/dnsmasq}
+   install -m 644 dnsmasq.conf.example $PKG/etc/dnsmasq.conf
+   install -m 644 trust-anchors.conf $PKG/usr/share/dnsmasq/
+}

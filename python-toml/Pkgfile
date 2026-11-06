@@ -1,0 +1,31 @@
+description="Python library for parsing and creating TOML"
+url="https://github.com/uiri/toml"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-toml
+_name="toml"
+alias=(${_name})
+
+version=0.10.2
+release=14
+
+source=(https://files.pythonhosted.org/packages/source/${_name::1}/${_name}/${_name}-$version.tar.gz)
+
+build() {
+    cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

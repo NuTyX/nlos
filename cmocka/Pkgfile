@@ -1,0 +1,24 @@
+description="Elegant unit testing framework for C with support for mock objects"
+url="https://cmocka.org/"
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Tnut"
+
+name=cmocka
+version=2.0.2
+
+makedepends=(cmake)
+
+source=(https://cmocka.org/files/2.0/cmocka-${version}.tar.xz)
+
+build () {
+cd ${name}-${version}
+mkdir build
+cd    build
+cmake .. \
+-DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_INSTALL_LIBDIR=lib \
+-DCMAKE_BUILD_TYPE=Release \
+-DUNIT_TESTING=ON
+make
+make install DESTDIR=$PKG
+}

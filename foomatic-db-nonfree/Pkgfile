@@ -1,0 +1,23 @@
+description="Non-free licenses database extension from manufacturer-supplied PPD files released"
+url="http://www.linuxprinting.org/foomatic.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut,Fabienwang"
+
+makedepends=(cups perl libxml2)
+
+name=foomatic-db-nonfree
+version=20260903
+release=1
+
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://www.openprinting.org/download/foomatic/$name-$version.tar.gz)
+
+build() {
+    cd $name-*
+    ./configure --prefix=/usr
+    make
+    make DESTDIR=$PKG install
+}

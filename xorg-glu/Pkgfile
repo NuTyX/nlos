@@ -1,0 +1,22 @@
+description="Mesa OpenGL utility library"
+url="https://gitlab.freedesktop.org/mesa/glu"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
+
+makedepends=(python meson mesa)
+
+name=xorg-glu
+_name=glu
+
+alias=(glu)
+
+version=9.0.3
+release=1
+
+source=(https://mesa.freedesktop.org/archive/${_name}/${_name}-$version.tar.xz)
+
+prepare() {
+ mv ${_name}-$version $name-$version
+}
+build=meson

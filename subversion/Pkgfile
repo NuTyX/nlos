@@ -1,0 +1,54 @@
+description="Version control System (Replacement of cvs)"
+url="http://subversion.tigris.org"
+contributors="Pierre,Greg,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+
+name=subversion
+version=1.14.5
+release=2
+makedepends=(apr apr-util neon expat sqlite db cyrus-sasl serf lz4 swig)
+
+source=(http://archive.apache.org/dist/$name/$name-$version.tar.bz2
+        subversion-1.14.5-upstream_fixes-1.patch)
+
+prepare() {
+cd $name-$version
+
+patch -Np1 -i ../subversion-1.14.5-upstream_fixes-1.patch
+}
+
+build() {
+	unset MAKEFLAGS
+
+	cd $name-$version
+
+	./configure --prefix=/usr        \
+		--with-lz4=internal      \
+		--with-apache-libexecdir \
+		--with-utf8proc=internal \
+		--disable-static
+	make
+
+	make DESTDIR=$PKG install
+
+	install -v -m755 -d $PKG/usr/share/doc/subversion-$version
+	cp -v -R doc/* $PKG/usr/share/doc/subversion-$version
+
+# Obsolets libs
+rm $PKG/usr/lib/libsvn_client-1.la
+rm $PKG/usr/lib/libsvn_delta-1.la
+rm $PKG/usr/lib/libsvn_diff-1.la
+rm $PKG/usr/lib/libsvn_fs-1.la
+rm $PKG/usr/lib/libsvn_fs_fs-1.la
+rm $PKG/usr/lib/libsvn_fs_util-1.la
+rm $PKG/usr/lib/libsvn_fs_x-1.la
+rm $PKG/usr/lib/libsvn_ra-1.la
+rm $PKG/usr/lib/libsvn_ra_local-1.la
+rm $PKG/usr/lib/libsvn_ra_serf-1.la
+rm $PKG/usr/lib/libsvn_ra_svn-1.la
+rm $PKG/usr/lib/libsvn_repos-1.la
+rm $PKG/usr/lib/libsvn_subr-1.la
+rm $PKG/usr/lib/libsvn_wc-1.la
+
+}

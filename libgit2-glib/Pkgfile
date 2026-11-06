@@ -1,0 +1,47 @@
+description="GLib wrapper for libgit2"
+url="https://wiki.gnome.org/Projects/Libgit2-glib"
+
+license="LGPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="DocWOPR,Spiky"
+
+makedepends=(gobject-introspection glib libgit2 meson python-gobject
+             vala git )
+
+name=libgit2-glib
+version=1.2.1
+release=3
+
+source=(Fix-definition-of-GGIT_VERSION_HEX.patch
+        https://download.gnome.org/sources/$name/1.2/$name-$version.tar.xz)
+
+prepare() {
+ cd $name-$version
+ patch -Np1 -i ../Fix-definition-of-GGIT_VERSION_HEX.patch
+
+}
+build() {
+
+cd $name-$version
+
+mkdir build
+cd    build
+
+meson setup .. \
+       --prefix=/usr          \
+       --buildtype=release
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}
+
+package() {
+  # strip $PKG from embedded paths:
+  python -m compileall -d /usr/lib $PKG/usr/lib
+  python -O -m compileall -d /usr/lib $PKG/usr/lib
+
+}

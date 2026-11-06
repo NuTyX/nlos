@@ -1,0 +1,27 @@
+description='Redundant data find - a program that finds duplicate files'
+
+url='https://rdfind.pauldreik.se'
+
+license="GPL-2.0-only"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=rdfind
+version=1.8.0
+release=2
+
+makedepends=(nettle)
+
+source=($url/$name-$version.tar.gz)
+
+build() {
+  cd $name-$version
+  ./bootstrap.sh
+  ./configure --prefix=/usr
+  make
+  make DESTDIR=$PKG install
+  install -dm755 $PKG/usr/share/doc/$name
+  install -m644 AUTHORS ChangeLog README \
+  $PKG/usr/share/doc/$name
+}

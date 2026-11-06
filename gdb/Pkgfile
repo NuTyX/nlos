@@ -1,0 +1,50 @@
+description="The GNU Project debugger, allows you to see what is going on “inside” another program while it executes."
+url="http://www.sourceware.org/gdb/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+license="GPL3"
+
+makedepends=(ncurses gmp readline expat texinfo
+             python)
+
+name=gdb
+version=18.1
+
+source=(https://ftp.gnu.org/gnu/gdb/$name-$version.tar.xz)
+build() {
+CXXFLAGS+=' -fpermissive'
+cd $name-$version
+./configure --prefix=/usr --with-system-readline --with-python
+make
+make DESTDIR=$PKG install
+rm $PKG/usr/include/plugin-api.h
+rm $PKG/usr/share/info/bfd.info
+rm $PKG/usr/include/ansidecl.h
+rm $PKG/usr/include/bfd.h
+rm $PKG/usr/include/bfdlink.h
+rm $PKG/usr/include/dis-asm.h
+rm $PKG/usr/include/symcat.h
+rm $PKG/usr/include/ctf-api.h
+rm $PKG/usr/include/ctf.h
+rm $PKG/usr/include/sframe-api.h
+rm $PKG/usr/include/sframe.h
+rm $PKG/usr/lib/libbfd.a
+rm $PKG/usr/lib/libbfd.la
+rm $PKG/usr/lib/libopcodes.a
+rm $PKG/usr/lib/libopcodes.la
+rm $PKG/usr/lib/libctf-nobfd.a
+rm $PKG/usr/lib/libctf-nobfd.la
+rm $PKG/usr/lib/libctf.a
+rm $PKG/usr/lib/libctf.la
+rm $PKG/usr/lib/libsframe.a
+
+# Most of the locale are allready present from binutils, beter get rid of all of them
+rm -r $PKG/usr/share/locale
+rm $PKG/usr/include/diagnostics.h
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 COPYING3 $PKG/usr/share/licenses/$name/COPYING3
+install -Dm644 COPYING.LIB $PKG/usr/share/licenses/$name/COPYING.LIB
+install -Dm644 COPYING3.LIB $PKG/usr/share/licenses/$name/COPYING3.LIB
+}

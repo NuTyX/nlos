@@ -1,0 +1,23 @@
+description="The mdadm package contains administration tools for software RAID."
+url="https://git.kernel.org/pub/scm/utils/mdadm"
+
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(systemd)
+
+name=mdadm
+version=4.6
+
+source=(https://git.kernel.org/pub/scm/utils/mdadm/mdadm.git/snapshot/mdadm-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+sed -e "s/__u8 signature\[4\]/& __attribute__ ((nonstring))/" \
+    -i platform-intel.h
+
+make
+make DESTDIR=$PKG BINDIR=/usr/bin install
+make SYSTEMD_DIR=$PKG/usr/lib/systemd/system install-systemd
+}

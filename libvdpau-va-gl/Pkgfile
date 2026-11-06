@@ -1,0 +1,26 @@
+description="Video Acceleration vdpau for Linux"
+url="https://01.org/linuxmedia/vaapi"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+makedepends=(cmake ffmpeg libvdpau libva doxygen graphviz)
+
+name=libvdpau-va-gl
+version=0.4.2
+release=5
+
+source=(https://github.com/i-rinat/$name/archive/v$version/$name-$version.tar.gz)
+
+build() {
+
+cd $name-$version
+
+mkdir -v build
+cd build
+cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr ../
+
+make
+make DESTDIR=$PKG install
+
+}

@@ -1,0 +1,17 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/debugfs.reiserfs -> debugreiserfs
+-rwxr-xr-x	root/root	usr/bin/debugreiserfs
+lrwxrwxrwx	root/root	usr/bin/fsck.reiserfs -> reiserfsck
+lrwxrwxrwx	root/root	usr/bin/mkfs.reiserfs -> mkreiserfs
+-rwxr-xr-x	root/root	usr/bin/mkreiserfs
+-rwxr-xr-x	root/root	usr/bin/reiserfsck
+-rwxr-xr-x	root/root	usr/bin/reiserfstune
+-rwxr-xr-x	root/root	usr/bin/resize_reiserfs
+lrwxrwxrwx	root/root	usr/bin/tunefs.reiserfs -> reiserfstune
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libreiserfscore.a
+lrwxrwxrwx	root/root	usr/lib/libreiserfscore.so -> libreiserfscore.so.0.0.0
+lrwxrwxrwx	root/root	usr/lib/libreiserfscore.so.0 -> libreiserfscore.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libreiserfscore.so.0.0.0
+drwxr-xr-x	root/root	usr/share/

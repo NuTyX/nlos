@@ -1,0 +1,16 @@
+description="Encoder MPEG-4 de AudioCoding.com"
+url="https://github.com/knik0/faac"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(git meson python)
+
+name=faac
+version=2.1
+
+PKGMK_KEEP_SOURCES="no"
+
+source=($url.git)
+
+build=meson
+

@@ -1,0 +1,32 @@
+description="Command-line programs and library that do structural, content-preserving transformations on PDF files."
+url="http://qpdf.sourceforge.net/"
+
+license="APACHE"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+makedepends=(cmake openssl libjpeg-turbo zlib)
+
+
+name=qpdf
+version=12.4.2
+
+source=(https://github.com/qpdf/qpdf/releases/download/v$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+mkdir build
+cd    build
+
+      cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DCMAKE_BUILD_TYPE=Release  \
+      -DCMAKE_INSTALL_LIBDIR=/usr/lib \
+      -DCMAKE_INSTALL_DOCDIR=/usr/share/doc/qpdf-11.1.0 \
+      ..
+
+make
+make DESTDIR=$PKG install
+
+install -Dm644 ../LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE
+}

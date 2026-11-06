@@ -1,0 +1,35 @@
+description="XFS filesystem administration and debugging tools"
+url="https://xfs.wiki.kernel.org"
+
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(git gzip gettext inih util-linux liburcu systemd)
+
+name=xfsprogs
+version=7.2.0
+
+PKGMK_GROUPS=(man doc devel)
+
+source=(https://www.kernel.org/pub/linux/utils/fs/xfs/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+
+make configure
+
+./configure --prefix=/usr --sbindir=/usr/bin \
+    --libexecdir=/usr/lib --localstatedir=/var
+
+make DEBUG=-DNDEBUG INSTALL_USER=root INSTALL_GROUP=root \
+     LOCAL_CONFIGURE_OPTIONS="--localstatedir=/var" \
+     PKG_ROOT_SBIN_DIR="/usr/bin"
+
+make DIST_ROOT=$PKG PKG_DOC_DIR=/usr/share/doc/$name \
+     PKG_ROOT_SBIN="/usr/bin" install
+make DIST_ROOT=$PKG PKG_DOC_DIR=/usr/share/doc/$name \
+     PKG_ROOT_SBIN="/usr/bin" install-dev
+rm -rfv $PKG/lib/libhandle.{a,la,so}
+ln -sfv ../../lib/libhandle.so.1 $PKG/usr/lib/libhandle.so
+rm $PKG/usr/lib/libhandle.la
+}

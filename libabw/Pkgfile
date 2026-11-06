@@ -1,0 +1,21 @@
+description="A library that parses the file format of AbiWord documents"
+url="https://wiki.documentfoundation.org/DLP/Libraries/libabw"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+makedepends=(boost libxml2 doxygen gperf librevenge)
+
+name=libabw
+version=0.1.4
+
+source=(https://dev-www.libreoffice.org/src/$name/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+            --disable-static
+
+make
+make DESTDIR=$PKG install
+}

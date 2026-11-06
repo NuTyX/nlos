@@ -1,0 +1,34 @@
+description="Server and user space API to deal with multimedia pipelines"
+url="https://github.com/PipeWire/pipewire"
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Fanch,Tnut"
+
+makedepends=(meson dbus doxygen python-docutils ffmpeg glib graphviz gstreamer
+             gstreamer-plugins-base sbc valgrind libsndfile xmltoman) 
+
+name=pipewire
+version=1.6.9
+
+source=($url.git)
+
+PKGMK_GROUPS=(devel man doc)
+CFLAGS="-Wno-error=discarded-qualifiers"
+
+PKGMK_MESON_OPTIONS="--sysconfdir=/etc -Djack=disabled -Dpipewire-jack=disabled \
+-Ddocs=enabled  -Dman=enabled"
+ 
+
+build=meson
+
+package() {
+ # Part of lua
+ rm $PKG/usr/lib/liblua.a
+
+ install -Dm644 $name-$version/LICENSE \
+ $PKG/usr/share/licenses/$name/LICENSE
+ install -Dm644 $name-$version/COPYING \
+ $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,39 @@
+description="Shared GSettings schemas for the desktop"
+url="https://gitlab.gnome.org/GNOME/gsettings-desktop-schemas"
+
+license="LGPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Fanch,Skythrew,Spiky"
+
+makedepends=(meson ninja intltool glib gobject-introspection perl-xml-parser)
+run=(adwaita-fonts)
+
+name=gsettings-desktop-schemas
+version=51.0
+release=2
+
+set=(gnome-base)
+
+source=(https://gitlab.gnome.org/GNOME/$name/-/archive/$version/$name-$version.tar.gz)
+
+prepare() {
+cd $name-$version
+# NuTyX Background
+sed -i "s@gnome/adwaita-timed.xml@nutyx/nutyx.jpg@" \
+schemas/org.gnome.desktop.background.gschema.xml.in
+
+sed -i -r 's:"(/system):"/org/gnome\1:g' schemas/*.in
+}
+
+build=meson
+
+package() {
+ install -Dm644 $name-$version/COPYING \
+ $PKG/usr/share/licenses/$name/COPYING
+ sed -i "s@gnome/adwaita-l.jxl@nutyx/NuTyX-GNOME-26.06.1.png@" \
+ $PKG/usr/share/glib-2.0/schemas/org.gnome.desktop.background.gschema.xml
+  sed -i "s@gnome/adwaita-d.jxl@nutyx/NuTyX-GNOME-26.06.1.png@" \
+ $PKG/usr/share/glib-2.0/schemas/org.gnome.desktop.background.gschema.xml
+ 
+}

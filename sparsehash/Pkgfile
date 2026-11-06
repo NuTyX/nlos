@@ -1,0 +1,17 @@
+description="Contains several hash-map implementations, including for optimize space and speed"
+url="http://code.google.com/p/sparsehash"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+name=sparsehash
+version=2.0.4
+release=2
+
+source=(https://github.com/sparsehash/sparsehash/archive/sparsehash-$version.tar.gz )
+
+build() {
+ cd $name*
+ ./configure --prefix=/usr
+ make
+ make DESTDIR=$PKG install
+}

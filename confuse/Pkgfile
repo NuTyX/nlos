@@ -1,0 +1,29 @@
+description="C-library for parsing configuration files"
+url="https://github.com/martinh/libconfuse"
+packager="spiky <spiky@nutyx.org>"
+
+name=confuse
+version=3.4
+
+makedepends=(git automake libtool)
+
+source=($url.git)
+
+prepare() {
+cd $name-$version
+  autoreconf -vfi
+}
+
+build() {
+
+  cd $name-$version
+  ./configure --prefix=/usr --enable-shared
+
+  make
+
+  make DESTDIR=$PKG install
+
+# Obsolet lib
+
+  rm $PKG/usr/lib/libconfuse.la
+}

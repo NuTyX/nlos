@@ -1,0 +1,57 @@
+description="Lightweight Directory Access Protocol (LDAP) client and server"
+url="https://www.openldap.org"
+
+license="Custom"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(autoconf m4 shadow)
+
+name=openldap
+version=2.6.13
+release=2
+
+scripts_version=20260315
+
+source=(https://sourceforge.net/projects/nutyx/files/sources/nutyx-scripts/nutyx-scripts-${scripts_version}.tar.xz
+	    https://www.openldap.org/software/download/OpenLDAP/openldap-release/$name-$version.tgz
+	    $name-$version-consolidated-1.patch)
+prepare() {
+
+(getent group  ldap > /dev/null) || groupadd -g 83 ldap
+(getent passwd ldap > /dev/null) || useradd  -c "OpenLDAP Daemon Owner" \
+         -d /var/lib/openldap -u 83 \
+         -g ldap -s /usr/bin/false ldap
+
+cd $name-$version
+
+sed -e 's/cn->length/ASN1_STRING_length(cn)/g'  \
+    -e 's/cn->data/ASN1_STRING_get0_data(cn)/g' \
+    -i libraries/libldap/tls_o.c
+
+patch -Np1 -i ../$name-$version-consolidated-1.patch
+autoconf
+}
+
+build() {
+cd $name-$version
+
+./configure --prefix=/usr \
+            --sysconfdir=/etc \
+            --disable-static \
+            --enable-dynamic \
+            --disable-debug \
+            --disable-slapd
+make depend
+make
+make DESTDIR=$PKG install
+
+rm $PKG/usr/lib/liblber.la
+
+install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+
+# Service
+cd ../nutyx-scripts-${scripts_version}
+make DESTDIR=$PKG install-sysd-slapd
+}

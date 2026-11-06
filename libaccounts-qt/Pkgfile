@@ -1,0 +1,30 @@
+description='Qt-based client library for accessing the online accounts database'
+url='https://gitlab.com/accounts-sso/libaccounts-qt'
+
+license="LGPL"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(libaccounts-glib qt6-base doxygen)
+
+name=libaccounts-qt
+version=1.17
+
+source=(https://gitlab.com/accounts-sso/libaccounts-qt/-/archive/VERSION_$version/libaccounts-qt-VERSION_$version.zip)
+
+prepare() {
+
+  mv $name-VERSION_$version $name-$version
+  cd $name-$version
+  sed -i 's|SUBDIRS  += Accounts tests|SUBDIRS += Accounts|' accounts-qt.pro
+}
+
+build() {
+  cd $name-$version
+  qmake6 PREFIX=/usr LIBDIR=/usr/lib
+  make
+
+  make INSTALL_ROOT=$PKG install
+
+}

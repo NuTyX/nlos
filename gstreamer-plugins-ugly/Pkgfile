@@ -1,0 +1,29 @@
+description="GStreamer Multimedia Framework ugly Plugins"
+url="http://gstreamer.freedesktop.org/modules/gst-plugins-ugly.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+license="LGPL"
+
+makedepends=(meson ninja gstreamer-plugins-base lame libdvdread liba52 libmad libmpeg2 x264)
+_name=gst-plugins-ugly
+
+name=gstreamer-plugins-ugly
+version=1.28.8
+release=1
+
+source=(https://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz )
+
+PKGMK_MESON_OPTIONS="-Dpackage-origin=http://downloads.nutyx.org/"
+
+prepare() {
+ mv ${_name}-$version $name-$version
+}
+
+build=meson
+
+package() {
+ install -Dm644 $name-$version/COPYING \
+ $PKG/usr/share/licenses/$name/COPYING
+}

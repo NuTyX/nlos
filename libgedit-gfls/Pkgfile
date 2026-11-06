@@ -1,0 +1,32 @@
+description='A module dedicated to file loading and saving.'
+url='https://github.com/gedit-technology/libgedit-gfls'
+
+license="LGPL3.0"
+
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(meson gobject-introspection gtk3)
+
+name=libgedit-gfls
+version=0.4.2
+
+source=(https://gitlab.gnome.org/World/gedit/libgedit-gfls/-/archive/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+mkdir gfls-build
+cd    gfls-build
+
+meson setup .. \
+       --prefix=/usr          \
+       --buildtype=release    \
+       -Dgtk_doc=false
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../LICENSES/LGPL-3.0-or-later.txt $PKG/usr/share/licenses/$name/LGPL-3.0-or-later.txt
+}

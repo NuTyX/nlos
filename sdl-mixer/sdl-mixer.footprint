@@ -1,0 +1,6 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libSDL2_mixer-2.0.so.0 -> libSDL2_mixer-2.0.so.0.800.2
+-rwxr-xr-x	root/root	usr/lib/libSDL2_mixer-2.0.so.0.800.2
+-rw-r--r--	root/root	usr/lib/libSDL2_mixer.a
+lrwxrwxrwx	root/root	usr/lib/libSDL2_mixer.so -> libSDL2_mixer-2.0.so.0.800.2

@@ -1,0 +1,33 @@
+description="Python filters to make caring about typography on the web a bit easier"
+url="https://github.com/mintchaos/typogrify"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-smartypants python-hatchling)
+
+name=python-typogrify
+_name="typogrify"
+alias=(${_name})
+
+version=2.1.0
+release=3
+
+source=(https://pypi.python.org/packages/source/${_name::1}/${_name}/${_name}-$version.tar.gz)
+
+build() {
+
+ cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

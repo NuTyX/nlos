@@ -1,0 +1,32 @@
+description='A small Python module for determining appropriate platform-specific dirs, e.g. a "user data dir"'
+url='https://github.com/tox-dev/platformdirs'
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(git python-installer python-setuptools python-wheel python-hatch-vcs)
+
+name=python-platformdirs
+alias=(platformdirs)
+
+version=4.11.12
+
+source=($url.git)
+
+build() {
+
+  cd $name-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  python -m installer \
+    --destdir=$PKG    \
+    dist/*.whl
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}
+package() {
+ install -vDm644 -t $PKG/usr/share/licenses/$name \
+ $name-$version/LICENSE
+}

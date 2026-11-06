@@ -1,0 +1,33 @@
+description="A low level library, upon which multimedia APIs can be built"
+url="http://gmerlin.sourceforge.net/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+makedepends=(doxygen nettle gnutls xorg-libdrm libva
+             libglvnd git)
+
+name=gavl
+version=v2.0.1
+release=1
+
+source=(https://github.com/bplaum/gavl.git)
+prepare() {
+  cd $name-$version
+  git cherry-pick -n 5b776fe265810ff98f3a4e918d2afb0d337aa965 
+  autoreconf -fi
+}
+build() {
+cd $name-$version
+./configure --prefix=/usr \
+--localstatedir=/var \
+--sysconfdir=/etc    \
+--with-cpuflags=none \
+--docdir=/usr/share/doc/$name
+
+make
+make DESTDIR=$PKG install
+
+# Obsolet lib
+rm $PKG/usr/lib/libgavl.la
+}

@@ -1,0 +1,28 @@
+description="Userspace virtual filesystem implemented as a pluggable module for gio"
+url="https://gitlab.gnome.org/GNOME/gvfs"
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tyrry,Tnut"
+
+makedepends=(ninja meson libcdio-paranoia avahi dbus-glib libgudev
+             libbluray intltool libsecret gtk3 libsoup3 udisks2 fuse2 fuse
+             libarchive libmtp samba bluez gcr libgphoto2 libnfs openssh gcr-4)
+
+name=gvfs
+version=1.62.0
+tag=$version
+
+source=($url.git)
+
+PKGMK_MESON_OPTIONS="--sysconfdir=/etc -Dafc=false -Donedrive=false \
+-Dhttp=false -Ddnssd=false -Dgoa=false -Dgoogle=false -Dman=true"
+
+PKGMK_GROUPS=(man)
+
+build=meson
+
+package() {
+  install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

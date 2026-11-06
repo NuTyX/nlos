@@ -1,0 +1,26 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+drwxr-xr-x	root/root	usr/lib/giomm-2.4/
+drwxr-xr-x	root/root	usr/lib/giomm-2.4/include/
+-rw-r--r--	root/root	usr/lib/giomm-2.4/include/giommconfig.h
+drwxr-xr-x	root/root	usr/lib/giomm-2.68/
+drwxr-xr-x	root/root	usr/lib/giomm-2.68/include/
+-rw-r--r--	root/root	usr/lib/giomm-2.68/include/giommconfig.h
+lrwxrwxrwx	root/root	usr/lib/libgiomm-2.4.so -> libgiomm-2.4.so.1
+lrwxrwxrwx	root/root	usr/lib/libgiomm-2.4.so.1 -> libgiomm-2.4.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libgiomm-2.4.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libgiomm-2.68.so -> libgiomm-2.68.so.1
+lrwxrwxrwx	root/root	usr/lib/libgiomm-2.68.so.1 -> libgiomm-2.68.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libgiomm-2.68.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libglibmm-2.4.so -> libglibmm-2.4.so.1
+lrwxrwxrwx	root/root	usr/lib/libglibmm-2.4.so.1 -> libglibmm-2.4.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libglibmm-2.4.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libglibmm-2.68.so -> libglibmm-2.68.so.1
+lrwxrwxrwx	root/root	usr/lib/libglibmm-2.68.so.1 -> libglibmm-2.68.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libglibmm-2.68.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libglibmm_generate_extra_defs-2.4.so -> libglibmm_generate_extra_defs-2.4.so.1
+lrwxrwxrwx	root/root	usr/lib/libglibmm_generate_extra_defs-2.4.so.1 -> libglibmm_generate_extra_defs-2.4.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libglibmm_generate_extra_defs-2.4.so.1.3.0
+lrwxrwxrwx	root/root	usr/lib/libglibmm_generate_extra_defs-2.68.so -> libglibmm_generate_extra_defs-2.68.so.1
+lrwxrwxrwx	root/root	usr/lib/libglibmm_generate_extra_defs-2.68.so.1 -> libglibmm_generate_extra_defs-2.68.so.1.3.0
+-rwxr-xr-x	root/root	usr/lib/libglibmm_generate_extra_defs-2.68.so.1.3.0

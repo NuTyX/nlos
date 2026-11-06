@@ -1,0 +1,47 @@
+description="An interpreter for the PostScript language"
+url="https://www.ghostscript.com/awki"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Shadow,Rems,Spiky"
+
+makedepends=(glib at-spi2-core libpng libjpeg-turbo libtiff jasper lcms2 gnutls cups jbig2dec openjpeg)
+
+name=ghostscript
+version=10.08.0
+release=2
+
+source=(https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs${version//./}/$name-$version.tar.xz
+        https://downloads.sourceforge.net/gs-fonts/ghostscript-fonts-std-8.11.tar.gz
+        https://downloads.sourceforge.net/gs-fonts/gnu-gs-fonts-other-6.0.tar.gz)
+
+unset MAKEFLAGS
+
+build() {
+cd $name-$version
+
+# gcc14 buildfix
+  export CFLAGS+=" -Wno-incompatible-pointer-types -Wno-int-conversion"
+
+rm -rf freetype lcms2 jpeg libpng zlib openjpeg
+rm -rf zlib
+./configure --prefix=/usr \
+	--enable-dynamic \
+	--disable-compile-inits \
+          --disable-hidden-visibility \
+          --with-system-libtiff \
+          CFLAGS="${CFLAGS:--g -O3} -fPIC"
+make
+make so
+make DESTDIR=$PKG install soinstall
+
+mkdir -p $PKG/usr/include/ghostscript
+mkdir -p $PKG/usr/share/doc/$name
+
+install -v -m644 base/*.h $PKG/usr/include/ghostscript
+ln -v -s ghostscript $PKG/usr/include/ps
+
+ln -sv ../ghostscript/$version/doc \
+$PKG/usr/share/doc/$name
+
+cp -r $SRC/fonts $PKG/usr/share/ghostscript
+}

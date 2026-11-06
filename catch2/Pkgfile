@@ -1,0 +1,38 @@
+description='Modern, C++-native, header-only, test framework for unit-tests, TDD and BDD'
+url='https://github.com/catchorg/catch2'
+
+license="BOOST"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(cmake python)
+
+name=catch2
+version=3.16.1
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/catchorg/Catch2/archive/refs/tags/v$version.tar.gz)
+
+prepare() {
+mv Catch2-$version $name-$version
+}
+
+
+build() {
+cd $name-$version
+
+cmake -B build \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DCATCH_USE_VALGRIND=OFF \
+    -DCATCH_BUILD_EXAMPLES=OFF \
+    -DCATCH_ENABLE_COVERAGE=OFF \
+    -DCATCH_ENABLE_WERROR=OFF \
+    -DBUILD_TESTING=OFF
+
+make -C build
+make -C build DESTDIR=$PKG install
+
+install -Dm644 LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE.txt
+}

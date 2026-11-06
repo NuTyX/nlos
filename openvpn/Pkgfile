@@ -1,0 +1,47 @@
+description="An easy-to-use, robust and highly configurable VPN (Virtual Private Network) client"
+url="https://github.com/OpenVPN/openvpn"
+
+contributor="Graknu, Greg, Spiky"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(git autoconf libcap-ng automake m4 libtool sed grep pam 
+             lzo python-docutils lz4)
+
+name=openvpn
+version=2.7.8
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(0001-unprivileged.patch
+        $url.git)
+
+#prepare() {
+#ln -sv rst2man.py /usr/bin/rst2man
+#ln -sv rst2html.py /usr/bin/rst2html
+
+
+#}
+build(){
+
+cd $name-$version
+
+sed -i '/^CONFIGURE_DEFINES=/s/set/env/g' configure.ac
+#patch -Np1 < ../0001-unprivileged.patch
+
+autoreconf --force --install
+
+./configure       \
+--prefix=/usr     \
+--sbindir=/usr/bin \
+--enable-iproute2 \
+--enable-plugins  \
+--enable-x509-alt-username
+
+make
+make DESTDIR=$PKG install
+
+# Obsolets libs
+rm $PKG/usr/lib/openvpn/plugins/openvpn-plugin-auth-pam.la
+rm $PKG/usr/lib/openvpn/plugins/openvpn-plugin-down-root.la
+rm /usr/bin/rst2{man,html}
+}

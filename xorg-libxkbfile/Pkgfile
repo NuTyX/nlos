@@ -1,0 +1,30 @@
+description="X11 keyboard file manipulation library"
+url="https://gitlab.freedesktop.org/xorg/lib/libxkbfile"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-libxkbfile
+version=1.2.0
+
+alias=(libxkbfile)
+
+_name=libxkbfile
+makedepends=(meson xorgproto xorg-libx11)
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-$version.tar.xz)
+
+prepare() {
+mv ${_name}-$version $name-$version
+}
+
+build=meson
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libxkbfile-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

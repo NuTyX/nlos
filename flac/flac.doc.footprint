@@ -1,0 +1,5 @@
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/flac/
+drwxr-xr-x	root/root	usr/share/doc/flac/images/
+-rw-r--r--	root/root	usr/share/doc/flac/images/logo.svg
+-rw-r--r--	root/root	usr/share/doc/flac/images/logo130.gif

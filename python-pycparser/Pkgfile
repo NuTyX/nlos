@@ -1,0 +1,23 @@
+description="C parser and AST generator written in Python"
+url="https://github.com/eliben/pycparser"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-build python-installer python-setuptools python-wheel)
+
+name=python-pycparser
+_name="pycparser"
+alias=(${_name})
+
+version=3.11
+
+source=(https://github.com/eliben/pycparser/archive/refs/tags/release_v${version}.tar.gz)
+build() {
+
+cd ${_name}-release_v${version}
+python -m build --wheel --no-isolation
+
+python -m installer --destdir=$PKG dist/*.whl
+install -Dm644 LICENSE -t $PKG/usr/share/licenses/$name/
+}

@@ -1,0 +1,53 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libQt5Location.prl
+lrwxrwxrwx	root/root	usr/lib/libQt5Location.so -> libQt5Location.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5Location.so.5 -> libQt5Location.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5Location.so.5.15 -> libQt5Location.so.5.15.19
+-rwxr-xr-x	root/root	usr/lib/libQt5Location.so.5.15.19
+-rw-r--r--	root/root	usr/lib/libQt5Positioning.prl
+lrwxrwxrwx	root/root	usr/lib/libQt5Positioning.so -> libQt5Positioning.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5Positioning.so.5 -> libQt5Positioning.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5Positioning.so.5.15 -> libQt5Positioning.so.5.15.19
+-rwxr-xr-x	root/root	usr/lib/libQt5Positioning.so.5.15.19
+-rw-r--r--	root/root	usr/lib/libQt5PositioningQuick.prl
+lrwxrwxrwx	root/root	usr/lib/libQt5PositioningQuick.so -> libQt5PositioningQuick.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5PositioningQuick.so.5 -> libQt5PositioningQuick.so.5.15.19
+lrwxrwxrwx	root/root	usr/lib/libQt5PositioningQuick.so.5.15 -> libQt5PositioningQuick.so.5.15.19
+-rwxr-xr-x	root/root	usr/lib/libQt5PositioningQuick.so.5.15.19
+drwxr-xr-x	root/root	usr/lib/qt/
+drwxr-xr-x	root/root	usr/lib/qt/mkspecs/
+drwxr-xr-x	root/root	usr/lib/qt/mkspecs/modules/
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_location.pri
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_location_private.pri
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_positioning.pri
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_positioning_private.pri
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_positioningquick.pri
+-rw-r--r--	root/root	usr/lib/qt/mkspecs/modules/qt_lib_positioningquick_private.pri
+drwxr-xr-x	root/root	usr/lib/qt/plugins/
+drwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_esri.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_itemsoverlay.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_mapbox.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_mapboxgl.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_nokia.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/geoservices/libqtgeoservices_osm.so
+drwxr-xr-x	root/root	usr/lib/qt/plugins/position/
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/position/libqtposition_geoclue.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/position/libqtposition_geoclue2.so
+-rwxr-xr-x	root/root	usr/lib/qt/plugins/position/libqtposition_positionpoll.so
+drwxr-xr-x	root/root	usr/lib/qt/qml/
+drwxr-xr-x	root/root	usr/lib/qt/qml/Qt/
+drwxr-xr-x	root/root	usr/lib/qt/qml/Qt/labs/
+drwxr-xr-x	root/root	usr/lib/qt/qml/Qt/labs/location/
+-rwxr-xr-x	root/root	usr/lib/qt/qml/Qt/labs/location/liblocationlabsplugin.so
+-rw-r--r--	root/root	usr/lib/qt/qml/Qt/labs/location/plugins.qmltypes
+-rw-r--r--	root/root	usr/lib/qt/qml/Qt/labs/location/qmldir
+drwxr-xr-x	root/root	usr/lib/qt/qml/QtLocation/
+-rwxr-xr-x	root/root	usr/lib/qt/qml/QtLocation/libdeclarative_location.so
+-rw-r--r--	root/root	usr/lib/qt/qml/QtLocation/plugins.qmltypes
+-rw-r--r--	root/root	usr/lib/qt/qml/QtLocation/qmldir
+drwxr-xr-x	root/root	usr/lib/qt/qml/QtPositioning/
+-rwxr-xr-x	root/root	usr/lib/qt/qml/QtPositioning/libdeclarative_positioning.so
+-rw-r--r--	root/root	usr/lib/qt/qml/QtPositioning/plugins.qmltypes
+-rw-r--r--	root/root	usr/lib/qt/qml/QtPositioning/qmldir

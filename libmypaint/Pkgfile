@@ -1,0 +1,23 @@
+description="A fast and easy painting library for digital painters, with brush dynamics"
+url="http://mypaint.intilinux.com/"
+
+license="ISC"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rémy,Tnut"
+
+makedepends=(gtk3 json-c pkgconf gobject-introspection)
+
+name=libmypaint
+version=1.6.1
+release=3
+
+source=(https://github.com/mypaint/$name/releases/download/v$version/$name-$version.tar.xz)
+
+package() {
+# Obsolet lib
+rm $PKG/usr/lib/libmypaint.la
+cd $name-$version
+install -Dm 644 README.md -t $PKG/usr/share/doc/$name
+install -Dm 644 COPYING -t $PKG/usr/share/licenses/$name
+}

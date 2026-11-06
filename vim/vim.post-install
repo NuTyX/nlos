@@ -1,0 +1,20 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if [ ! -f etc/vimrc ]; then
+	cat > etc/vimrc << "EOF"
+" Begin /etc/vimrc
+if (&term == "xterm") || (&term == "putty")
+   set background=dark
+endif
+set ruler
+set nocompatible
+set backspace=2
+set mouse=r
+syntax on
+
+" End /etc/vimrc
+EOF
+	printf "${INFO} /etc/vimrc created. ${NORMAL}\n"
+else
+	printf "${INFO} /etc/vimrc already exist. ${NORMAL}\n"
+fi

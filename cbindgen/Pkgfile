@@ -1,0 +1,27 @@
+description="Cbindgen can be used to generate C bindings for Rust code."
+url="https://github.com/eqrion/cbindgen/blob/master/README.md"
+
+license="MPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+makedepends=(rustc)
+
+name=cbindgen
+version=0.29.4
+release=3
+
+source=(https://github.com/mozilla/cbindgen/archive/refs/tags/v${version}.tar.gz)
+
+build() {
+
+cd $name-$version
+cargo build --release
+mkdir -p $PKG/usr/bin
+
+install -Dm755 target/release/$name $PKG/usr/bin/$name
+install -Dt "$PKG/usr/share/doc/$name" -m644 README.md
+
+install -Dm644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

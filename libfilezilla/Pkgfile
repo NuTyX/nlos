@@ -1,0 +1,27 @@
+description="Small and modern C++ library for Filezilla" 
+url="https://lib.filezilla-project.org/"
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Rémy,Tnut"
+
+makedepends=(libidn2 gettext nettle gnutls libxcrypt)
+
+name=libfilezilla
+version=0.57.0
+
+source=(https://sources.archlinux.org/other/libfilezilla/$name-$version.tar.xz)
+
+build() {
+
+cd $name-$version
+./configure --prefix=/usr \
+--disable-static
+make
+make DESTDIR=$PKG install
+# Obsolets libs
+rm $PKG/usr/lib/libfilezilla.la
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

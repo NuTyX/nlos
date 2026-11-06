@@ -1,0 +1,27 @@
+description="Freedesktop.org message bus system"
+url="https://www.freedesktop.org/wiki/Software/dbus/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Jayce,Spiky"
+
+makedepends=(meson systemd expat xorg-libx11)
+
+name=dbus-launch
+_name=dbus
+version=1.16.2
+release=1
+
+source=(https://dbus.freedesktop.org/releases/dbus/${_name}-$version.tar.xz)
+
+build() {
+  cd ${_name}-$version
+  mkdir build
+  cd build
+  meson setup .. \
+   --buildtype=release    \
+   --prefix=/usr          \
+   --wrap-mode=nofallback
+  ninja
+  mkdir -p $PKG/usr/bin
+ /usr/bin/install -c tools/dbus-launch $PKG/usr/bin/dbus-launch
+}

@@ -1,0 +1,47 @@
+description="A very advanced and programmable command interpreter (shell) for UNIX"
+url="http://www.zsh.org"
+
+contributors="Alienus,Fanch,Greg,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(ncurses gawk grep pcre2 texinfo)
+
+name=zsh
+version=5.9.2
+
+source=(http://www.zsh.org/pub/$name-$version.tar.xz)
+
+prepare() {
+cd $name-$version
+
+sed -e 's/set_from_init_file/texinfo_&/' \
+    -i Doc/Makefile.in
+
+sed -e 's/^main/int &/'      \
+    -e 's/exit(/return(/'    \
+    -i aczsh.m4 configure.ac
+sed -e 's/test = /&(char**)/' \
+    -i configure.ac
+
+autoconf
+
+#sed -e 's|/etc/z|/etc/zsh/z|g' \
+#    -i Doc/*.*
+}
+build(){
+    cd $name-$version
+    ./configure --prefix=/usr \
+                --bindir=/bin \
+                --sysconfdir=/etc/zsh \
+                --enable-etcdir=/etc/zsh
+    make
+    makeinfo Doc/zsh.texi --html -o Doc/html
+    makeinfo Doc/zsh.texi --html --no-split --no-headers -o Doc/zsh.html
+    makeinfo Doc/zsh.texi --plaintext -o Doc/zsh.txt
+    make DESTDIR=$PKG install
+
+    make infodir=$PKG/usr/share/info install.info
+    install -v -dm755 $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/html/* $PKG/usr/share/doc/zsh-$version/html
+    install -v -m644 Doc/zsh.{html,txt} $PKG/usr/share/doc/zsh-$version
+}

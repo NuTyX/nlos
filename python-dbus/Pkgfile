@@ -1,0 +1,41 @@
+description="Python bindings for DBUS"
+url="http://dbus.freedesktop.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(python-setuptools dbus glib python-meson)
+run=(python)
+
+name=python-dbus
+_name="python_dbus"
+alias=(${_name})
+
+version=1.5.0
+
+_name=dbus-python
+alias=(dbus_python)
+
+source=(https://dbus.freedesktop.org/releases/dbus-python/dbus_python-$version.tar.gz)
+
+build() {
+
+      cd dbus_python-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf
+
+# Obsolets libs
+#rm $PKG/usr/lib/python3.12/site-packages/_dbus_bindings.la
+#rm $PKG/usr/lib/python3.12/site-packages/_dbus_glib_bindings.la
+
+}

@@ -1,0 +1,20 @@
+description="Portable abstraction library for DVD decryption"
+url="http://www.videolan.org"
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre B, tnut"
+
+makedepends=(doxygen)
+
+name=libdvdcss
+version=1.6.0
+
+source=(https://get.videolan.org/libdvdcss/$version/libdvdcss-$version.tar.xz)
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

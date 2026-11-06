@@ -1,0 +1,27 @@
+description="A distributed, collaborative, spam detection and filtering network"
+url="http://search.cpan.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(perl perl-net-dns perl-digest-sha1 perl-uri perl-digest-nilsimsa)
+
+name=razor
+version=2.88
+
+unset MAKEFLAGS
+source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/Razor2-Client-Agent-$version.tar.gz)
+
+build() {
+cd Razor2-Client-Agent-$version
+
+perl Makefile.PL INSTALLDIRS=vendor
+
+make
+make DESTDIR=$PKG install
+
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' | xargs rm
+}

@@ -1,0 +1,32 @@
+description="GStreamer library for creating audio/video editors"
+url="https://gstreamer.freedesktop.org/modules/gst-editing-services.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+license="LGPL"
+
+makedepends=(bash-completion gobject-introspection gtk-doc python-gobject
+             gstreamer-plugins-base gstreamer-plugins-bad gstreamer-plugins-good)
+
+name=gstreamer-editing-services
+version=1.28.8
+release=1
+
+source=(https://gstreamer.freedesktop.org/src/gst-editing-services/gst-editing-services-$version.tar.xz)
+
+build() {
+cd gst-editing-services-$version
+
+meson setup build \
+--prefix=/usr \
+-Dbuildtype=release \
+-Ddoc=disabled \
+-Dvalidate=disabled
+
+meson compile -C build
+
+DESTDIR=$PKG meson install -C build
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

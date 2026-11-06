@@ -1,0 +1,43 @@
+description="The MPFR package contains functions for multiple precision math"
+url="https://www.mpfr.org"
+
+license="GPL-3.0-or-later, LGPL-3.0-or-later"
+
+maintainer="Guillaume Hanrot,Vincent Lefèvre,Patrick Pélissier,Philippe Théveny and Paul Zimmermann"
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(gmp texinfo)
+
+name=mpfr
+version=4.2.2
+
+set=(chroot core)
+
+source=(https://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build()
+{
+cd mpfr-$version
+./configure --prefix=/usr \
+	--enable-thread-safe \
+	--docdir=/usr/share/doc/mpfr-$version
+make
+# build ones first then without
+# make check below
+# again with make check below
+make check
+make DESTDIR=$PKG install
+make html
+make DESTDIR=$PKG install-html
+}
+devel()
+{
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib/pkgconfig \
+usr/include
+
+rm -r usr/{include,lib/pkgconfig}
+}

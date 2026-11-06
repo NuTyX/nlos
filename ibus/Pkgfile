@@ -1,0 +1,52 @@
+description="IBus is an Intelligent Input Bus."
+url="https://ibus.googlecode.com"
+
+license="LGPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributor="Spiky"
+
+makedepends=(dconf iso-codes gobject-introspection gtk3 gtk4 dbus-launch
+             libnotify vala python libxkbcommon libdbusmenu-gtk wayland-protocols)
+
+run=(python-dbus python-gobject wayland)
+
+name=ibus
+version=1.5.35
+
+source=(https://github.com/ibus/ibus/archive/refs/tags/$version.tar.gz)
+PKGMK_GROUPS=(devel man)
+
+build() {
+cd $name-$version
+
+sed -i 's@/desktop/ibus@/org/freedesktop/ibus@g' \
+    data/dconf/org.freedesktop.ibus.gschema.xml
+
+NOCONFIGURE=1 ./autogen.sh
+./configure --prefix=/usr           \
+            --libexecdir=/usr/lib/ibus \
+            --enable-wayland        \
+            --enable-dconf          \
+            --enable-ui             \
+            --sysconfdir=/etc       \
+            --enable-gtk4           \
+            --disable-gtk2          \
+            --disable-gtk-doc-html  \
+            --disable-emoji-dict    \
+            --disable-unicode-dict  \
+            --disable-python2       \
+            --with-python=python3
+
+rm -f tools/main.c
+make
+make DESTDIR=$PKG install
+
+# Obsolets libs
+#rm $PKG/usr/lib/gtk-2.0/2.10.0/immodules/im-ibus.la
+#rm $PKG/usr/lib/gtk-3.0/3.0.0/immodules/im-ibus.la
+#rm $PKG/usr/lib/libibus-1.0.la
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 COPYING.unicode $PKG/usr/share/licenses/$name/COPYING.unicode
+}

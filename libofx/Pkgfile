@@ -1,0 +1,21 @@
+description="API for the OFX banking standard"
+url="https://github.com/libofx"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(opensp)
+run=()
+set=()
+
+name=libofx
+version=0.10.9
+release=2
+
+source=(https://github.com/libofx/libofx/releases/download/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

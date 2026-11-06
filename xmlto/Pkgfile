@@ -1,0 +1,27 @@
+description="Convert xml to many other formats"
+url="http://cyberelk.net/tim/software/xmlto/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(libxslt docbook-xsl docbook-xml links)
+
+name=xmlto
+version=0.0.29
+release=2
+
+source=(https://pagure.io/xmlto/archive/$version/$name-$version.tar.gz)
+
+prepare() {
+cd $name-$version
+autoreconf -fiv
+}
+
+build() {
+cd $name-$version
+unset MAKEFLAGS
+LINKS="/usr/bin/links" \
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

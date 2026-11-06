@@ -1,0 +1,13 @@
+SN="ntp"
+IDN="87"
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+if ! (getent group $SN > /dev/null); then
+	printf "${INFO}Creating $SN group${NORMAL}\n"
+	groupadd -g $IDN $SN
+fi
+if ! (getent passwd $SN > /dev/null); then
+	printf "${INFO}Creating $SN user${NORMAL}\n"
+	useradd  -c "Network Time Protocol" -d /var/lib/ntp \
+	-g $SN -s /usr/bin/false -u $IDN $SN
+fi

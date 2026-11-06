@@ -1,0 +1,25 @@
+description="Provide a portable, high level programming interface to various calling conventions."
+url="http://sourceware.org/libffi/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+name=libffi
+version=3.8.0
+
+source=(https://github.com/$name/$name/releases/download/v$version/$name-$version.tar.gz )
+
+build() {
+cd $name-$version
+
+./configure --prefix=/usr \
+--disable-static \
+--with-gcc-arch=native \
+--disable-exec-static-tramp
+make
+make check || true
+make DESTDIR=$PKG install
+}
+package() {
+rm $PKG/usr/lib/libffi.la
+}

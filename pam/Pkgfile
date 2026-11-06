@@ -1,0 +1,32 @@
+description="Pluggable Authentication Modules to choose how applications authenticate users."
+url="https://www.kernel.org/pub/libs/pam"
+
+license="GPL-2.0-only"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+set=(core)
+
+PKGMK_DEPENDS=(python meson ninja systemd)
+makedepends=(intltool texinfo libxcrypt)
+
+name=pam
+version=1.7.3
+release=2
+
+PKGMK_LOCALES=()
+PKGMK_MESON_OPTIONS="--libdir lib -Ddocdir=/usr/share/doc/Linux-PAM --sbindir bin"
+source=(https://github.com/linux-pam/linux-pam/releases/download/v$version/Linux-PAM-$version.tar.xz)
+
+prepare() {
+
+mv Linux-PAM-$version \
+   $name-$version
+}
+
+build=meson
+
+package() {
+chmod -v 4755 $PKG/usr/bin/unix_chkpwd
+}

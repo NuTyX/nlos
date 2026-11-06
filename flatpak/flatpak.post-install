@@ -1,0 +1,10 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+
+UN=flatpak
+
+if ! (getent passwd $UN > /dev/null); then
+	printf "${INFO}Creating $UN user${NORMAL}\n"
+	useradd  -c "Flatpak User" -d /var/run/flatpak \
+	-s /usr/bin/false -u 89 $UN
+fi

@@ -1,0 +1,34 @@
+description="Takes text input, do some operation on it, and outputs the modified text."
+url="https://www.gnu.org/software/sed//sed.html"
+
+maintainer="Ken Pizzini ken at gnu dot org,Paolo Bonzini bonzini at gnu dot org"
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(texinfo)
+
+set=(core)
+
+name=sed
+version=4.10
+
+PKGMK_LOCALES=()
+
+source=(http://ftp.gnu.org/gnu/sed/sed-$version.tar.xz)
+
+build()
+{
+cd sed-$version
+if [ -L /tools ];then
+	sed -i 's/usr/tools/'       build-aux/help2man
+fi
+sed -i 's/panic-tests.sh//' Makefile.in
+
+./configure --prefix=/usr --htmldir=/usr/share/doc/$name
+make
+make html
+make check || true
+make DESTDIR=$PKG install
+install -d m755 $PKG/usr/share/doc/$name
+install -m644 doc/sed.html $PKG/usr/share/doc/$name
+}

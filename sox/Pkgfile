@@ -1,0 +1,32 @@
+description="The Swiss Army knife of sound processing tools"
+url="https://sox.sourceforge.net/"
+
+license="GPL2, LGPL2.1"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(libsndfile libpng lame opencore-amr
+             gsm libao libmad libid3tag wavpack
+             pulseaudio opusfile autoconf m4 libtool)
+
+
+name=sox
+version=14.8.0.1
+
+source=(https://codeberg.org/sox_ng/sox_ng/archive/sox_ng-$version.tar.gz)
+
+build() {
+  cd ${name}_ng
+  autoreconf -vfi
+
+  ./configure --prefix=/usr     \
+              --sysconfdir=/etc \
+              --enable-replace  \
+              --with-dyn-default \
+              --with-distro="NuTyX"
+
+  make
+  make bindir=. installcheck
+  make DESTDIR=$PKG install
+}

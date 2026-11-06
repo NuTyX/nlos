@@ -1,0 +1,28 @@
+description='Library for SRTP (Secure RealTime Transport Protocol)'
+url='https://github.com/cisco/libsrtp'
+
+license="BSD-3-Clause"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+name=libsrtp
+version=2.8.1
+
+makedepends=(python meson nss)
+
+source=(https://github.com/cisco/libsrtp/archive/v$version/$name-$version.tar.gz)
+
+build() {
+  meson setup $name-$version build $PKGMK_SRTP \
+    --prefix=/usr \
+    --buildtype=plain \
+    --wrap-mode nodownload \
+    --auto-features disabled \
+    -D b_pie=true \
+    -D crypto-library=nss \
+    -D crypto-library-kdf=disabled \
+    -D doc=disabled
+  meson compile -C build
+  DESTDIR=$PKG meson install -C build
+}

@@ -1,0 +1,34 @@
+description="The Xorg Server is the core of the X Window system."
+url="https://xorg.freedesktop.org"
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+makedepends=(meson ninja meson libtirpc libepoxy libxcvt mesa
+             nettle xorgproto xorg-xkbcomp xorg-font-util xcb-util-keysyms
+             xcb-util-image xcb-util-renderutil xcb-util-wm xorg-glu
+             xorg-pixman xorg-libdmx xorg-libxres xorg-libxfont2
+             xorg-xkeyboard-config wayland)
+
+name=xorg-server
+version=21.1.25
+
+source=(xorg-server-tearfree_backport-1.patch
+        https://ftp.x.org/pub/individual/xserver/$name-$version.tar.xz)
+
+PKGMK_MESON_OPTIONS="--sysconfdir=/etc --localstatedir=/var \
+ -Dxkb_output_dir=/var/lib/xkb -Dglamor=true"
+
+prepare() {
+  cd $name-$version
+  patch -Np1 -i ../xorg-server-tearfree_backport-1.patch
+}
+build=meson
+
+package() {
+ rm -rf $PKG/var
+ install -Dm644 $name-$version/COPYING \
+ $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,25 @@
+description="Client-side application which queries directory service"
+url="http://ftp.debian.org/debian/pool/main/w/whois"
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Alienus,Remy,Tnut"
+
+makedepends=(perl libxcrypt)
+
+name=whois
+version=5.6.6
+
+source=(https://github.com/rfc1036/$name/archive/v$version/$name-$version.tar.gz)
+
+
+build() {
+cd $name-$version
+make prefix=/usr 
+make prefix=/usr BASEDIR=$PKG install-whois
+make prefix=/usr BASEDIR=$PKG install-mkpasswd
+make prefix=/usr BASEDIR=$PKG install-pos
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

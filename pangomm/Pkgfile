@@ -1,0 +1,49 @@
+description="C++ bindings for pango"
+url="http://cairographics.org/cairomm/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Rems,Spiky"
+
+makedepends=(meson ninja pango glibmm cairomm)
+
+name=pangomm
+version="2.46.5+2.58.0"
+tag="${version##*+}"
+source=(https://gitlab.gnome.org/GNOME/$name.git)
+
+
+build() {
+# version 2.58.x
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+
+# Change the version branch
+tag="${version%+*}"
+cd $name-$version
+git checkout $tag
+cd -
+rm -r builddir
+
+# version 2.46.x
+
+meson setup --prefix /usr --buildtype plain \
+  --libexecdir lib -Db_pie=true $name-$version builddir
+meson compile -C builddir
+DESTDIR=$PKG meson install -C builddir
+}
+devel() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include usr/lib/pkgconfig usr/lib/$name-*
+rm -r usr/include usr/lib/pkgconfig usr/lib/$name-*
+}
+doc() {
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.doc${PKGMK_PACKAGE_EXT}$version-$release \
+usr/share
+rm -r usr/share
+}

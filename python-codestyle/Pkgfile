@@ -1,0 +1,31 @@
+description='Python style guide checker'
+url='https://pycodestyle.pycqa.org'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-codestyle
+_name="pycodestyle"
+alias=(${_name})
+
+version=2.15.0
+
+source=(https://github.com/PyCQA/pycodestyle/archive/$version/python-pycodestyle-$version.tar.gz)
+
+build() {
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

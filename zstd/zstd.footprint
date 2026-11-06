@@ -1,0 +1,14 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+lrwxrwxrwx	root/root	usr/bin/unzstd -> zstd
+-rwxr-xr-x	root/root	usr/bin/zstd
+lrwxrwxrwx	root/root	usr/bin/zstdcat -> zstd
+-rwxr-xr-x	root/root	usr/bin/zstdgrep
+-rwxr-xr-x	root/root	usr/bin/zstdless
+lrwxrwxrwx	root/root	usr/bin/zstdmt -> zstd
+drwxr-xr-x	root/root	usr/lib/
+-rw-r--r--	root/root	usr/lib/libzstd.a
+lrwxrwxrwx	root/root	usr/lib/libzstd.so -> libzstd.so.1.5.7
+lrwxrwxrwx	root/root	usr/lib/libzstd.so.1 -> libzstd.so.1.5.7
+-rwxr-xr-x	root/root	usr/lib/libzstd.so.1.5.7
+drwxr-xr-x	root/root	usr/share/

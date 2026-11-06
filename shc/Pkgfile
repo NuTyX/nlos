@@ -1,0 +1,21 @@
+description="Shell script compiler"
+url="https://github.com/neurobin/shc"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Sundev79"
+
+makedepends=()
+run=()
+
+name=shc
+version=4.0.3
+release=2
+
+source=(https://github.com/neurobin/shc/archive/refs/tags/$version.tar.gz)
+
+build() {
+cd $name-$version
+./configure --prefix=/usr
+make
+make DESTDIR=$PKG install
+}

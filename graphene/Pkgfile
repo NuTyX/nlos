@@ -1,0 +1,16 @@
+description="A thin layer of graphic data types"
+url="https://ebassi.github.io/graphene/"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(gtk-doc gobject-introspection meson ninja )
+
+name=graphene
+version=1.10.8
+release=2
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/ebassi/$name/archive/refs/tags/$version.tar.gz)
+
+build=meson

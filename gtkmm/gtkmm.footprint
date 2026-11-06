@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libgdkmm-3.0.so -> libgdkmm-3.0.so.1
+lrwxrwxrwx	root/root	usr/lib/libgdkmm-3.0.so.1 -> libgdkmm-3.0.so.1.1.0
+-rwxr-xr-x	root/root	usr/lib/libgdkmm-3.0.so.1.1.0
+lrwxrwxrwx	root/root	usr/lib/libgtkmm-3.0.so -> libgtkmm-3.0.so.1
+lrwxrwxrwx	root/root	usr/lib/libgtkmm-3.0.so.1 -> libgtkmm-3.0.so.1.1.0
+-rwxr-xr-x	root/root	usr/lib/libgtkmm-3.0.so.1.1.0
+lrwxrwxrwx	root/root	usr/lib/libgtkmm-4.0.so -> libgtkmm-4.0.so.0
+lrwxrwxrwx	root/root	usr/lib/libgtkmm-4.0.so.0 -> libgtkmm-4.0.so.0.0.0
+-rwxr-xr-x	root/root	usr/lib/libgtkmm-4.0.so.0.0.0

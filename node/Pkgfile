@@ -1,0 +1,45 @@
+description="Evented I/O for V8 JavaScript"
+url="https://nodejs.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Alienus,Greg,Tnut"
+
+makedepends=(python c-ares icu zlib libuv libnghttp2 libnghttp3 brotli)
+
+name=node
+alias=(nodejs node-js)
+version=26.11.1
+
+source=(https://nodejs.org/dist/v$version/node-v$version.tar.xz)
+
+build() {
+
+export MAKEFLAGS=-j15
+
+	cd node-v$version
+CFLAGS="$CFLAGS -g0 -Wl,--no-keep-memory -fuse-ld=gold -Wl,--no-map-whole-files -Wl,--no-keep-files-mapped" \
+  CXXFLAGS="$CFLAGS" \
+	./configure \
+	  --prefix=/usr          \
+            --shared-brotli        \
+            --shared-cares         \
+            --shared-libuv         \
+            --shared-openssl       \
+            --shared-nghttp2       \
+            --shared-nghttp3       \
+            --shared-zlib          \
+            --with-intl=system-icu 
+
+	make
+	make DESTDIR=$PKG install
+
+	# clean up
+	find $PKG -type f \( \
+		-name 'README.md' -o \
+		-name 'AUTHORS.md' -o \
+		-name 'INSTALL.md' -o \
+		-name 'TODO.org' -o \
+		-name 'ChangeLog' -o \
+		-name 'NEWS' \) -delete
+
+}

@@ -1,0 +1,19 @@
+description="Library for customizing and configuring font access"
+url="https://www.freedesktop.org/wiki/Software/fontconfig/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-fontconfig
+_name=fontconfig
+alias=(fontconfig)
+version=2.18.3
+
+makedepends=(util-linux gperf freetype expat libpng python meson)
+
+source=(https://gitlab.freedesktop.org/api/v4/projects/890/packages/generic/fontconfig/$version/fontconfig-$version.tar.xz)
+
+prepare() {
+  mv fontconfig-$version xorg-fontconfig-$version
+}
+build=meson

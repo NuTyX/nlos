@@ -1,0 +1,37 @@
+description='Sphinx extension which outputs QtHelp document'
+url='https://github.com/sphinx-doc/sphinxcontrib-qthelp'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-flit-core)
+
+name=python-sphinxcontrib-qthelp
+_name="sphinxcontrib-qthelp"
+alias=(${_name})
+
+version=2.0.0
+release=6
+_name=sphinxcontrib-qthelp
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/sphinx-doc/sphinxcontrib-qthelp/archive/refs/tags/$version.tar.gz)
+PKGMK_KEEP_SOURCES="no"
+
+build() {
+
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf
+}

@@ -1,0 +1,29 @@
+description="CIFS filesystem user-space tools"
+url="https://www.samba.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Rems,Graknu,Tnut"
+
+makedepends=(keyutils talloc pam kerberos)
+
+name=cifs-utils
+version=7.8
+
+source=(https://www.samba.org/ftp/linux-cifs/$name/$name-$version.tar.bz2)
+
+prepare() {
+cd $name-$version
+sed -e 's|cd \$(ROOTSBINDIR)|cd $(DESTDIR)$(ROOTSBINDIR)|g' -i Makefile.am
+autoreconf -fiv
+
+}
+
+build() {
+cd $name-$version
+autoreconf -fiv
+./configure --prefix=/usr   \
+--sbindir=/usr/bin --enable-systemd
+
+make
+make DESTDIR=$PKG ROOTSBINDIR=/usr/bin install
+}

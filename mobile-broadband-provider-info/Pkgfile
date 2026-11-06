@@ -1,0 +1,27 @@
+description="Network Management daemon"
+url="http://git.gnome.org/browse/mobile-broadband-provider-info/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(meson libxslt)
+
+name=mobile-broadband-provider-info
+version=20251101
+
+source=(https://gitlab.gnome.org/GNOME/mobile-broadband-provider-info/-/archive/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+mkdir build
+cd    build
+
+meson setup .. \
+       --prefix=/usr          \
+            --buildtype=release
+
+ninja
+
+DESTDIR=$PKG ninja install
+}

@@ -1,0 +1,19 @@
+description="libburn is a library for writing preformatted data onto optical media"
+url="http://icculus.org/burn/"
+
+packager="spiky <spiky@nutyx.org>"
+
+name=libburn
+version=1.5.8
+
+source=(http://files.libburnia-project.org/releases/$name-$version.tar.gz)
+
+build() {
+cd $name-${version/.pl01/}
+./configure --prefix=/usr --disable-static
+make
+make DESTDIR=$PKG install
+
+# Obsolet lib
+rm $PKG/usr/lib/libburn.la
+}

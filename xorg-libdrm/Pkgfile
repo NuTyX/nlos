@@ -1,0 +1,24 @@
+description="Provides a userspace library for accessing the DRM, direct rendering manager"
+url="https://dri.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(python meson docbook-xsl libxslt xorg-util-macros xorg-libpciaccess ninja)
+
+name=xorg-libdrm
+_name=libdrm
+
+alias=(libdrm)
+
+version=2.4.134
+
+alias=(libdrm)
+
+source=($url/${_name}/${_name}-$version.tar.xz)
+
+PKGMK_MESON=OPTIONS="--sysconfdir=/etc --localstatedir=/var -Dudev=true"
+prepare() {
+  mv ${_name}-$version $name-$version
+}
+build=meson

@@ -1,0 +1,37 @@
+description="SCons is a free tool construction allows replacement of make."
+url="https://scons.org"
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(python-setuptools python-wheel)
+
+name=scons
+_name="SCons"
+alias=(${_name})
+
+version=4.11.1
+
+source=(https://sourceforge.net/projects/scons/files/scons/$version/SCons-$version.tar.gz)
+build () 
+{ 
+cd ${name}-$version
+sed -i 's/env python/&3/' SCons/Utilities/*.py
+sed -i 's:build/doc/man/::' setup.cfg
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+
+install -D -m644 LICENSE $PKG/usr/share/licenses/$name/LICENSE
+}

@@ -1,0 +1,34 @@
+description="Gives more easily access to internet services which says be 'RESTful'."
+url="http://www.gnome.org/"
+
+license="LGPL"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Fanch,Tnut"
+
+makedepends=(libsoup3 gobject-introspection)
+run=(json-glib)
+
+name=librest
+version=0.10.2
+
+source=(https://gitlab.gnome.org/GNOME/librest/-/archive/$version/librest-$version.tar.gz)
+
+
+build() {
+cd $name-$version
+mkdir build
+cd    build
+
+meson --prefix=/usr  \
+      -Dgtk_doc=false \
+    -Dexamples=false \
+    -Dtests=false \
+    -Dca_certificates=true \
+    -Dca_certificates_path=/etc/ssl/certs \
+    ..
+
+ninja
+DESTDIR=$PKG ninja install
+
+}

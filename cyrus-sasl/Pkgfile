@@ -1,0 +1,60 @@
+description="Cyrus saslauthd SASL authentication daemon"
+url="https://cyrusimap.org/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+makedepends=(db automake libtool libxcrypt)
+
+name=cyrus-sasl
+version=2.1.28
+release=8
+
+scriptsversion=20260315
+
+source=(cyrus-sasl-2.1.28-gcc15_fixes-1.patch
+        https://github.com/cyrusimap/$name/archive/refs/tags/$name-$version.tar.gz
+        https://sourceforge.net/projects/nutyx/files/sources/nutyx-scripts/nutyx-scripts-$scriptsversion.tar.xz)
+
+prepare() {
+cd $name-$name-$version
+patch -Np1 -i ../cyrus-sasl-2.1.28-gcc15_fixes-1.patch
+autoreconf -fiv
+sed '/saslint/a #include <time.h>'       -i lib/saslutil.c
+sed '/plugin_common/a #include <time.h>' -i plugins/cram.c
+}
+build() {
+	cd $name-$name-$version
+	./configure --prefix=/usr \
+                    --sbindir=/usr/bin \
+		--sysconfdir=/etc \
+		--mandir=/usr/share/man \
+		--enable-auth-sasldb \
+		--with-dbpath=/var/lib/sasl/sasldb2 \
+		--with-saslauthd=/var/run/saslauthd
+
+	make
+	make DESTDIR=$PKG install
+	install -v -m700 -d $PKG/var/lib/sasl $PKG/var/run/saslauthd
+
+# Obsolets libs
+rm $PKG/usr/lib/libsasl2.la
+rm $PKG/usr/lib/sasl2/libanonymous.la
+rm $PKG/usr/lib/sasl2/libcrammd5.la
+rm $PKG/usr/lib/sasl2/libdigestmd5.la
+rm $PKG/usr/lib/sasl2/libotp.la
+rm $PKG/usr/lib/sasl2/libplain.la
+rm $PKG/usr/lib/sasl2/libsasldb.la
+rm $PKG/usr/lib/sasl2/libscram.la
+
+# Service
+cd $SRC/nutyx-scripts-$scriptsversion
+make DESTDIR=$PKG install-sysd-saslauthd
+}
+service() {
+cd $PKG
+bsdtar -r -f \
+$PKGMK_PACKAGE_DIR/${name}.${group}${PKGMK_PACKAGE_EXT}$version-$release \
+usr/lib/systemd
+rm -r usr/lib/systemd
+}

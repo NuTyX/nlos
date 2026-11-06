@@ -1,0 +1,17 @@
+INFO="\033[1;36m"
+NORMAL="\033[0;39m"
+SN="proftpd"
+IDN="46"
+if ! (getent group $SN > /dev/null); then
+	printf "${INFO}Creating $SN group${NORMAL}\n"
+	groupadd -g $IDN $SN
+fi
+if ! (getent passwd $SN > /dev/null); then
+	printf "${INFO}Creating $SN user${NORMAL}\n"
+	useradd -c "$SN" -d /srv/ftp -g $SN \
+        -s /usr/bin/proftpdshell -u  $IDN $SN
+fi
+if [ -d srv/ftp ]; then
+	install -v -d -m775 -o $SN -g $SN srv/ftp 
+fi
+! grep -q proftpdshell etc/shells && echo /usr/bin/proftpdshell >> etc/shells

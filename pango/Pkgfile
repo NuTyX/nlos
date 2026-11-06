@@ -1,0 +1,33 @@
+description="Library for layout and rendering of text"
+url="https://www.pango.org/"
+
+license="LGPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(ninja meson cairo libthai freetype xorg-libxft gobject-introspection
+             harfbuzz xorg-libxxf86vm gtk-doc fribidi)
+
+
+name=pango
+version=1.58.2
+
+source=(https://gitlab.gnome.org/GNOME/pango/-/archive/$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+
+mkdir build
+cd    build
+
+meson setup .. \
+       --prefix=/usr          \
+            --buildtype=release \
+            -D introspection=enabled
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}

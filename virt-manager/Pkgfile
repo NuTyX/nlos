@@ -1,0 +1,34 @@
+description="Desktop user interface for managing virtual machines"
+url="https://virt-manager.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Yaolinux,Team,DocWOPR,Tnut"
+
+makedepends=(gtk-vnc gtksourceview4 intltool libosinfo libvirt-glib libvirt-python
+             python-cairo python-gobject python-lxml python-requests spice-gtk vte)
+
+run=(gtk-vnc gtksourceview4 libxml2 libosinfo libvirt libvirt-glib libvirt-python
+     python-cairo python-gobject python-lxml python-requests spice-gtk vte
+     python-urllib3 python-idna hwdata)
+
+name=virt-manager
+version=5.1.0
+release=10
+
+source=(https://github.com/virt-manager/$name/archive/refs/tags/v$version.tar.gz)
+
+build() {
+
+     meson setup --prefix /usr \
+             --buildtype  plain        \
+             --libdir=/usr/lib         \
+              -Ddefault-hvs="qemu,lxc"  \
+              -Dupdate-icon-cache=false \
+              -Dcompile-schemas=false   \
+              -Dtests=disabled          \
+              $name-$version            builddir
+
+    meson compile -C          builddir
+
+DESTDIR=$PKG meson install -C builddir
+}

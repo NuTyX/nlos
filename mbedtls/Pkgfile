@@ -1,0 +1,41 @@
+description="Portable cryptographic and SSL/TLS library, aka polarssl"
+url="https://tls.mbed.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Tnut"
+
+makedepends=(cmake python)
+
+name=mbedtls
+version=4.2.0
+
+source=(https://github.com/Mbed-TLS/mbedtls/releases/download/$name-$version/$name-$version.tar.bz2)
+
+build() {
+
+  #sed -i 's|//\(#define MBEDTLS_THREADING_C\)|\1|' $name-$name-$version/include/mbedtls/config.h
+  #sed -i 's|//\(#define MBEDTLS_THREADING_PTHREAD\)|\1|' $name-$name-$version/include/mbedtls/config.h
+
+  cmake $name-$version \
+        -B build \
+        -DCMAKE_BUILD_TYPE=Release \
+        -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_VERBOSE_MAKEFILE=ON \
+        -DUSE_SHARED_MBEDTLS_LIBRARY=ON \
+        -DCMAKE_INSTALL_RPATH=
+
+  make -C build
+
+  make -C build DESTDIR="$PKG" install
+
+# rename generic utils
+  local _prog _baseprog
+  for _prog in "$PKG"/usr/bin/*; do
+    _baseprog=$(basename "$_prog")
+    mv -v "$_prog" "${_prog//$_baseprog/mbedtls_$_baseprog}"
+  done
+
+# fixup static lib permissions
+  chmod 644 "$PKG"/usr/lib/*.a
+
+}

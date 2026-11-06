@@ -1,0 +1,22 @@
+description="Device Tree Compiler"
+url="https://www.devicetree.org/"
+
+license="BSD-2-Clause"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python meson yaml swig)
+name=dtc
+version=1.8.1
+
+PKGMK_MESON_OPTIONS="-Dpython=disabled"
+
+source=(https://kernel.org/pub/software/utils/$name/$name-$version.tar.xz)
+
+build=meson
+
+package() {
+ install -Dm644 $name-$version/BSD-2-Clause $PKG/usr/share/licenses/$name/BSD-2-Clause
+}
+

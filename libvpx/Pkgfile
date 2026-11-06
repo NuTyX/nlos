@@ -1,0 +1,26 @@
+description="The VP8 Codec SDK"
+url="http://webm.googlecode.com/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(perl sed diffutils yasm)
+
+name=libvpx
+version=1.17.0
+
+source=(https://github.com/webmproject/$name/archive/v$version/$name-$version.tar.gz)
+build() {
+cd $name-$version
+
+sed -i 's/cp -p/cp/' build/make/Makefile
+
+mkdir libvpx-build
+cd    libvpx-build
+
+../configure --prefix=/usr \
+--enable-shared --disable-static
+make
+
+make DESTDIR=$PKG install
+}

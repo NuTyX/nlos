@@ -1,0 +1,29 @@
+description="Outline and bitmap font editor"
+url="https://fontforge.sourceforge.net"
+
+license="BSD"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+name=fontforge
+version=20251009
+release=1
+
+makedepends=(cmake xorgproto m4 shared-mime-info freetype libxml2 cairo gtk3
+             pango giflib libjpeg-turbo libpng libtiff gtkmm libspiro)
+run=(shared-mime-info desktop-file-utils)
+
+source=(https://github.com/$name/$name/releases/download/$version/$name-$version.tar.xz)
+
+build() {
+    mkdir build
+    cd build
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr  \
+          -DCMAKE_BUILD_TYPE=Release   \
+          -DENABLE_DOCS=OFF            \
+          -Wno-dev ../$name-$version
+    make
+    make DESTDIR=$PKG install
+}

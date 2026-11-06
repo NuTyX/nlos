@@ -1,0 +1,50 @@
+description="A cross-platform application and UI framework, QtLocation files"
+url="http://qt-project.org/"
+
+license="FDL, GPL3, LGPL3, custom"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Rems,Spiky"
+
+makedepends=(icu qtbase qtdeclarative qttools)
+
+set=(qt5)
+
+name=qtlocation
+version=5.15.19
+release=1
+
+_name="${name}-everywhere-opensource-src"
+
+source=(kf5-1.patch consolidate-1.patch
+	https://download.qt.io/archive/qt/${version:0:4}/$version/submodules/${_name}-${version}.tar.xz)
+
+prepare() {
+ cd ${_name/-opensource/}-${version}
+ patch -Np1 -i ../kf5-1.patch
+ patch -Np1 -i ../consolidate-1.patch
+ sed -e 's|c++14|c++17|g' -e '/c++1z/d' -i \
+ src/3rdparty/mapbox-gl-native/mapbox-gl-native.pro
+
+ sed -e "/pragma once/a#include <cstdint>"                          \
+    -i src/3rdparty/mapbox-gl-native/include/mbgl/util/geometry.hpp \
+       src/3rdparty/mapbox-gl-native/include/mbgl/util/string.hpp   \
+       src/3rdparty/mapbox-gl-native/src/mbgl/gl/stencil_mode.hpp
+}
+build() {
+mkdir build
+cd    build
+
+qmake ../${_name/-opensource/}-${version}
+make
+make INSTALL_ROOT=$PKG install
+
+# Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$PKG/usr/lib" -type f -name '*.prl' \
+       -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+
+# Obsolet libs
+rm $PKG/usr/lib/libQt5Location.la
+rm $PKG/usr/lib/libQt5Positioning.la
+rm $PKG/usr/lib/libQt5PositioningQuick.la
+}

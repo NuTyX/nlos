@@ -1,0 +1,22 @@
+description='EditorConfig core library'
+url='https://github.com/editorconfig/editorconfig-core-c'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Skythrew"
+
+makedepends=(git pcre2 cmake)
+
+name=libeditorconfig
+version=12.11
+
+source=($url.git)
+
+build() {
+    cd libeditorconfig-$version
+    mkdir build
+    cd build
+
+    cmake -DCMAKE_INSTALL_PREFIX=/usr -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_LIBDIR=lib -DBUILD_TESTING=OFF -Wno-dev ..
+    make
+    make DESTDIR=$PKG install
+}

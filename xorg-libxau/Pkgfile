@@ -1,0 +1,29 @@
+description="X11 authorisation library"
+url="https://xorg.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-libxau
+version=1.0.12
+release=1
+_name=libXau
+alias=(libXau libxau)
+
+makedepends=(xorgproto)
+source=($url/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXau-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

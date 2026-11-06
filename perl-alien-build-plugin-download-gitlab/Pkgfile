@@ -1,0 +1,21 @@
+description='Alien::Build plugin to download from GitLab'
+url='https://metacpan.org/release/Alien-Build-Plugin-Download-GitLab'
+
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(perl-alien-build perl-path-tiny perl-uri perl-test2-suite)
+
+name=perl-alien-build-plugin-download-gitlab
+version=0.01
+release=5
+
+source=(https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Alien-Build-Plugin-Download-GitLab-$version.tar.gz)
+
+build() {
+cd Alien-Build-Plugin-Download-GitLab-$version
+  perl Makefile.PL INSTALLDIRS=vendor
+  make
+  make test
+  make DESTDIR=$PKG install
+}

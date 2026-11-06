@@ -1,0 +1,21 @@
+description="A configuration editing tool that parses config files and transforms them into a tree"
+url="http://augeas.net"
+
+contributors="Berlius,Greg,Remy"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(libxml2 readline)
+
+name=augeas
+version=1.15.0
+
+source=(https://github.com/hercules-team/augeas/releases/download/release-$version/$name-$version.tar.gz)
+
+
+build() {
+  cd $name-$version
+  ./configure --prefix=/usr
+  make
+
+  make DESTDIR=$PKG install
+}

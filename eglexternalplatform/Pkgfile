@@ -1,0 +1,26 @@
+description='The EGL External Platform interface'
+url=\'https://github.com/NVIDIA/egl-wayland\'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Llamatron,2112"
+
+makedepends=()
+run=(libglvnd)
+set=()
+
+name=eglexternalplatform
+version=1.2.1
+
+source=(https://github.com/NVIDIA/eglexternalplatform/archive/refs/tags/${version}.tar.gz)
+
+build() {
+
+  meson setup $name-$version build \
+    --prefix=/usr \
+    --includedir=include/EGL \
+    --libdir=share \
+    --buildtype=plain
+
+  meson compile -C build
+  DESTDIR=$PKG meson install -C build
+}

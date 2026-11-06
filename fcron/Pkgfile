@@ -1,0 +1,64 @@
+description="Feature-rich cron implementation"
+url="http://fcron.free.fr"
+
+contributors="Pierre,Greg,Spiky"
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(vim pam libxcrypt readline systemd)
+
+name=fcron
+version=3.4.0
+release=5
+
+PKGMK_GROUPS=(doc man)
+source=(http://fcron.free.fr/archives/$name-$version.src.tar.gz)
+
+prepare() {
+
+SN="fcron"
+IDN="22"
+
+groupadd -g $IDN $SN
+useradd -c "Fcron User" -d /dev/null \
+   -u $IDN -g $SN -s /usr/bin/false $SN
+
+unset MAKEFLAGS
+cd $name-$version
+find doc -type f -exec sed -i 's:/usr/local::g' {} \;
+}
+
+build() {
+    unset MAKEFLAGS
+
+    cd $name-$version
+
+    ./configure --prefix=/usr \
+    --sysconfdir=/etc  \
+    --sbindir=/usr/bin \
+    --with-sendmail=/bin/sendmail \
+    --localstatedir=/var    \
+    --with-boot-install=no  \
+    --mandir=/usr/share/man \
+    --infodir=/usr/share/info \
+    --with-piddir=/run \
+    --with-answer-all=no
+
+    make
+
+    make DESTDIR=$PKG install
+
+    mkdir -p $PKG/etc/pam.d
+
+    for i in fcron fcrontab
+    do
+        install -D -m644 files/fcron.pam $PKG/etc/pam.d/$i
+    done
+
+# Add cron.* directories
+
+    for j in daily hourly monthly weekly
+    do
+        install -d -m755 $PKG/etc/cron.$j
+    done
+
+}

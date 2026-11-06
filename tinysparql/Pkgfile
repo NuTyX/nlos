@@ -1,0 +1,27 @@
+description='Tinysparql is a low-footprint RDF triple store with a SPARQL 1.1 interface'
+url='https://gitlab.gnome.org/GNOME/tinysparql'
+
+license="LGPLv2.1+"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(git json-glib vala icu libsoup3 python-gobject asciidoc gi-docgen)
+run=()
+
+name=tinysparql
+version=3.12.0
+
+source=($url.git)
+PKGMK_GROUPS=(devel doc man)
+
+build=meson
+
+package() {
+ install -Dm644 $name-$version/COPYING \
+ $PKG/usr/share/licenses/$name/COPYING
+ install -Dm644 $name-$version/COPYING.LGPL \
+ $PKG/usr/share/licenses/$name/COPYING.LGPL
+ install -Dm644 $name-$version/COPYING.GPL \
+ $PKG/usr/share/licenses/$name/COPYING.GPL
+}

@@ -1,0 +1,38 @@
+description='Perl extension for using OpenSSL'
+url='https://search.cpan.org/dist/Net-SSLeay/'
+
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(openssl perl)
+run=(perl)
+
+name=perl-net-ssleay
+_cpanname=Net-SSLeay
+version=1.96
+release=2
+
+
+source=(https://cpan.metacpan.org/authors/id/C/CH/CHRISN/${_cpanname}-${version}.tar.gz
+        Net-SSLeay-1.96-openssl4_fixes-2.patch)
+
+prepare() {
+cd ${_cpanname}-${version}
+patch -Np1 -i ../Net-SSLeay-1.96-openssl4_fixes-2.patch
+}
+
+build() {
+  cd ${_cpanname}-${version}
+
+  PERL_MM_USE_DEFAULT=1 perl Makefile.PL INSTALLDIRS=vendor
+
+make
+make DESTDIR=$PKG install
+
+install -D -m644 README $PKG/usr/share/licenses/$name/LICENSE
+
+find $PKG \
+         -name '*.bs' -or \
+         -name '.packlist' -or \
+         -name 'perllocal.pod' -delete
+}

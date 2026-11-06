@@ -1,0 +1,32 @@
+description="Utilities for monitoring your system and its processes."
+url="https://procps.sourceforge.net/"
+
+license="GPL LGPL"
+
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(pkgconf ncurses)
+
+set=(core)
+
+name=procps-ng
+version=4.0.7
+
+PKGMK_LOCALES=()
+source=(https://sourceforge.net/projects/$name/files/Production/$name-$version.tar.xz)
+
+build()
+{
+cd $name-$version
+
+./configure --prefix=/usr \
+--exec-prefix= --sbindir=/usr/bin \
+--libdir=/usr/lib --bindir=/usr/bin \
+--docdir=/usr/share/doc/$name \
+--disable-static \
+--disable-kill
+
+make
+make DESTDIR=$PKG install
+}

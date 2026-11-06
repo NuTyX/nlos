@@ -1,0 +1,28 @@
+description="XCB cursor library"
+url="http://cgit.freedesktop.org/xcb/util-cursor"
+
+license="Custom:MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+makedepends=(libxcb  xcb-util-renderutil xcb-util-image)
+
+name=xcb-util-cursor
+version=0.1.6
+
+source=(https://xorg.freedesktop.org/archive/individual/lib/$name-$version.tar.xz)
+
+build() {
+
+cd $name-*
+./configure --prefix=/usr
+
+make
+make DESTDIR=$PKG install
+
+# Obsolet lib
+rm $PKG/usr/lib/libxcb-cursor.la
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

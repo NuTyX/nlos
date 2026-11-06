@@ -1,0 +1,22 @@
+description="Protocol definitions and daemon for D-Bus at-spi"
+url="https://gitlab.gnome.org/GNOME/at-spi2-core"
+
+license="GPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+makedepends=(ninja meson glib dbus gobject-introspection xorg-libx11 xorg-libxtst)
+
+name=at-spi2-core
+version=2.62.1
+tag=$version
+PKGMK_GROUPS=(devel)
+
+source=(https://gitlab.gnome.org/GNOME/at-spi2-core.git)
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

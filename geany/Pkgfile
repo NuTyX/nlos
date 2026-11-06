@@ -1,0 +1,28 @@
+description="Fast and lightweight IDE"
+url="https://www.geany.org"
+
+license="GPL2"
+
+contributors="Pierre,Greg,Spiky"
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(gtk3)
+run=(hicolor-icon-theme desktop-file-utils)
+
+name=geany
+version=2.1
+release=1
+
+source=(https://download.$name.org/$name-$version.tar.bz2)
+
+build() {
+cd $name-$version
+./configure \
+--prefix=/usr
+
+make
+
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+}

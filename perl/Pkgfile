@@ -1,0 +1,69 @@
+description="The Perl package contains the Practical Extraction and Report Language."
+url="https://www.perl.org/"
+
+license="GPL, PerlArtistic"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Greg,Tnut"
+
+makedepends=(gzip bzip2 less)
+
+name=perl
+version=5.44.0
+
+_majversion=${version:0:4}
+
+source=(https://www.cpan.org/src/5.0/$name-$version.tar.xz
+        perl-5.40.0-fix-compilation-in-eprefix-bug-939014.patch)
+
+build()
+{
+cd $name-$version
+
+if [ "`uname -m`" == "x86_64" ]; then
+	_ARCH="-Dcccdlflags='-fPIC'"
+else
+	_ARCH=""
+fi
+
+echo "127.0.0.1 localhost $(hostname)" > /etc/hosts
+export BUILD_ZLIB=False
+export BUILD_BZIP2=0
+
+
+sh Configure -des     \
+	-Dprefix=/usr \
+	-Duseshrplib  \
+	-Dvendorprefix=/usr  \
+	-Darchlib=/usr/lib/perl5/${_majversion}/core_perl     \
+	-Dprivlib=/usr/lib/perl5/${_majversion}/core_perl     \
+	-Dvendorlib=/usr/lib/perl5/${_majversion}/vendor_perl  \
+	-Dvendorarch=/usr/lib/perl5/${_majversion}/vendor_perl \
+	-Dsitelib=/usr/lib/perl5/${_majversion}/site_perl      \
+	-Dsitearch=/usr/lib/perl5/${_majversion}/site_perl     \
+	-Dman1dir=/usr/share/man/man1        \
+	-Dman3dir=/usr/share/man/man3        \
+	-Dpager="/usr/bin/less isR" ${_ARCH} \
+	-Dusethreads
+
+make
+# Only when we are building a new base
+
+if [ -L /tools ]; then
+	make -k test || true
+fi
+
+make DESTDIR=$PKG install
+find $PKG -iname 'TODO*' -or \
+	-iname 'Change*' -or \
+	-iname 'README*' -or \
+	-name '*.bs' -or \
+	-name .packlist -or \
+	-name perllocal.pod -or \
+	-empty -delete
+
+chmod -R +w $PKG
+unset BUILD_ZLIB BUILD_BZIP2
+
+install -Dm644 Copying $PKG/usr/share/licenses/$name/Copying
+}

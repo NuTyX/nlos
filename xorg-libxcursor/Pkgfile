@@ -1,0 +1,28 @@
+description="X cursor management library"
+url="https://gitlab.freedesktop.org/xorg/lib/libxcursor"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
+
+name=xorg-libxcursor
+alias=(libXcursor libxcursor)
+_name=libXcursor
+version=1.2.3
+release=1
+makedepends=(xorgproto xorg-libxrender xorg-libxfixes xorg-libx11)
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXcursor-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

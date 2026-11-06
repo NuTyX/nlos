@@ -1,0 +1,58 @@
+description="Google Test - C++ testing utility"
+url="https://github.com/google/googletest/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(python sed cmake)
+
+name=gtest
+version=1.18.0
+
+PKGMK_KEEP_SOURCES="no"
+source=(https://github.com/google/googletest/archive/refs/tags/v$version.tar.gz)
+
+prepare() {
+ cd googletest-${version}
+
+ # fixup version as they are never correct
+ sed -E "s|(GOOGLETEST_VERSION) [0-9\\.]+|\\1 ${version}|" -i CMakeLists.txt
+}
+
+build () {
+  mkdir build && cd build
+
+  cmake -DCMAKE_INSTALL_PREFIX=/usr \
+        -DCMAKE_INSTALL_LIBDIR=lib \
+        -DBUILD_SHARED_LIBS=ON \
+        -Dgtest_build_tests=ON \
+        -DPYTHON_EXECUTABLE=$(which python3) \
+        ../googletest-${version}
+
+  cmake --build .
+
+  DESTDIR="${PKG}" cmake --build . --target install
+
+  # Shouldn't be present
+  find "${PKG}" -name '*.pump' -printf 'Removing %P\n' -delete
+
+  cd ../googletest-${version}
+  install -Dm 644 LICENSE -t "${PKG}/usr/share/licenses/${name}-$version"
+  install -Dm 644 README.md CONTRIBUTORS -t "${PKG}/usr/share/doc/${name}-$version"
+
+  # Install some googletest files
+  cd googletest
+  install -Dm 644 cmake/* -t "${PKG}/usr/src/googletest/cmake"
+  install -Dm 644 src/* -t "${PKG}/usr/src/googletest/src"
+  install -Dm 644 CMakeLists.txt -t "${PKG}/usr/src/googletest"
+  ln -sv googletest $PKG/usr/src/gtest
+
+  # Install some gmock files
+  cd ../googlemock
+  install -Dm 644 cmake/* -t "${PKG}/usr/src/gmock/cmake"
+  install -Dm 644 src/* -t "${PKG}/usr/src/gmock/src"
+  install -Dm 644 CMakeLists.txt -t "${PKG}/usr/src/gmock"
+
+  sed -i 's|src/||' "${PKG}/usr/src/gmock/src/gmock-all.cc"
+
+}

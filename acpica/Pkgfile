@@ -1,0 +1,22 @@
+description="ACPI tools, including Intel ACPI Source Language compiler"
+url="https://acpica.org"
+
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(flex bison)
+
+name=acpica
+version=20260408
+
+source=(https://github.com/acpica/acpica/releases/download/$version/acpica-unix-$version.tar.gz)
+
+prepare() {
+
+mv acpica-unix-$version acpica-$version
+}
+build() {
+
+cd acpica-$version
+NOWERROR=TRUE make
+make DESTDIR=$PKG install
+}

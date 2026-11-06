@@ -1,0 +1,24 @@
+description="The zoneinfo database or IANA Time Zone"
+url="https://www.iana.org/time-zones"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Minzords,Tnut"
+
+name=tzdata
+version=2026a
+
+set=(core)
+
+source=(http://www.iana.org/time-zones/repository/releases/$name$version.tar.gz)
+build() {
+
+for tz in etcetera southamerica northamerica europe \
+  africa antarctica asia australasia backward; do
+ zic -L /dev/null -d $PKG/usr/share/zoneinfo $tz
+ zic -L /dev/null  -d $PKG/usr/share/zoneinfo/posix $tz
+ zic -L leapseconds -d $PKG/usr/share/zoneinfo/right $tz
+done
+
+cp -v zone.tab zone1970.tab iso3166.tab $PKG/usr/share/zoneinfo
+zic -d $PKG/usr/share/zoneinfo -p America/New_York
+}

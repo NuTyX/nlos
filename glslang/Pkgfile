@@ -1,0 +1,46 @@
+description='OpenGL and OpenGL ES shader front end and validator'
+url='https://github.com/KhronosGroup/glslang'
+
+license="BSD"
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(cmake ninja spirv-tools)
+
+name=glslang
+version=15.2.0
+
+#source=(https://github.com/KhronosGroup/glslang/archive/$version/$name-$version.tar.gz)
+source=(https://github.com/KhronosGroup/glslang/archive/refs/tags/$version.tar.gz)
+
+build() {
+cd $name-$version
+
+cmake \
+		-Bbuild-shared \
+		-GNinja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+                -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
+		-DBUILD_SHARED_LIBS=ON
+		ninja -Cbuild-shared
+	cmake \
+		-Bbuild-static \
+		-GNinja \
+		-DCMAKE_INSTALL_PREFIX=/usr \
+		-DCMAKE_BUILD_TYPE=Release \
+                -DALLOW_EXTERNAL_SPIRV_TOOLS=ON \
+		-DBUILD_SHARED_LIBS=OFF
+		ninja -Cbuild-static
+
+	DESTDIR=$PKG ninja -C build-shared install
+	DESTDIR=$PKG ninja -C build-static install
+
+install -Dm644 LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE
+
+	cd $PKG/usr/lib
+	for lib in *.so; do
+		ln -sf "${lib}" "${lib}.0"
+	done
+
+}

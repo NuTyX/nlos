@@ -1,0 +1,38 @@
+description="Virtual Distributed Ethernet for emulators like qemu"
+url="https://sourceforge.net/projects/vde/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
+
+makedepends=(python libpcap openssl)
+
+name=vde2
+version=2.3.3
+release=2
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/virtualsquare/vde-2/archive/refs/tags/v$version.tar.gz)
+
+unset MAKEFLAGS
+
+prepare() {
+mv vde-2-$version $name-$version
+cd $name-$version
+autoreconf -fiv
+}
+
+build() {
+
+	cd $name-$version
+
+	./configure --prefix=/usr \
+               --sysconfdir=/etc \
+               --sbindir=/usr/sbin \
+               --libexecdir=/usr/lib/vde2 \
+               --enable-experimental
+
+	make
+	make prefix=$PKG/usr sysconfdir=$PKG/etc sbindir=$PKG/usr/sbin libexecdir=$PKG/usr/lib/vde2 install
+
+}

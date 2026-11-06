@@ -1,0 +1,44 @@
+description="Stylesheets for Yelp."
+url="http://www.gnome.org/"
+
+license="GPL2.1, GPL2, MIT"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(meson itstool libxslt intltool perl-xml-parser)
+
+name=yelp-xsl
+version=49.0
+
+source=(https://gitlab.gnome.org/GNOME/yelp-xsl/-/archive/$version/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+mkdir build
+cd    build
+
+meson setup .. \
+     --prefix=/usr          \
+     --buildtype=release
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 ../COPYING.LGPL $PKG/usr/share/licenses/$name/COPYING.LGPL
+install -Dm644 ../COPYING.GPL $PKG/usr/share/licenses/$name/COPYING.GPL
+install -Dm644 ../COPYING.MIT $PKG/usr/share/licenses/$name/COPYING.MIT
+
+}
+uptodate(){
+local latest lastversion url
+url="https://download.gnome.org/sources/$name"
+latest="`lynx -read_timeout=20 -dump -listonly -nonumbers \
+$url/?C=N\;O=D|grep [0-9]/$|head -1`"
+lastversion="`lynx -read_timeout=20 -dump -listonly -nonumbers \
+$latest/?C=N\;O=D|grep LATEST|grep [0-9]$|cut -d "-" -f4`"
+echo "$lastversion"
+}

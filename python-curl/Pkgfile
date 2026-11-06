@@ -1,0 +1,32 @@
+description="PycURL is a Python interface to libcurl"
+url="http://pycurl.io/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel curl)
+
+name=python-curl
+_name="pycurl"
+alias=(${_name})
+
+version=7.48.0
+
+_name=pycurl
+source=(https://github.com/pycurl/pycurl/archive/refs/tags/v$version.tar.gz)
+
+build() {
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

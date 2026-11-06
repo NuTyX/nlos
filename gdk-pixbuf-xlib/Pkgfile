@@ -1,0 +1,15 @@
+description="Deprecated Xlib integration for GdkPixbuf"
+url="https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems"
+
+makedepends=(meson gdk-pixbuf xorg-libx11 gtk-doc)
+
+name=gdk-pixbuf-xlib
+version=2.40.2
+release=4
+
+source=(https://gitlab.gnome.org/Archive/gdk-pixbuf-xlib/-/archive/$version/gdk-pixbuf-xlib-$version.tar.gz)
+
+build=meson

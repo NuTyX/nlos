@@ -1,0 +1,25 @@
+description="Xorg VMWare mouse input driver."
+packager="Spiky <spiky@nutyx.org>"
+name=xorg-xf86-input-vmmouse
+version=13.2.0
+release=2
+
+_name=${name/xorg-/}
+makedepends=(xorg-server)
+source=(http://ftp.x.org/pub/individual//driver/${_name}-$version.tar.xz)
+
+build() {
+	cd ${_name}-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+        --with-udev-rules-dir=/lib/udev/rules.d \
+        --without-hal-callouts-dir \
+        --without-hal-fdi-dir
+
+	make
+	make DESTDIR=$PKG install
+
+	# Obsolet lib
+	rm $PKG/usr/lib/xorg/modules/input/vmmouse_drv.la
+}

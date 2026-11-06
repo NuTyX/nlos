@@ -1,0 +1,31 @@
+description="Internationalized Domain Names in Applications (IDNA)"
+url="https://github.com/kjd/idna"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-flit-core)
+
+name=python-idna
+_name="idna"
+alias=(${_name})
+
+version=3.20
+
+source=(https://github.com/kjd/idna/archive/v$version.tar.gz)
+
+build() {
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

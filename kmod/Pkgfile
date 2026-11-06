@@ -1,0 +1,25 @@
+description="The Kmod package contains libraries and utilities for loading kernel modules."
+url="https://www.kernel.org/pub/linux/kernel/people/rusty/modules"
+
+license="LGPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+set=(core)
+
+makedepends=(meson ninja glibc zlib xz zstd openssl)
+PKGMK_GROUPS=(devel doc man)
+
+name=kmod
+version=34.2
+release=5
+
+source=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz )
+PKGMK_MESON_OPTIONS="-Dmoduledir=/usr/lib/modules --sbindir=/usr/bin \
+-Ddocs=false -Dmanpages=false"
+
+build=meson
+package() {
+  install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

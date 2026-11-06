@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	usr/share/doc/
+drwxr-xr-x	root/root	usr/share/doc/fontconfig-2.16.0/
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-devel.html
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-devel.pdf
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-devel.sgml
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-devel.txt
+drwxr-xr-x	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-devel/
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-user.html
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-user.pdf
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-user.sgml
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/fontconfig-user.txt
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/func.sgml
+-rw-r--r--	root/root	usr/share/doc/fontconfig-2.16.0/version.sgml

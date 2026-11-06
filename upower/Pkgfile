@@ -1,0 +1,21 @@
+description="To enumerating power devices, listening to device events, querying history and statistics"
+url="https://upower.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+makedepends=(dbus-glib libusb intltool perl-xml-parser
+             polkit gobject-introspection libgudev pm-utils)
+
+name=upower
+version=1.91.4
+
+source=(https://gitlab.freedesktop.org/$name/$name/-/archive/v${version}/$name-v${version}.tar.gz)
+
+PKGMK_GROUPS=(devel doc man)
+
+prepare() {
+  mv $name-v$version $name-$version
+}
+
+build=meson

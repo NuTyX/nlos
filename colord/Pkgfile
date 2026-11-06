@@ -1,0 +1,47 @@
+description="System daemon for managing color devices"
+url="https://www.freedesktop.org/software/colord/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
+
+name=colord
+version=1.4.8
+release=3
+
+makedepends=(meson libgudev sqlite polkit lcms2 argyllcms gobject-introspection libusb dbus vala libgusb)
+source=(http://www.freedesktop.org/software/$name/releases/$name-$version.tar.xz)
+
+PKGMK_GROUPS=(devel)
+
+prepare() {
+SN="colord"
+IDN="71"
+if ! (getent group $SN > /dev/null); then
+   groupadd -g $IDN $SN
+fi
+if ! (getent passwd $SN > /dev/null); then
+   useradd -c "Color Daemon Owner" -d /var/lib/$SN \
+   -u $IDN -g $SN -s /usr/bin/false $SN
+fi
+}
+
+build() {
+cd $name-$version
+mv po/fur.po po/ur.po
+sed -i 's/fur/ur/' po/LINGUAS
+
+mkdir build
+cd    build
+meson --prefix=/usr              \
+	--sysconfdir=/etc        \
+	--localstatedir=/var     \
+	-Ddaemon_user=colord     \
+          -Dvapi=true              \
+	-Dsystemd=true           \
+	-Dlibcolordcompat=true   \
+	-Dbash_completion=false  \
+	-Ddocs=false             \
+	-Dman=false ..
+ninja
+DESTDIR=$PKG ninja install
+}

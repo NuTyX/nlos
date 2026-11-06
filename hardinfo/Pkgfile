@@ -1,0 +1,35 @@
+description="A system information and benchmark tool"
+url="https://github.com/lpereira/hardinfo"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="McKim,Tnut"
+
+makedepends=(git cmake json-glib gtk3
+             libsoup3)
+run=(pciutils usbutils xorg-xrandr mesa
+     hicolor-icon-theme desktop-file-utils
+     gtk-update-icon-cache shared-mime-info)
+
+name=hardinfo
+version=0.5.1
+release=5
+
+prepare() {
+git clone https://github.com/lpereira/hardinfo
+cd $name
+mkdir build
+cd -
+}
+build() {
+
+cd $name/build
+
+cmake \
+    -DJSON_GLIB_INCLUDE_DIRS=/usr/include/json-glib-1.0 \
+    -DCMAKE_INSTALL_PREFIX=/usr \
+    -DCMAKE_INSTALL_LIBDIR=lib \
+    -DHARDINFO_GTK3=true \
+    ..
+make
+make DESTDIR=$PKG install
+}

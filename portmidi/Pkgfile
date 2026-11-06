@@ -1,0 +1,28 @@
+description="Platform independent library for real-time MIDI input/output"
+url="http://portmedia.sourceforge.net"
+
+contributors="Pierre,Greg,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(cmake glib alsa-lib)
+
+name=portmidi
+version=2.0.8
+
+source=(https://github.com/portmidi/portmidi/archive/v$version/$name-$version.tar.gz)
+
+build() {
+
+	cd $name-$version
+	   mkdir build
+           cd    build
+
+	cmake           -DCMAKE_INSTALL_PREFIX=/usr \
+			-DCMAKE_BUILD_TYPE=none     \
+                        -DBUILD_TESTING=OFF \
+                        ..
+
+make
+make DESTDIR=$PKG install
+
+}

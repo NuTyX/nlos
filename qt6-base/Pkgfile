@@ -1,0 +1,59 @@
+description='A cross-platform application and UI framework'
+url='https://www.qt.io/'
+
+license="GPL3 LGPL3 FDL custom"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+set=(qt6)
+
+name=qt6-base
+version=6.12.0
+release=1
+
+makedepends=(libb2 cmake ninja systemd icu at-spi2-core mtdev 
+             cups gstreamer-plugins-base xcb-util xcb-util-renderutil
+             vulkan-headers shared-mime-info sqlite libinput
+             double-conversion alsa-lib xcb-util-image xcb-util-keysyms
+             xcb-util-cursor mesa pcre2 xdg-utils xcb-util-wm
+             xorg-libxrender libxkbcommon gtk3 mariadb postgresql brotli)
+
+source=(https://download.qt.io/official_releases/qt/${version:0:4}/$version/submodules/qtbase-everywhere-src-$version.tar.xz)
+
+
+prepare() {
+ cd qtbase-everywhere-src-$version
+# patch -Np1 -i ../qt-everywhere-src-$version-openssl4_fix-1.patch
+}
+build() {
+ mkdir build
+ cd    build
+ cmake -G Ninja \
+ -DCMAKE_INSTALL_PREFIX=/usr                  -DINSTALL_BINDIR=lib/qt6/bin     \
+ -DINSTALL_PUBLICBINDIR=usr/bin               -DINSTALL_LIBEXECDIR=lib/qt6     \
+ -DINSTALL_DOCDIR=share/doc/qt6               -DINSTALL_ARCHDATADIR=lib/qt6    \
+ -DINSTALL_DATADIR=share/qt6                  -DINSTALL_INCLUDEDIR=include/qt6 \
+ -DINSTALL_MKSPECSDIR=lib/qt6/mkspecs         -DFEATURE_openssl_linked=ON      \
+ -DINSTALL_EXAMPLESDIR=share/doc/qt6/examples -DFEATURE_journald=ON            \
+ -DFEATURE_system_sqlite=ON                   -DCMAKE_INTERPROCEDURAL_OPTIMIZATION=ON  \
+ -DFEATURE_no_direct_extern_access=ON         -DFEATURE_system_xcb_xinput=ON   \
+ -DFEATURE_qmake=ON                           -DCMAKE_BUILD_TYPE=Release       \
+ -DBUILD_TESTS_BY_DEFAULT=OFF  \
+ ../qtbase-everywhere-src-$version
+
+ ninja
+
+ DESTDIR=$PKG ninja install
+}
+package() {
+
+  cd $PKG
+  sed -i "s@../../lib@../lib@g" \
+  $SRC/build/user_facing_tool_links.txt
+  mkdir -p usr/bin
+  while read _line
+  do
+      ln -svf $_line
+  done < $SRC/build/user_facing_tool_links.txt
+}

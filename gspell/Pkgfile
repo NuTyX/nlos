@@ -1,0 +1,21 @@
+description="Spell library"
+url="https://gitlab.gnome.org/GNOME/gspell"
+
+license="LGPL2-1-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(glib iso-codes gtk3 enchant)
+
+name=gspell
+version=1.14.5
+
+source=(https://gitlab.gnome.org/GNOME/$name/-/archive/$version/$name-$version.tar.bz2)
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/LICENSES/LGPL-2.1-or-later.txt \
+$PKG/usr/share/licenses/$name/LGPL-2.1-or-later.txt
+}

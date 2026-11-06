@@ -1,0 +1,43 @@
+description="Programs for compressing and decompressing files."
+url="http://www.bzip.org/"
+
+maintainer="Julian Seward ( jseward at bzip dot org )"
+packager="tnut <tnut@nutyx.org>"
+
+name=bzip2
+version=1.0.8
+release=2
+
+set=(chroot)
+
+source=(https://www.sourceware.org/pub/$name/bzip2-$version.tar.gz \
+http://www.linuxfromscratch.org/patches/lfs/development/bzip2-$version-install_docs-1.patch)
+
+
+build() {
+
+cd bzip2-$version
+
+patch -Np1 -i ../bzip2-$version-install_docs-1.patch
+sed -i 's@\(ln -s -f \)$(PREFIX)/bin/@\1@' Makefile
+sed -i "s@(PREFIX)/man@(PREFIX)/share/man@g" Makefile
+
+make -f Makefile-libbz2_so
+make clean
+
+make
+
+make PREFIX=$PKG/usr install
+
+mkdir -pv $PKG/usr/{bin,lib}
+cp -v bzip2-shared $PKG/usr/bin/bzip2
+cp -av libbz2.so* $PKG/usr/lib
+
+ln -sv libbz2.so.1.0.8 $PKG/usr/lib/libbz2.so
+ln -sv libbz2.so.1.0.8 $PKG/usr/lib/libbz2.so.1
+
+for i in bzcat bunzip2; do
+  ln -sfv bzip2 $PKG/usr/bin/$i
+done
+
+}

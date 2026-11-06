@@ -1,0 +1,24 @@
+description="The twm package contains a very minimal window manager."
+url="http://xorg.freedesktop.org" 
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-twm
+_name=twm
+version=1.0.13.1
+
+makedepends=(xorg-libxt xorg-libxmu xorg-libice xorg-libsm xorg-server)
+source=(system-twm-01.patch
+	http://ftp.x.org/pub/individual//app/${_name}-$version.tar.xz)
+
+build() {
+
+	cd ${_name}-$version
+	patch -Np1 -i ../system-twm-01.patch
+	sed -i -e '/^rcdir =/s,^\(rcdir = \).*,\1/etc/X11/app-defaults,' src/Makefile.in
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var
+	
+	make
+	make DESTDIR=$PKG install
+}
+

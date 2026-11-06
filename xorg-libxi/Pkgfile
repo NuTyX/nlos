@@ -1,0 +1,32 @@
+description="X11 Input extension library"
+url="https://xorg.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-libxi
+
+alias=(libXi libxi)
+
+version=1.8.3
+
+_name=libXi
+
+makedepends=(xorgproto xorg-libx11 xorg-libxext xorg-libxfixes)
+
+source=($url/releases/individual/lib/${_name}-$version.tar.gz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXi-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

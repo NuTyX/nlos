@@ -1,0 +1,36 @@
+description="An open source reference implementation of the icalendar data type and serialization format"
+url="https://github.com/libical/libical"
+
+License="MPL2 LGPL2.1"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(libxml2 cmake db gobject-introspection icu doxygen glib vala)
+
+name=libical
+version=4.0.6
+tag=v$version
+
+source=($url.git)
+
+build() {
+cd $name-$version
+
+mkdir build
+cd build
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+-DCMAKE_BUILD_TYPE=Release  \
+-D LIBICAL_STATIC=NO        \
+-D LIBICAL_GOBJECT_INTROSPECTION=true \
+-D LIBICAL_JAVA_BINDINGS=OFF \
+-D LIBICAL_GLIB_VAPI=true   \
+-D LIBICAL_BUILD_DOCS=false \
+..
+make -j1
+make DESTDIR=$PKG install
+
+install -Dm644 ../LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE.txt
+install -Dm644 ../LICENSES/LGPL-2.1-only.txt $PKG/usr/share/licenses/$name/LGPL-2.1-only.txt
+install -Dm644 ../LICENSES/MPL-2.0.txt $PKG/usr/share/licenses/$name/MPL-2.0.txt
+}

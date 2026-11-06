@@ -1,0 +1,32 @@
+description="GStreamer Multimedia Framework Base Plugins"
+url="https://gstreamer.freedesktop.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+license="LGPL"
+
+makedepends=(meson ninja gstreamer alsa-lib gobject-introspection
+             libtheora libvorbis pango mesa graphene gtk3)
+run=(iso-codes)
+
+name=gstreamer-plugins-base
+_name=gst-plugins-base
+
+version=1.28.8
+release=1
+
+source=(https://gstreamer.freedesktop.org/src/${_name}/${_name}-$version.tar.xz)
+
+PKGMK_MESON_OPTIONS="-Dpackage-origin=http://downloads.nutyx.org/"
+
+prepare() {
+mv ${_name}-$version $name-$version
+}
+
+build=meson
+
+package() {
+ rm -r $PKG/usr/include/{GL,KHR}
+ install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+} 

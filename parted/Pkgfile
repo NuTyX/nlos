@@ -1,0 +1,47 @@
+description="A program for creating, destroying, resizing, checking and copying partitions"
+url="http://www.gnu.org/software/parted/index.shtml"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(grep sed lvm2 util-linux check texinfo)
+
+name=parted
+version=3.8
+
+source=(http://ftp.gnu.org/gnu/$name/$name-$version.tar.xz)
+
+build() {
+
+
+cd $name-$version
+sed -i 's/do_version ()/do_version (PedDevice** dev, PedDisk** diskp)/' parted/parted.c
+./configure --prefix=/usr \
+--sbindir=/usr/bin        \
+--disable-static
+
+make
+
+make DESTDIR=$PKG install
+
+make -C doc html
+makeinfo --html -o doc/html doc/parted.texi
+makeinfo --plaintext -o doc/parted.txt doc/parted.texi
+
+install -v -m755 -d $PKG/usr/share/doc/parted-$version/html
+install -v -m644    doc/html/* \
+$PKG/usr/share/doc/parted-$version/html
+install -v -m644 doc/{FAT,API.md,parted.{txt,html}} \
+$PKG/usr/share/doc/parted-$version
+
+# Obsolets libs
+rm $PKG/usr/lib/libparted{,-fs-resize}.la
+}
+uptodate() {
+local url ext
+url="https://ftp.gnu.org/gnu/$name/"
+ext=".tar.xz"
+lynx -read_timeout=20 -dump -listonly -nonumbers \
+$url?C=M\;O=A|grep $name-[0-9]|grep [0-9]$ext$| \
+sed "s@$url$name-@@"|sed "s@$ext@@"|tail -1
+}

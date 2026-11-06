@@ -1,0 +1,21 @@
+description="Library to identify Wacom tablets and their features"
+url="https://github.com/linuxwacom/libwacom"
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(meson ninja glib libgudev libevdev)
+
+name=libwacom
+version=2.20.0
+tag=$version
+
+source=($url.git)
+
+PKGMK_MESON_OPTIONS="-Dtests=disabled"
+build=meson
+package(){
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

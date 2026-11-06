@@ -1,0 +1,30 @@
+description="X11 font encoding library"
+url="https://gitlab.freedesktop.org/xorg/lib/libfontenc"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+license="MIT"
+
+name=xorg-libfontenc
+_name=libfontenc
+version=1.1.9
+
+alias=(libfontenc)
+
+makedepends=(xorgproto)
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+package() {
+rm $PKG/usr/lib/libfontenc.la
+}
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libfontenc-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

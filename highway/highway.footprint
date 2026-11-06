@@ -1,0 +1,11 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libhwy.so -> libhwy.so.1
+lrwxrwxrwx	root/root	usr/lib/libhwy.so.1 -> libhwy.so.1.4.0
+-rwxr-xr-x	root/root	usr/lib/libhwy.so.1.4.0
+lrwxrwxrwx	root/root	usr/lib/libhwy_contrib.so -> libhwy_contrib.so.1
+lrwxrwxrwx	root/root	usr/lib/libhwy_contrib.so.1 -> libhwy_contrib.so.1.4.0
+-rwxr-xr-x	root/root	usr/lib/libhwy_contrib.so.1.4.0
+lrwxrwxrwx	root/root	usr/lib/libhwy_test.so -> libhwy_test.so.1
+lrwxrwxrwx	root/root	usr/lib/libhwy_test.so.1 -> libhwy_test.so.1.4.0
+-rwxr-xr-x	root/root	usr/lib/libhwy_test.so.1.4.0

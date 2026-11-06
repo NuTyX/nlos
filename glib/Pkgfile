@@ -1,0 +1,80 @@
+description="The GLib package contains a low-level libraries useful for providing data structure handling"
+url="https://gitlab.gnome.org/GNOME/glib/"
+
+license="LGPL-2.1-or-later"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Fanch,Tnut"
+
+alias=(glib2)
+
+makedepends=(flex bison libffi pcre2 python-packaging systemd
+             python-docutils elfutils meson ninja libxslt docbook-xsl)
+
+PKGMK_GROUPS=(man devel doc )
+
+name=glib
+version=2.90.1
+
+giversion=1.86.0
+
+source=(https://download.gnome.org/sources/gobject-introspection/${giversion:0:4}/gobject-introspection-$giversion.tar.xz
+        https://download.sourceforge.net/nutyx/background-nutyx-0.0.3.tar.xz
+        https://download.gnome.org/sources/glib/${version:0:4}/$name-$version.tar.xz
+        glib-skip_warnings-1.patch)
+
+prepare() {
+
+  mkdir build
+
+  cd $name-$version
+
+  patch -Np1 -i ../glib-skip_warnings-1.patch
+
+  if [[ -e $PKG/usr/include/glib-2.0 ]]
+  then
+     mv -vf $PKG/usr/include/glib-2.0{,.old}
+  fi
+
+
+}
+build() {
+  cd build
+  meson --prefix=/usr \
+        --libdir=/usr/lib \
+        -Dintrospection=disabled \
+        -Dman-pages=disabled \
+        -Dsysprof=disabled \
+        -Dglib_debug=disabled \
+        ../$name-$version
+
+  ninja
+  ninja install
+
+  cd ../
+  rm -r build/
+
+  meson setup $SRC/gobject-introspection-$giversion gi-build \
+            --prefix=/usr \
+            --libdir=/usr/lib \
+            --buildtype=release
+  ninja -C gi-build
+  ninja -C gi-build install
+
+  # Build glib again
+  # with introspection
+  mkdir build && cd build
+
+  meson --prefix=/usr \
+        --libdir=/usr/lib \
+        -Dintrospection=enabled \
+        -Dman-pages=disabled \
+        ../$name-$version
+  ninja
+}
+
+package() {
+  mkdir -p $PKG/usr/share/backgrounds
+  mv nutyx $PKG/usr/share/backgrounds
+  DESTDIR=$PKG ninja -C build install
+}

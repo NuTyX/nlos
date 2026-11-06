@@ -1,0 +1,23 @@
+description="A C library for parsing configuration files"
+url="https://github.com/williamh/dotconf"
+
+name=dotconf
+version=1.4.1
+release=2
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(libtool autoconf automake)
+
+PKGMK_KEEP_SOURCES="no"
+
+source=(https://github.com/williamh/$name/archive/v$version.tar.gz)
+
+build() {
+cd $name-$version
+
+autoreconf -i
+./configure --prefix=/usr
+make DESTDIR=$PKG install
+
+rm $PKG/usr/lib/libdotconf.la
+}

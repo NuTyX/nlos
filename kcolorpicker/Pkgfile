@@ -1,0 +1,31 @@
+description='Qt based Color Picker with popup menu'
+url='https://github.com/DamirPorobic/kColorPicker'
+
+license="LGPL-3.0-only"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(cmake qt6-base)
+
+name=kcolorpicker
+version=0.3.1
+release=3
+
+_name=kColorPicker
+
+source=(https://github.com/ksnip/kColorPicker/archive/refs/tags/v${version}/${_name}-$version.tar.gz)
+
+build() {
+cd ${_name}-$version
+mkdir build
+cd    build
+
+cmake -DCMAKE_INSTALL_PREFIX=/usr \
+      -DBUILD_WITH_QT6=ON         \
+      -DBUILD_SHARED_LIBS=ON      \
+      -DCMAKE_BUILD_TYPE=Release  \
+      ..
+make
+make DESTDIR=$PKG install
+}

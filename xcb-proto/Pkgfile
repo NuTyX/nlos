@@ -1,0 +1,32 @@
+description="XCB X protocol descriptions"
+url="http://xcb.freedesktop.org"
+
+license="Custom"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
+
+makedepends=(python)
+
+PKGMK_GROUPS=()
+
+name=xcb-proto
+version=1.17.0
+release=4
+
+_name=$name
+
+source=(http://xorg.freedesktop.org/archive/individual/proto/xcb-proto-$version.tar.xz)
+
+build() {
+
+cd $name-$version
+
+./configure --prefix=/usr
+
+make
+make DESTDIR=$PKG install
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+
+}

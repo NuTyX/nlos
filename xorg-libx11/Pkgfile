@@ -1,0 +1,38 @@
+description="libx11, library for client X"
+url="https://gitlab.freedesktop.org/xorg/lib/libx11"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,Spiky"
+
+makedepends=(pkgconf xorgproto libxcb xorg-xtrans)
+
+name=xorg-libx11
+alias=(libX11 libx11)
+
+version=1.8.13
+_name=libX11
+
+source=(https://xorg.freedesktop.org/releases/individual/lib/${_name}-$version.tar.xz)
+
+build() {
+cd ${_name}-$version
+./configure --prefix=/usr \
+--sysconfdir=/etc \
+--localstatedir=/var \
+--disable-static \
+--disable-thread-safety-constructor
+make DESTDIR=$PKG install
+}
+
+package() {
+rm $PKG/usr/lib/${_name}{,-xcb}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libX11-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

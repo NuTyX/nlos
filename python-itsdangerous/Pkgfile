@@ -1,0 +1,33 @@
+description='Various helpers to pass trusted data to untrusted environments'
+url='https://pypi.org/project/itsdangerous/'
+
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-itsdangerous
+_name="itsdangerous"
+alias=(${_name})
+
+version=2.2.0
+release=4
+
+source=(https://pypi.org/packages/source/i/itsdangerous/itsdangerous-$version.tar.gz)
+
+build() {
+
+      cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

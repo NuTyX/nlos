@@ -1,0 +1,21 @@
+description="A C wrapper library for GnuPG"
+url="http://www.gnupg.org/related_software/gpgme/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(libassuan libgpg-error python)
+
+name=gpgme
+version=2.2.0
+
+source=(https://www.gnupg.org/ftp/gcrypt/$name/$name-$version.tar.bz2)
+build() {
+cd $name-$version
+
+./configure --prefix=/usr \
+--disable-gpg-test
+make
+make DESTDIR=$PKG install
+#rm $PKG/usr/lib/libgpgme{,pp}.la
+}

@@ -1,0 +1,35 @@
+drwxr-xr-x	root/root	etc/
+drwxr-xr-x	root/root	etc/profile.d/
+-rw-r--r--	root/root	etc/profile.d/vte.csh
+-rw-r--r--	root/root	etc/profile.d/vte.sh
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/vte-2.91
+-rwxr-xr-x	root/root	usr/bin/vte-2.91-gtk4
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/applications/
+-rw-r--r--	root/root	usr/share/applications/org.gnome.Vte.App.Gtk3.desktop
+-rw-r--r--	root/root	usr/share/applications/org.gnome.Vte.App.Gtk4.desktop
+drwxr-xr-x	root/root	usr/share/gir-1.0/
+-rw-r--r--	root/root	usr/share/gir-1.0/Vte-2.91.gir
+-rw-r--r--	root/root	usr/share/gir-1.0/Vte-3.91.gir
+drwxr-xr-x	root/root	usr/share/glade/
+drwxr-xr-x	root/root	usr/share/glade/catalogs/
+-rw-r--r--	root/root	usr/share/glade/catalogs/vte-2.91.xml
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/hicolor/
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/hicolor/16x16/
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/hicolor/16x16/actions/
+-rw-r--r--	root/root	usr/share/glade/pixmaps/hicolor/16x16/actions/widget-vte-terminal.png
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/hicolor/22x22/
+drwxr-xr-x	root/root	usr/share/glade/pixmaps/hicolor/22x22/actions/
+-rw-r--r--	root/root	usr/share/glade/pixmaps/hicolor/22x22/actions/widget-vte-terminal.png
+drwxr-xr-x	root/root	usr/share/vala/
+drwxr-xr-x	root/root	usr/share/vala/vapi/
+-rw-r--r--	root/root	usr/share/vala/vapi/vte-2.91-gtk4.deps
+-rw-r--r--	root/root	usr/share/vala/vapi/vte-2.91-gtk4.vapi
+-rw-r--r--	root/root	usr/share/vala/vapi/vte-2.91.deps
+-rw-r--r--	root/root	usr/share/vala/vapi/vte-2.91.vapi
+drwxr-xr-x	root/root	usr/share/xdg-terminals/
+lrwxrwxrwx	root/root	usr/share/xdg-terminals/org.gnome.Vte.App.Gtk3.desktop -> ../applications/org.gnome.Vte.App.Gtk3.desktop
+lrwxrwxrwx	root/root	usr/share/xdg-terminals/org.gnome.Vte.App.Gtk4.desktop -> ../applications/org.gnome.Vte.App.Gtk4.desktop

@@ -1,0 +1,48 @@
+description="High-level device independent layer for speech synthesis interface"
+url="https://devel.freebsoft.org/speechd"
+
+license="GPL2 GPL3 LGPL2.1"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+makedepends=(automake texinfo intltool dotconf
+             pulseaudio python-xdg)
+
+name=speech-dispatcher
+version=0.12.1
+release=4
+
+source=(https://github.com/brailcom/speechd/releases/download/$version/$name-$version.tar.gz)
+PKGMK_GROUPS=(devel man)
+
+build() {
+cd $name-$version
+
+./configure --prefix=/usr \
+         --disable-static \
+        --sysconfdir=/etc \
+        --without-flite
+make
+make DESTDIR="$PKG" install
+sed -i 's|includedir=.*|includedir=${prefix}/include/speech-dispatcher|g' \
+$PKG/usr/lib/pkgconfig/speech-dispatcher.pc
+
+# Obsolets libs
+rm $PKG/usr/lib/libspeechd.la
+rm $PKG/usr/lib/speech-dispatcher/spd_alsa.la
+rm $PKG/usr/lib/speech-dispatcher/spd_oss.la
+rm $PKG/usr/lib/speech-dispatcher/spd_pulse.la
+
+# Broken one
+rm $PKG/usr/libexec/speech-dispatcher-modules/sd_kali
+rm $PKG/usr/libexec/speech-dispatcher-modules/sd_voxin
+rm $PKG/usr/libexec/speech-dispatcher-modules/sd_baratinoo
+
+
+
+install -Dm644 COPYING.GPL-2 $PKG/usr/share/licenses/$name/COPYING.GPL-2
+install -Dm644 COPYING.GPL-3 $PKG/usr/share/licenses/$name/COPYING.GPL-3
+install -Dm644 COPYING.LGPL $PKG/usr/share/licenses/$name/COPYING.LGPL
+
+}

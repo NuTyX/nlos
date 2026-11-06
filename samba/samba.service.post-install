@@ -1,0 +1,2 @@
+systemctl enable smbd.service
+systemctl enable winbindd.service

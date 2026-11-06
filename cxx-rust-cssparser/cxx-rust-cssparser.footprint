@@ -1,0 +1,7 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/cxx-rust-cssparser-parse
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libcxx-rust-cssparser.so -> libcxx-rust-cssparser.so.1
+lrwxrwxrwx	root/root	usr/lib/libcxx-rust-cssparser.so.1 -> libcxx-rust-cssparser.so.1.1.0
+-rwxr-xr-x	root/root	usr/lib/libcxx-rust-cssparser.so.1.1.0

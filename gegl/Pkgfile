@@ -1,0 +1,35 @@
+description="GEneric Graphics Library, which is a graph base image processing format"
+url="https://gegl.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(asciidoc babl librsvg ruby lua ffmpeg librsvg meson
+             openexr exiv2 graphviz libjpeg-turbo libwebp libraw
+             python-gobject sdl gobject-introspection json-glib )
+run=(vala)
+
+name=gegl
+version=0.4.72
+release=2
+
+source=(https://download.gimp.org/pub/$name/${version:0:3}/$name-$version.tar.xz)
+
+build() {
+cd $name-$version
+
+mkdir build
+cd build
+meson setup           \
+  --prefix=/usr       \
+  --buildtype=release \
+  -Ddocs=false        \
+  -Dgi-docgen=disabled\
+  -Dworkshop=true     \
+  -Dmrg=disabled      \
+  -Dmaxflow=disabled  \
+  ..
+ninja
+DESTDIR=$PKG ninja install
+}
+

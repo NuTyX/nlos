@@ -1,0 +1,22 @@
+description="The Iana-Etc package provides data for network services and protocols."
+url="https://www.sethwklein.net/iana-etc"
+
+maintainer="Seth W. Klein sk at sethwklein dot net"
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+set=(core)
+
+name=iana-etc
+version=20260617
+
+source=(https://github.com/Mic92/iana-etc/releases/download/$version/$name-$version.tar.gz)
+
+build()
+{
+cd $name-$version
+mkdir -pv $PKG/etc
+
+  cp services protocols $PKG/etc
+}
+

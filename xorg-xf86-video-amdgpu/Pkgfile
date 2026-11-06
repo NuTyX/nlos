@@ -1,0 +1,19 @@
+description="Xorg AMDGPU video driver."
+url="https://xorg.freedesktop.org/"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Remy,Minzords,Spiky"
+
+name=xorg-xf86-video-amdgpu
+version=25.0.0
+release=1
+
+_name=${name/xorg-/}
+makedepends=(python meson mesa xorg-server)
+
+source=($url/releases/individual/driver/${_name}-$version.tar.xz)
+
+prepare() {
+  mv ${_name}-$version $name-$version
+}
+build=meson

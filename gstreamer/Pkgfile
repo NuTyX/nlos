@@ -1,0 +1,21 @@
+description="GStreamer Multimedia Framework"
+url="https://gstreamer.freedesktop.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Jayce,Tnut"
+
+license="LGPL"
+makedepends=(pkgconf gmp libcap meson ninja glib libxml2 gsl gobject-introspection)
+
+name=gstreamer
+version=1.28.8
+release=1
+
+source=(https://gstreamer.freedesktop.org/src/gstreamer/gstreamer-$version.tar.xz)
+
+PKGMK_MESON_OPTIONS="-Dgst_debug=false -Dpackage-origin=https://downloads.nutyx.org/"
+
+build=meson
+package() {
+ install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

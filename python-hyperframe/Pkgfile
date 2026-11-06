@@ -1,0 +1,33 @@
+description='HTTP/2 framing layer for Python'
+url='https://pypi.org/project/hyperframe/'
+
+packager="spiky <spiky@nutyx.org>"
+contributors=""
+
+makedepends=(python-setuptools)
+
+name=python-hyperframe
+_name="hyperframe"
+alias=(${_name})
+
+version=6.1.0
+release=3
+
+source=(https://github.com/python-hyper/hyperframe/archive/refs/tags/v$version.tar.gz)
+
+build() {
+
+      cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

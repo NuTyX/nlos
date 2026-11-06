@@ -1,0 +1,25 @@
+description="Provides a simple foundation for reading DVD video disks"
+url="https://www.videolan.org/developers/libdvdnav.html"
+
+license="GPL2"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(meson python)
+
+name=libdvdread
+version=7.1.1
+
+source=(https://get.videolan.org/$name/$version/$name-$version.tar.xz)
+
+prepare() {
+cd $name-$version
+sed -i "/get_option/s/libdvdread/&-7.0.1/" meson.build
+}
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,41 @@
+description="GObject-based multi-platform GUI toolkit"
+url="https://www.gtk.org"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+license="GPL2"
+
+makedepends=(git meson python python-docutils sassc gobject-introspection docbook-xsl
+             vulkan-headers vulkan-icd-loader shaderc)
+
+run=(glib cairo pango fribidi gdk-pixbuf libpng libtiff libjpeg-turbo libepoxy mesa harfbuzz
+     libxkbcommon graphene iso-codes colord wayland wayland-protocols
+     desktop-file-utils adwaita-icon-theme shared-mime-info
+     json-glib ffmpeg dconf gstreamer-plugins-bad librsvg xorg-libxinerama xorg-libxrandr
+     xorg-libxcursor xorg-libxi xorg-libxrender librest tinysparql)
+set=()
+
+name=gtk4
+version=4.24.1
+
+PKGMK_GROUPS=(devel doc lib man)
+PKGMK_MESON_OPTIONS="--sysconfdir=/etc -Dbroadway-backend=true \
+-Dtracker=enabled -Dcolord=enabled -Dintrospection=enabled"
+
+source=(https://gitlab.gnome.org/GNOME/gtk/-/archive/$version/gtk-$version.tar.gz)
+
+prepare() {
+ mv gtk-$version $name-$version
+}
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 /dev/stdin $PKG/usr/share/gtk-4.0/settings.ini << END
+[Settings]
+gtk-icon-theme-name = Adwaita
+gtk-theme-name = Adwaita
+gtk-font-name = Adwaita Sans 11
+END
+}

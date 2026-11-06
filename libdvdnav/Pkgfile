@@ -1,0 +1,25 @@
+description="Library to navigate DVD video disks"
+url="https://www.videolan.org/developers/libdvdnav.html"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre B, tnut"
+
+licence="GPL-2.0-or-later"
+
+makedepends=(meson libdvdread)
+
+name=libdvdnav
+version=7.0.0
+
+source=(https://get.videolan.org/$name/$version/$name-$version.tar.xz)
+
+prepre() {
+cd $name-$version
+sed -i "/get_option/s/libdvdnav/&-7.0.0/" meson.build
+}
+
+build=meson
+
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING
+}

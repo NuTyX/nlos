@@ -1,0 +1,27 @@
+description="Commands for Manipulating POSIX Access Control Lists."
+url="http://savannah.nongnu.org/projects/acl"
+
+contributors="Pierre,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(attr)
+
+name=acl
+version=2.4.0
+
+set=(chroot core)
+
+PKGMK_LOCALES=()
+source=( http://download.savannah.gnu.org/releases/$name/$name-$version.tar.gz)
+
+build() {
+cd $name-$version
+
+INSTALL_USER=root  \
+INSTALL_GROUP=root \
+./configure --prefix=/usr --libexecdir=/usr/lib \
+            --docdir=/usr/share/doc/$name
+make
+make DESTDIR=$PKG install
+chmod -v 755 $PKG/usr/lib/libacl.so
+}

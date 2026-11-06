@@ -1,0 +1,18 @@
+description="Additional Wayland protocols"
+url=" https://wayland.freedesktop.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+license="MIT"
+
+makedepends=(pkgconf wayland)
+
+name=wayland-protocols
+version=1.49
+
+source=(https://gitlab.freedesktop.org/wayland/wayland-protocols/-/releases/$version/downloads/$name-$version.tar.xz)
+
+build=meson
+package() {
+install -Dm644 $name-$version/COPYING $PKG/usr/share/licenses/$name/COPYING  
+}

@@ -1,0 +1,42 @@
+description="X11 pixmap library"
+url="https://xorg.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+name=xorg-libxpm
+
+alias=(libXpm libxpm)
+
+version=3.5.19
+
+_name=libXpm
+
+makedepends=(xorgproto xorg-libx11 xorg-libxt xorg-libxext)
+source=($url/releases/individual/lib/${_name}-$version.tar.xz)
+
+build() {
+ cd ${_name}-$version
+ ./configure --prefix=/usr \
+ --sysconfdir=/etc    \
+ --localstatedir=/var \
+ --disable-static     \
+ --disable-open-zfile
+
+ make
+
+ make DESTDIR=$PKG install
+}
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+}
+
+uptodate() {
+local ext url name LINX
+LYNX="lynx -read_timeout=20 -dump -listonly -nonumbers "
+ext=".tar.bz2"
+url="https://ftp.x.org/archive//individual//lib"
+name="libXpm-"
+$LYNX $url/?C=M\;O=D|grep "$ext$"|grep "$url/$name"|sed "s@$ext\$@@"|sed "s@$url/$name@@"|head -1
+}

@@ -1,0 +1,29 @@
+description="Xorg Wacom tablet driver."
+url="https://github.com/linuxwacom/xf86-input-wacom"
+
+license="GPL-2.0-or-later"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+name=xorg-xf86-input-wacom
+version=1.2.4
+
+_name=${name/xorg-/}
+makedepends=(xorg-libxi xorg-libxinerama xorg-libxrandr xorg-server)
+
+source=(https://github.com/linuxwacom/xf86-input-wacom/releases/download/$_name-$version/$_name-$version.tar.bz2)
+
+build() {
+	cd ${_name}-$version
+	./configure --prefix=/usr \
+	--sysconfdir=/etc \
+	--localstatedir=/var \
+	--with-systemd-unit-dir=/usr/lib/systemd/system
+
+	make
+	make DESTDIR=$PKG install
+
+# Obsolets libs
+rm $PKG/usr/lib/xorg/modules/input/wacom_drv.la
+}

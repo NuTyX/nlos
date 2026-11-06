@@ -1,0 +1,49 @@
+description="Graphical user interface toolkit for X"
+url="https://www.fltk.org/"
+
+license="custom"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+makedepends=(libjpeg-turbo libpng xorg-libxft xorg-libxi xorg-libxinerama mesa doxygen)
+
+name=fltk
+version=1.4.5
+
+source=(https://github.com/fltk/fltk/releases/download/release-$version/fltk-$version-source.tar.gz)
+build() {
+cd $name-$version
+
+sed -i -e '/cat./d' documentation/Makefile
+
+./configure --prefix=/usr \
+--enable-threads \
+--enable-shared \
+--enable-xft
+make
+make -C documentation html
+
+make DESTDIR=$PKG docdir=/usr/share/doc/fltk install
+
+make -C test DESTDIR=$PKG docdir=/usr/share/doc/fltk install-linux
+make -C documentation DESTDIR=$PKG docdir=/usr/share/doc/fltk install-linux
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+
+# Remove games
+rm $PKG/usr/bin/{blocks,checkers,sudoku}
+rm -r $PKG/usr/share/{applications,icons}
+}
+
+devel() {
+
+cd $PKG
+bsdtar -cf \
+$PKGMK_PACKAGE_DIR/$name.devel${PKGMK_PACKAGE_EXT}$version-$release \
+usr/include \
+usr/bin/fltk-config \
+usr/bin/fluid
+
+rm -r usr/include usr/bin/fltk-config usr/bin/fluid
+
+}

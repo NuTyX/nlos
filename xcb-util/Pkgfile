@@ -1,0 +1,25 @@
+description="XCB utilities library"
+url="http://xcb.freedesktop.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
+
+makedepends=(libxcb)
+name=xcb-util
+version=0.4.1
+release=2
+
+source=(http://xcb.freedesktop.org/dist/$name-$version.tar.xz)
+
+build() {
+
+	cd $name-$version
+
+	./configure --prefix=/usr --sysconfdir=/etc --localstatedir=/var \
+	--disable-static
+
+	make
+	make DESTDIR=$PKG install
+# Obsolet lib
+rm $PKG/usr/lib/libxcb-util.la
+}

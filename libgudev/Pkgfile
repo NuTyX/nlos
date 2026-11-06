@@ -1,0 +1,16 @@
+description="The libgudev package contains GObject bindings for libudev."
+url="https://www.codeforge.com/s/0/libgudev"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Spiky"
+
+makedepends=(systemd meson ninja glib gobject-introspection gtk-doc)
+
+name=libgudev
+version=238
+release=3
+
+source=(https://download.gnome.org/sources/libgudev/$version/libgudev-$version.tar.xz)
+
+build=meson
+

@@ -1,0 +1,47 @@
+description='Qt6 interface for AppStream'
+url='https://distributions.freedesktop.org/wiki/AppStream'
+
+license="LGPL2.1"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(snowball qt6-base qt6-tools libxmlb
+             gi-docgen gobject-introspection libfyaml
+             gperf itstool meson vala xmlto docbook-xsl)
+
+name=appstream-qt
+version=1.1.6
+
+source=(https://www.freedesktop.org/software/appstream/releases/AppStream-$version.tar.xz)
+
+prepare() {
+mv AppStream-$version $name-$version
+cd $name-$version
+
+sed -i 's/xsl-ns/xsl/' docs/meson.build
+}
+
+build() {
+cd $name-$version
+mkdir build
+cd    build
+
+meson setup .. \
+      --prefix=/usr \
+      --libexecdir=lib \
+      -Dqt=true  \
+      -Dvapi=true \
+      -Dcompose=true \
+      -Dblake3-support=false
+
+ninja
+DESTDIR=$PKG ninja install
+
+# provided by appstream
+rm -r $PKG/usr/{bin,include/appstream{,-compose},lib/{appstreamcli-compose,girepository-1.0,libappstream*,pkgconfig},share}
+
+
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}

@@ -1,0 +1,40 @@
+description="Combines tiny versions of many common UNIX utilities."
+url="https://busybox.net/about.html"
+
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(musl)
+
+name=busybox
+version=1.36.1
+release=9
+
+set=(chroot)
+
+source=(busybox-1.33.0_modprobe.patch bb_default_path.patch
+        $name.config https://busybox.net/downloads/busybox-$version.tar.bz2)
+
+prepare() {
+cd $name-$version
+# Anti-future-proofing patch: when kernel will learn how to finit_module(fd)
+# a gzipped module in addition to uncompressed ones, this patch needs to be
+# removed
+patch -Np1 -i ../busybox-1.33.0_modprobe.patch
+# Busybox default patch doen't fit for NuTyX
+patch -Np1 -i ../bb_default_path.patch
+}
+build() {
+cd $name-$version
+cp ../$name.config .config
+make CC=musl-gcc
+mkdir -p $PKG/{usr/bin,bin}
+}
+package() {
+ install -m0755 $name-$version/$name $PKG/usr/bin/$name
+ for i in $($PKG/usr/bin/$name --list)
+ do
+  [ "$i" == "sh" ] && continue
+  ln -sv ../usr/bin/$name $PKG/bin/$i
+ done
+ ln -sv $name $PKG/usr/bin/vi
+}

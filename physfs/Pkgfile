@@ -1,0 +1,31 @@
+description="Lib use in video games, and the design was somewhat inspired by Quake 3's file subsystem"
+url="http://www.icculus.org/physfs"
+
+contributors="Berlius,Greg,Rems,Tnut"
+packager="spiky <spiky@nutyx.org>"
+
+makedepends=(cmake)
+
+name=physfs
+version=3.2.0
+release=2
+
+source=(https://github.com/icculus/physfs/archive/refs/tags/release-$version.tar.gz)
+
+prepare() {
+mv physfs-release-$version $name-$version
+}
+
+build() {
+
+	cd $name-$version
+
+	sed -i -e 's|-Werror||' CMakeLists.txt
+
+	cmake \
+		-DPHYSFS_BUILD_STATIC=FALSE \
+		-DCMAKE_INSTALL_PREFIX=/usr
+	make
+	make DESTDIR=$PKG install
+
+}

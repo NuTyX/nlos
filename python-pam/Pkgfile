@@ -1,0 +1,34 @@
+description=' Pure Python interface to the Pluggable Authentication Modules system on Linux.'
+url='https://github.com/FirefighterBlu3/python-pam'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Fanch,Tnut"
+
+makedepends=(python-setuptools python-wheel pam)
+
+name=python-pam
+_name="python-pam"
+alias=(${_name})
+
+version=2.0.2
+release=6
+
+
+source=(https://files.pythonhosted.org/packages/source/${name:0:1}/$name/$name-$version.tar.gz)
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf
+}

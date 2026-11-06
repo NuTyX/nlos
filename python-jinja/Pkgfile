@@ -1,0 +1,30 @@
+description="A simple pythonic template language written in python 2&3"
+url="http://jinja.pocoo.org/"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-markupsafe)
+
+name=python-jinja
+_name="Jinja2"
+alias=(${_name})
+
+version=3.1.6
+release=4
+
+source=(https://pypi.org/packages/source/J/${_name}/jinja2-$version.tar.gz)
+
+build() {
+cd jinja2-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+}

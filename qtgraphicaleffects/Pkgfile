@@ -1,0 +1,31 @@
+description="Graphical effects for use with Qt Quick 2"
+url="http://qt-project.org/"
+
+license="FDL, GPL3, LGPL3, custom"
+
+contributors="Pierre,Rems,Spiky"
+packager="tnut <tnut@nutyx.org>"
+
+makedepends=(qtbase qtdeclarative)
+
+set=(qt5)
+
+name=qtgraphicaleffects
+version=5.15.19
+release=1
+_name="${name}-everywhere-opensource-src"
+
+source=(https://download.qt.io/archive/qt/${version:0:4}/$version/submodules/${_name}-${version}.tar.xz)
+
+build() {
+mkdir build
+cd    build
+
+qmake ../${_name/-opensource/}-${version}
+make
+make INSTALL_ROOT=$PKG install
+
+# Drop QMAKE_PRL_BUILD_DIR because reference the build dir
+  find "$PKG/usr/lib" -type f -name '*.prl' \
+       -exec sed -i -e '/^QMAKE_PRL_BUILD_DIR/d' {} \;
+}

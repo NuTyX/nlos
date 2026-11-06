@@ -1,0 +1,25 @@
+description="Library for color text mode, widget based user interfaces."
+url="https://paagure.io/newt"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+license="GPL-2.0-only"
+name=newt
+version=0.52.25
+release=1
+
+makedepends=(popt slang)
+
+source=(https://fedorahosted.org/releases/n/e/$name/$name-$version.tar.gz )
+build() {
+cd $name-$version
+sed -e 's/^LIBNEWT =/#&/' \
+    -e '/install -m 644 $(LIBNEWT)/ s/^/#/' \
+    -e 's/$(LIBNEWT)/$(LIBNEWTSONAME)/g' \
+    -i Makefile.in
+
+./configure --prefix=/usr --with-gpm-support &&
+make
+make DESTDIR=$PKG install
+}

@@ -1,0 +1,44 @@
+description='A collection of tools for internationalizing Python applications'
+url='http://babel.pocoo.org/'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-pytz make-ca)
+
+name=python-babel
+_name="babel"
+alias=(${_name})
+
+version=2.18.0
+
+source=(https://github.com/python-babel/babel/archive/v$version/$name-$version.tar.gz
+        http://unicode.org/Public/cldr/46/core.zip
+        http://unicode.org/Public/cldr/46/cldr-common-46.0.zip)
+
+prepare() {
+cp $PKGMK_SOURCE_DIR/core.zip ${_name}-$version/cldr/cldr-core-46.zip
+cp $PKGMK_SOURCE_DIR/cldr-common-46.0.zip ${_name}-$version/cldr/cldr-common-46.0.zip
+
+
+}
+
+build() {
+
+cd ${_name}-$version
+
+python setup.py import_cldr
+
+pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+
+}

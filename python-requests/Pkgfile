@@ -1,0 +1,40 @@
+description="Python HTTP for Humans"
+url="https://pypi.python.org/pypi/requests"
+packager="spiky <spiky@nutyx.org>"
+contributors="Hugo,Tnut"
+
+makedepends=(python-urllib3 python-chardet python-certifi python-idna python-charset-normalizer)
+
+name=python-requests
+_name="requests"
+alias=(${_name})
+
+version=2.34.2
+release=2
+
+PKGMK_KEEP_SOURCES="no"
+source=(https://files.pythonhosted.org/packages/source/r/requests/requests-$version.tar.gz
+        requests-use_system_certs-2.patch)
+
+prepare() {
+  cd ${_name}-$version
+
+patch -Np1 -i ../requests-use_system_certs-2.patch
+}
+
+build(){
+
+ cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

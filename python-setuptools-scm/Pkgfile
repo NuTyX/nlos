@@ -1,0 +1,37 @@
+description='Handles managing your python package versions in scm metadata.'
+url='https://github.com/pypa/setuptools_scm'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel python-flit-core
+             python-typing_extensions python-packaging python-vcs-versioning)
+
+name=python-setuptools-scm
+_name="setuptools_scm"
+alias=(${_name})
+
+version=10.3.4
+
+source=(https://pypi.io/packages/source/s/setuptools_scm/setuptools_scm-$version.tar.gz)
+
+#prepare() {
+#mv ${_name}-${_name}-v$version ${_name}-$version
+#}
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

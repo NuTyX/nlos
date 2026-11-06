@@ -1,0 +1,27 @@
+description='X present extension library'
+url="https://gitlab.freedesktop.org/xorg/lib/libxpresent"
+
+license="custom"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Greg,spiky"
+
+name=xorg-libxpresent
+
+alias=(libXpresent libxpresent)
+version=1.0.2
+release=1
+
+_name=libXpresent
+
+makedepends=(xorg-util-macros xorgproto xorg-libxfixes xorg-libxrandr)
+
+source=(https://xorg.freedesktop.org/archive/individual/lib/${_name}-$version.tar.xz)
+
+build=xorg
+
+package() {
+rm $PKG/usr/lib/${_name}.la
+cd ${_name}-$version
+install -D -m 0644 COPYING $PKG/usr/share/licenses/$name/LICENSE
+}

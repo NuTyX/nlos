@@ -1,0 +1,34 @@
+description="Text document format for short documents, articles, books and UNIX man pages"
+url="https://asciidoc.org"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Alienus,Remy,Tnut"
+
+makedepends=(autoconf docbook-xsl libxslt python)
+
+name=asciidoc
+version=10.2.1
+release=3
+
+source=(https://github.com/${name}/${name}-py3/archive/$version/$name-$version.tar.gz)
+
+prepare() {
+  cd ${name}-py-$version
+  autoconf
+  # https://github.com/asciidoc-py/asciidoc-py/issues/201
+sed -i -e '/pip install/s/\.$/--root $(DESTDIR) ./' Makefile.in
+}
+
+build(){
+    SITE=$(python -c 'import sysconfig; print(sysconfig.get_paths()["platlib"])')
+
+    cd ${name}-py-$version
+    ./configure --prefix=/usr \
+                --docdir /usr/share/doc/$name \
+                --sysconfdir=/etc
+    make
+    make DESTDIR=$PKG install
+    make DESTDIR=$PKG docs
+    install -Dm644 asciidoc/api.py \
+    $PKG/${SITE}/asciidocapi.py  
+}

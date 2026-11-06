@@ -1,0 +1,38 @@
+description="OpenType text shaping engine"
+url="https://github.com/harfbuzz/harfbuzz"
+
+license="MIT"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Remy,Tnut"
+
+makedepends=(pkgconf cairo glib icu freetype gobject-introspection gtk-doc python-pygments)
+
+
+name=harfbuzz
+version=14.6.0
+
+source=($url.git)
+
+build() {
+cd $name-$version
+
+mkdir build
+cd    build
+
+meson setup ..          \
+    --prefix=/usr       \
+    --buildtype=release \
+    --wrap-mode nodownload \
+    -Dcpp_std=c++17      \
+    -Dbenchmark=disabled \
+    -Ddocs=disabled      \
+    -Dtests=disabled     \
+    -Dgraphite2=auto
+
+ninja
+
+DESTDIR=$PKG ninja install
+
+install -Dm644 ../COPYING $PKG/usr/share/licenses/$name/COPYING
+}

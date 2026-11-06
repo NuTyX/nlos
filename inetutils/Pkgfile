@@ -1,0 +1,39 @@
+description="The Inetutils package contains programs for basic networking."
+url="https://www.gnu.org/software/inetutils/"
+
+maintainer="Alain Malgoire,Alfred M. Szmidt,Arash Yadegarnia,Bernhard Rosenkraenzer,Dan Stromberg,David O'Shea and many more"
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
+
+makedepends=(ncurses libxcrypt)
+
+set=(core)
+
+name=inetutils
+version=2.8
+
+source=(https://ftpmirror.gnu.org/$name/$name-$version.tar.gz)
+
+build()
+{
+cd  inetutils-$version
+
+sed -i 's/def HAVE_TERMCAP_TGETENT/ 1/' telnet/telnet.c
+
+./configure --prefix=/usr \
+--bindir=/usr/bin    \
+--libexec=/usr/bin   \
+--localstatedir=/var \
+--disable-logger \
+--disable-whois \
+--disable-rcp   \
+--disable-rexec \
+--disable-rlogin \
+--disable-rsh \
+--disable-servers
+
+make
+make check || true
+make DESTDIR=$PKG install
+}

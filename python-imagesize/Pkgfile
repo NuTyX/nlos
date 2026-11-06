@@ -1,0 +1,32 @@
+description='Getting image size from png/jpeg/jpeg2000/gif file'
+url='https://github.com/shibukawa/imagesize_py'
+
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
+
+makedepends=(python-setuptools python-wheel)
+
+name=python-imagesize
+_name="imagesize"
+alias=(${_name})
+
+version=2.0.1
+
+source=(https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-$version.tar.gz)
+
+build() {
+
+  cd ${_name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf 
+}

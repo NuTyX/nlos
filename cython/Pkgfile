@@ -1,0 +1,39 @@
+description="C extensions for Python."
+url="http://www.cython.org/"
+
+contributors="Berlius,Greg,Hackrf,Tnut"
+packager="spiky <spiky@nutyx.org>"
+license="Apache"
+
+PKGMK_KEEP_SOURCES="no"
+
+name=cython
+_name="Cython"
+alias=(${_name})
+
+version=3.3.0
+
+makedepends=(python-setuptools python-wheel)
+run=(python)
+
+source=(https://github.com/cython/cython/archive/refs/tags/$version.tar.gz)
+
+build() {
+
+cd ${name}-$version
+
+  pip3 wheel -w dist \
+    --no-build-isolation \
+    --no-deps $PWD
+  pip3 install --no-index \
+    --find-links dist \
+    --no-cache-dir    \
+    --no-user         \
+    --root=$PKG       \
+    ${_name}
+
+ find $PKG -type d -name vendor -o -name tests |xargs rm -rf
+
+install -Dm644 LICENSE.txt $PKG/usr/share/licenses/$name/LICENSE.txt
+install -Dm644 COPYING.txt $PKG/usr/share/licenses/$name/COPYING.txt
+}

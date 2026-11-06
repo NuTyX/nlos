@@ -1,0 +1,17 @@
+description='Library for parsing CSS using the Rust cssparser crate'
+url='https://kde.org/plasma-desktop/'
+
+license="LGPL-2.1-only LGPL-3.0-only)"
+
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
+
+name=cxx-rust-cssparser
+version=1.1.0
+
+makedepends=(cmake corrosion extra-cmake-modules qt6-base)
+
+source=(https://download.kde.org/stable/$name/$name-$version.tar.xz)
+
+
+build=kde6

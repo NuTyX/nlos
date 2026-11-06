@@ -1,0 +1,30 @@
+description="Elf librairy"
+url="https://sourceware.org/ftp/elfutils"
+
+license="GPL2 GPL3 LGPL3"
+
+packager="spiky <spiky@nutyx.org>"
+name=libelf
+
+makedepends=(m4 zstd)
+
+version=0.197
+
+source=(https://sourceware.org/ftp/elfutils/$version/elfutils-$version.tar.bz2)
+
+build() {
+cd elfutils-$version
+./configure --prefix=/usr \
+--disable-debuginfod \
+--libdir=/lib
+make
+make check || true
+make -C libelf DESTDIR=$PKG install
+rm $PKG/lib/libelf.a
+mkdir -pv $PKG/usr/lib/pkgconfig
+install -vm644 config/libelf.pc $PKG/usr/lib/pkgconfig/
+
+install -Dm644 COPYING $PKG/usr/share/licenses/$name/COPYING
+install -Dm644 COPYING-GPLV2 $PKG/usr/share/licenses/$name/COPYING-GPLV2
+install -Dm644 COPYING-LGPLV3 $PKG/usr/share/licenses/$name/COPYING-LGPLV3
+}

@@ -1,0 +1,13 @@
+drwxr-xr-x	root/root	usr/
+drwxr-xr-x	root/root	usr/bin/
+-rwxr-xr-x	root/root	usr/bin/zipcmp
+-rwxr-xr-x	root/root	usr/bin/zipmerge
+-rwxr-xr-x	root/root	usr/bin/ziptool
+drwxr-xr-x	root/root	usr/lib/
+lrwxrwxrwx	root/root	usr/lib/libzip.so -> libzip.so.5
+lrwxrwxrwx	root/root	usr/lib/libzip.so.5 -> libzip.so.5.5
+-rwxr-xr-x	root/root	usr/lib/libzip.so.5.5
+drwxr-xr-x	root/root	usr/share/
+drwxr-xr-x	root/root	usr/share/licenses/
+drwxr-xr-x	root/root	usr/share/licenses/libzip/
+-rw-r--r--	root/root	usr/share/licenses/libzip/LICENSE
