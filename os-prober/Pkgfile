@@ -7,7 +7,7 @@ packager="spiky <spiky@nutyx.org>"
 makedepends=(bash)
 
 name=os-prober
-version=1.84
+version=1.85
 
 source=(http://ftp.de.debian.org/debian/pool/main/o/os-prober/os-prober_$version.tar.xz)
 
