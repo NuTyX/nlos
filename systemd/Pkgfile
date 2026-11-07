@@ -20,7 +20,7 @@ run=(shadow)
 set=(core)
 
 name=systemd
-version=262
+version=262.1
 
 source=(https://anduin.linuxfromscratch.org/LFS/systemd-man-pages-$version.tar.xz
         https://github.com/systemd/systemd/archive/v$version/$name-$version.tar.gz)
