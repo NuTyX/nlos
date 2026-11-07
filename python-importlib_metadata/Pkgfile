@@ -11,6 +11,7 @@ _name="importlib_metadata"
 alias=(${_name})
 
 version=9.0.0
+release=2
 
 source=(https://pypi.python.org/packages/source/i/importlib_metadata/importlib_metadata-$version.tar.gz)
 
