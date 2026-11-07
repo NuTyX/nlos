@@ -4,7 +4,7 @@ contributors="Pierre,Greg,Tnut"
 packager="spiky <spiky@nutyx.org>"
 
 name=b43-fwcutter
-version=020
+version=021
 
 source=(https://bues.ch/b43/fwcutter/${name}-${version}.tar.xz)
 
