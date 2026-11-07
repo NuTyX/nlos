@@ -3,8 +3,8 @@ url="https://www.kernel.org/pub/linux/kernel/people/rusty/modules"
 
 license="LGPL2.1"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
 
 set=(core)
 
@@ -12,8 +12,7 @@ makedepends=(meson ninja glibc zlib xz zstd openssl)
 PKGMK_GROUPS=(devel doc man)
 
 name=kmod
-version=34.2
-release=5
+version=34.3
 
 source=(http://www.kernel.org/pub/linux/utils/kernel/kmod/kmod-$version.tar.xz )
 PKGMK_MESON_OPTIONS="-Dmoduledir=/usr/lib/modules --sbindir=/usr/bin \
