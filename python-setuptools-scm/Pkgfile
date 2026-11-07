@@ -12,7 +12,7 @@ _name="setuptools_scm"
 alias=(${_name})
 
 version=10.3.4
-release=3
+release=4
 
 source=(https://pypi.io/packages/source/s/setuptools_scm/setuptools_scm-$version.tar.gz)
 
