@@ -10,7 +10,7 @@ name=python-pycparser
 _name="pycparser"
 alias=(${_name})
 
-version=3.11
+version=3.12
 
 source=(https://github.com/eliben/pycparser/archive/refs/tags/release_v${version}.tar.gz)
 build() {
