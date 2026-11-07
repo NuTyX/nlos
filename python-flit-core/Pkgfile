@@ -11,7 +11,7 @@ _name="flit_core"
 alias=(${_name})
 
 name=python-flit-core
-version=4.1.0
+version=4.2.0
 
 makedepends=(python python-pip python-flit-core)
 
