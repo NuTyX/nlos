@@ -9,6 +9,7 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/_downloads/6dc1f3f4f0e6ca13cb42dd
 drwxr-xr-x	root/root	usr/share/doc/python/html/_images/
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/datetime-inheritance.svg
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/hashlib-blake2-tree.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/heapq-binary-tree.svg
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/kde_example.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/mac_installer_01_introduction.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/mac_installer_02_readme.png
@@ -21,6 +22,16 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/_images/
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/mac_installer_09_custom_install_free_threaded.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/pathlib-inheritance.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/pathlib-parts.svg
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-flamegraph.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-gecko-calltree.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-gecko-flamegraph.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-gecko-opcodes.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-heatmap-with-opcodes.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-heatmap.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-live-mode-1.gif
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-live-mode-2.gif
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-logo.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_images/tachyon-pstats.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/tk_msg.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/turtle-star.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_images/win_install_freethreaded.png
@@ -46,6 +57,8 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/_static/fonts/
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/og-image.png
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/opensearch.xml
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/plus.png
+-rw-r--r--	root/root	usr/share/doc/python/html/_static/profiling-sampling-visualization.css
+-rw-r--r--	root/root	usr/share/doc/python/html/_static/profiling-sampling-visualization.js
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/py.svg
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/pydoctheme.css
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/pydoctheme_dark.css
@@ -56,6 +69,8 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/_static/fonts/
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/searchtools.js
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/sidebar.js
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/sphinx_highlight.js
+-rw-r--r--	root/root	usr/share/doc/python/html/_static/tachyon-example-flamegraph.html
+-rw-r--r--	root/root	usr/share/doc/python/html/_static/tachyon-example-heatmap.html
 -rw-r--r--	root/root	usr/share/doc/python/html/_static/themetoggle.js
 -rw-r--r--	root/root	usr/share/doc/python/html/about.html
 -rw-r--r--	root/root	usr/share/doc/python/html/bugs.html
@@ -124,11 +139,14 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/c-api/
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/perfmaps.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/picklebuffer.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/profiling.html
+-rw-r--r--	root/root	usr/share/doc/python/html/c-api/pyexpat.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/refcounting.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/reflection.html
+-rw-r--r--	root/root	usr/share/doc/python/html/c-api/sentinel.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/sequence.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/set.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/slice.html
+-rw-r--r--	root/root	usr/share/doc/python/html/c-api/slots.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/stable.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/structures.html
 -rw-r--r--	root/root	usr/share/doc/python/html/c-api/subinterpreters.html
@@ -152,6 +170,8 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/deprecations/
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-3.15.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-3.16.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-3.18.html
+-rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-3.19.html
+-rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-3.20.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/c-api-pending-removal-in-future.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/index.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-3.13.html
@@ -161,7 +181,9 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/deprecations/
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-3.17.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-3.18.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-3.19.html
+-rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-3.20.html
 -rw-r--r--	root/root	usr/share/doc/python/html/deprecations/pending-removal-in-future.html
+-rw-r--r--	root/root	usr/share/doc/python/html/deprecations/soft-deprecations.html
 drwxr-xr-x	root/root	usr/share/doc/python/html/distributing/
 -rw-r--r--	root/root	usr/share/doc/python/html/distributing/index.html
 -rw-r--r--	root/root	usr/share/doc/python/html/download.html
@@ -169,6 +191,7 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/extending/
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/building.html
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/embedding.html
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/extending.html
+-rw-r--r--	root/root	usr/share/doc/python/html/extending/first-extension-module.html
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/index.html
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/newtypes.html
 -rw-r--r--	root/root	usr/share/doc/python/html/extending/newtypes_tutorial.html
@@ -216,6 +239,7 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/faq/
 -rw-r--r--	root/root	usr/share/doc/python/html/glossary.html
 drwxr-xr-x	root/root	usr/share/doc/python/html/howto/
 -rw-r--r--	root/root	usr/share/doc/python/html/howto/a-conceptual-overview-of-asyncio.html
+-rw-r--r--	root/root	usr/share/doc/python/html/howto/abi3t-migration.html
 -rw-r--r--	root/root	usr/share/doc/python/html/howto/annotations.html
 -rw-r--r--	root/root	usr/share/doc/python/html/howto/argparse-optparse.html
 -rw-r--r--	root/root	usr/share/doc/python/html/howto/argparse.html
@@ -425,6 +449,7 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/library/
 -rw-r--r--	root/root	usr/share/doc/python/html/library/markup.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/marshal.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/math.html
+-rw-r--r--	root/root	usr/share/doc/python/html/library/math.integer.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/mimetypes.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/mm.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/mmap.html
@@ -458,6 +483,10 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/library/
 -rw-r--r--	root/root	usr/share/doc/python/html/library/posix.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/pprint.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/profile.html
+-rw-r--r--	root/root	usr/share/doc/python/html/library/profiling.html
+-rw-r--r--	root/root	usr/share/doc/python/html/library/profiling.sampling.html
+-rw-r--r--	root/root	usr/share/doc/python/html/library/profiling.tracing.html
+-rw-r--r--	root/root	usr/share/doc/python/html/library/pstats.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/pty.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/pwd.html
 -rw-r--r--	root/root	usr/share/doc/python/html/library/py_compile.html
@@ -640,6 +669,7 @@ drwxr-xr-x	root/root	usr/share/doc/python/html/whatsnew/
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.12.html
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.13.html
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.14.html
+-rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.15.html
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.2.html
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.3.html
 -rw-r--r--	root/root	usr/share/doc/python/html/whatsnew/3.4.html

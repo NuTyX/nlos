@@ -3,28 +3,25 @@ url="https://www.python.org"
 
 license="PSF-2.0"
 
-contributors="Alienus,Spiky"
-packager="tnut <tnut@nutyx.org>"
+contributors="Alienus,Tnut"
+packager="spiky <spiky@nutyx.org>"
 
 makedepends=(bzip2 xz gdbm zlib util-linux ncurses sqlite expat libffi
              libxcrypt)
 alias=(python3 Python)
 
 name=python
-version=3.14.10
+version=3.15.2
 
 source=(https://www.python.org/ftp/python/$version/Python-$version.tar.xz
-        https://www.python.org/ftp/python/doc/3.14.9/python-3.14.9-docs-html.tar.bz2
-        python.png $name-openssl_4-1.patch) 
+        https://www.python.org/ftp/python/doc/$version/python-$version-docs-html.tar.bz2
+        python.png) 
 
 PKGMK_GROUPS=(devel man doc)
 PKGMK_IGNORE_UNPACK="yes"
 
-
 prepare() {
  bsdtar -xf Python-$version.tar.xz
- cd Python-$version
- patch -Np1 -i ../$name-openssl_4-1.patch
 }
 
 build() {
@@ -61,7 +58,7 @@ build() {
         --no-same-owner \
         --no-same-permissions \
         -C $PKG/usr/share/doc/$name/html \
-        -xvf $SRC/python-3.14.9-docs-html.tar.bz2
+        -xvf $SRC/python-$version-docs-html.tar.bz2
 
     find $PKG/usr/share/doc/$name -type d -exec chmod 0755 {} \;
     find $PKG/usr/share/doc/$name -type f -exec chmod 0644 {} \;
