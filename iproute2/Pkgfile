@@ -9,7 +9,7 @@ makedepends=(libcap bison flex)
 set=(core)
 
 name=iproute2
-version=7.2.0
+version=7.3.0
 
 PKGMK_GROUPS=(devel man doc)
 
