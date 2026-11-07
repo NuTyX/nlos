@@ -11,6 +11,7 @@ _name="vcs_versioning"
 alias=(${_name})
 
 version=2.6.0
+release=2
 
 source=(https://pypi.org/packages/source/v/vcs_versioning/vcs_versioning-$version.tar.gz)
 
