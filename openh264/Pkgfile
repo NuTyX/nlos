@@ -3,11 +3,11 @@ url='https://www.openh264.org/'
 
 license="BSD-2-Clause"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
 
 name=openh264
-version=2.6.0
+version=2.7.0
 
 makedepends=(nasm)
 
