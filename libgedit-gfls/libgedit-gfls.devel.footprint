@@ -2,10 +2,10 @@ drwxr-xr-x	root/root	usr/include/
 drwxr-xr-x	root/root	usr/include/libgedit-gfls-1/
 drwxr-xr-x	root/root	usr/include/libgedit-gfls-1/gfls/
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-attribute-keys.h
--rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-bytes-region-builder.h
--rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-bytes-region.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-byte-array.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-encoding-conversion.h
--rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-encoding-convert.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-encoding-converter.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-encoding.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-enum-types.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-error.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-iconv.h
@@ -15,7 +15,12 @@ drwxr-xr-x	root/root	usr/include/libgedit-gfls-1/gfls/
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-loader-config-simple.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-loader-config.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-unsaved-document-titles.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-utf8-auto-converter.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-utf8.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-utils.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-validated-string-builder.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-validated-string-chunk.h
+-rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls-validated-string.h
 -rw-r--r--	root/root	usr/include/libgedit-gfls-1/gfls/gfls.h
 drwxr-xr-x	root/root	usr/lib/pkgconfig/
 -rw-r--r--	root/root	usr/lib/pkgconfig/libgedit-gfls-1.pc
