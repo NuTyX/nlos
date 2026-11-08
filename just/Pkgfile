@@ -3,12 +3,11 @@ makedepends=(rustc)
 description="A handy way to save and run project-specific commands"
 url="https://github.com/casey/just"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Great-OS Team"
+packager="spiky <spiky@nutyx.org>"
+contributors="Great-OS,Team,Tnut"
 
 name=just
-version=1.58.0
-release=1
+version=1.59.0
 
 PKGMK_KEEP_SOURCES="no"
 
