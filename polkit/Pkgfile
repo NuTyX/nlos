@@ -1,12 +1,11 @@
 description="Application development toolkit for controlling system-wide privileges"
 url="https://github.com/polkit-org/polkit"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Tnut"
 
 name=polkit
-version=127
-release=3
+version=128
 
 makedepends=(pam systemd gettext glib duktape gobject-introspection
              patch autoconf intltool perl-xml-parser libxslt docbook-xsl)
