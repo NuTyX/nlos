@@ -8,6 +8,7 @@ drwxr-xr-x	root/root	usr/share/doc/benchmark/assets/images/
 -rw-r--r--	root/root	usr/share/doc/benchmark/assets/images/icon.xcf
 -rw-r--r--	root/root	usr/share/doc/benchmark/assets/images/icon_black.png
 -rw-r--r--	root/root	usr/share/doc/benchmark/assets/images/icon_black.xcf
+-rw-r--r--	root/root	usr/share/doc/benchmark/bazel.md
 -rw-r--r--	root/root	usr/share/doc/benchmark/dependencies.md
 -rw-r--r--	root/root	usr/share/doc/benchmark/index.md
 -rw-r--r--	root/root	usr/share/doc/benchmark/perf_counters.md
