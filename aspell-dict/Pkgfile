@@ -7,7 +7,7 @@ contributors="Tnut"
 makedepends=(aspell)
 
 name=aspell-dict
-version=0.60.8.2
+version=0.60.8.3
 
 fr_ver=0.50-3
 de_ver=0.50-2
