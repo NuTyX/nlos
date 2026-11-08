@@ -3,14 +3,13 @@ url="http://libjpeg-turbo.virtualgl.org/"
 
 license="BSD"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Rems,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Rems,Tnut"
 
 makedepends=(nasm openjdk cmake)
 
 name=libjpeg-turbo
-version=3.2.0
-release=2
+version=3.2.1
 
 source=(https://github.com/libjpeg-turbo/libjpeg-turbo/releases/download/$version/$name-$version.tar.gz)
 
