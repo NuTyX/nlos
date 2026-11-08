@@ -9,7 +9,7 @@ makedepends=(python-setuptools python-build
 run=()
 
 name=nmap
-version=7.991
+version=7.993
 
 source=(http://download.insecure.org/nmap/dist/$name-$version.tgz)
 
