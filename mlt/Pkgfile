@@ -3,28 +3,22 @@ url="https://www.mltframework.org"
 
 license="GPL2 GPL3 LGPL2"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(cmake python ladspa frei0r-plugins libdv sdl-image libsamplerate sox rubberband
              ffmpeg vid-stab qtsvg jack libexif swig movit eigen3 qt6-svg qt6-5compat rnnoise)
 
 
 name=mlt
-version=7.40.0
-release=3
+version=7.42.0
 
-source=(https://github.com/mltframework/mlt/releases/download/v${version}/mlt-$version.tar.gz
-        ffmpeg-9.patch)
-
-prepare() {
-cd $name-$version
-patch -Np1 -i ../ffmpeg-9.patch
-}
+source=(https://github.com/mltframework/mlt/releases/download/v${version}/mlt-$version.tar.gz)
 
 build() {
  cmake -B build -S $name-$version  \
        -DCMAKE_INSTALL_PREFIX=/usr \
+       -D MOD_JACKRACK=OFF         \
        -DMOD_QT6=ON                \
        -DSWIG_PYTHON=ON
  cmake --build build
