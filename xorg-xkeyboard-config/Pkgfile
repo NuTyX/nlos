@@ -7,24 +7,26 @@ contributors="Pierre,Greg,Tnut"
 _name=xkeyboard-config
 name=xorg-xkeyboard-config
 
-makedepends=(intltool xorgproto xorg-libx11 perl-xml-parser)
+makedepends=(git intltool xorgproto xorg-libx11 perl-xml-parser)
 
 _name=xkeyboard-config
 name=xorg-xkeyboard-config
-version=2.48
+version=2.49
 
 alias=(xkeyboard-config)
 
-source=(https://xorg.freedesktop.org/archive/individual/data/${_name}/${_name}-$version.tar.xz)
+source=($url.git)
 
 prepare() {
-cd ${_name}-$version
+#mv xkeyboard-config-$version $name-$version
+cd $name-$version
 sed -i -E 's/(ln -s)/\1f/' rules/meson.build
+
 }
 
 build() {
 
-cd ${_name}-$version
+cd $name-$version
 mkdir build
 cd    build
 
