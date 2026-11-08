@@ -8,6 +8,7 @@ makedepends=(python libxslt docbook-xsl)
 
 name=tdb
 version=1.4.15
+release=2
 
 source=(https://samba.org/ftp/${name}/${name}-${version}.tar.gz)
 
