@@ -4,7 +4,7 @@ packager="spiky <spiky@nutyx.org>"
 contributors="Fanch,Tnut"
 
 name=hyphen
-version=2.8.9
+version=2.8.10
 
 makedepends=(perl)
 source=(https://github.com/hunspell/hyphen/releases/download/v$version/hyphen-$version.tar.gz)
