@@ -9,7 +9,7 @@ contributors="Fabien,Pierre,Tnut"
 makedepends=(git xorg-fontconfig)
 
 name=noto-fonts
-version=2026.08.01
+version=2026.11.01
 
 source=($url.git)
 
