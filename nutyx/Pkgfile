@@ -4,12 +4,12 @@ url="https://github.com/nutyx"
 packager="tnut <tnut@nutyx.org>"
 maintainer="tnut <tnut@nutyx.org>"
 
-makedepends=(zstd util-linux)
+makedepends=(zstd util-linux git)
 
 set=(chroot)
 
 name=nutyx
-version=26.09.0
+version=d3df3d3
 
 # nutyx patch version
 # [ "$release" != "1" ] && patchname="$name-$version-consolidate-$release.patch"
@@ -18,7 +18,7 @@ PKGMK_GROUPS=(man)
 PKGMK_IGNORE_RUNTIMEDEPS=yes
 
 source=(https://nutyx.org/graphics/logo_nutyx_120.png
-        https://download.sourceforge.net/nutyx/files/$name-$version.tar.xz)
+        https://github.com/nutyx/nutyx.git)
 [ -z "$patchname" ] || source+=" $patchname"
 
 build () {
