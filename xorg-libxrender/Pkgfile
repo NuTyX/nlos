@@ -1,14 +1,13 @@
 description="X rendering extension client library"
 url="https://xorg.freedesktop.org"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre,Greg,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Greg,Tnut"
 
 name=xorg-libxrender
 alias=(libXrender libxrender)
 
-version=0.9.12
-release=1
+version=0.9.13
 
 _name=libXrender
 
