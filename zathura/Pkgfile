@@ -7,7 +7,7 @@ contributors="Tnut"
 makedepends=(girara json-glib xxhash gtk4)
 
 name=zathura
-version=2026.07.18
+version=2026.10.23
 
 source=(https://github.com/pwmt/zathura/archive/$version/$name-$version.tar.gz)
 
