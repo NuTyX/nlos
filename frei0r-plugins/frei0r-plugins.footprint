@@ -2,6 +2,7 @@ drwxr-xr-x	root/root	usr/
 drwxr-xr-x	root/root	usr/lib/
 drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/3dflippo.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/3dperspective.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/B.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/G.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/IIRblur.so
@@ -65,6 +66,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/facebl0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/facedetect.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/filmgrain.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/flarefx.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/flippo.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/gamma.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/gateweave.so
@@ -73,6 +75,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/grain_extract.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/grain_merge.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/hardlight.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/harris0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/heatmap0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/hue.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/hueshift0r.so
@@ -92,6 +95,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/measure_pr0file.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/medians.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/mirr0r.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/motiondiff0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/multiply.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/ndvi.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/nervous.so
@@ -119,6 +123,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/scanline0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/screen.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/select0r.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/shadert0y.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/shake0scillate.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sharpness.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sigmoidaltransfer.so
@@ -138,6 +143,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sleid0r_wipe-rect.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sleid0r_wipe-right.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sleid0r_wipe-up.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/slitscan0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/sobel.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/softglow.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/softlight.so
@@ -166,6 +172,7 @@ drwxr-xr-x	root/root	usr/lib/frei0r-1/
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/vertigo.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/vignette.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/water.so
+-rwxr-xr-x	root/root	usr/lib/frei0r-1/whirlpinch0r.so
 -rwxr-xr-x	root/root	usr/lib/frei0r-1/xfade0r.so
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/licenses/
