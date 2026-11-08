@@ -1,13 +1,14 @@
 description='File::ShareDir::Install - Install read-only data files from a distribution'
 url='https://metacpan.org/pod/File::ShareDir::Install'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(perl)
 
 name=perl-file-sharedir-install
 version=0.14
+release=2
 
 source=(https://www.cpan.org/authors/id/E/ET/ETHER/File-ShareDir-Install-$version.tar.gz)
 
