@@ -4,20 +4,18 @@ lrwxrwxrwx	root/root	usr/bin/melt -> melt-7
 -rwxr-xr-x	root/root	usr/bin/melt-7
 drwxr-xr-x	root/root	usr/lib/
 lrwxrwxrwx	root/root	usr/lib/libmlt++-7.so -> libmlt++-7.so.7
-lrwxrwxrwx	root/root	usr/lib/libmlt++-7.so.7 -> libmlt++-7.so.7.40.0
--rwxr-xr-x	root/root	usr/lib/libmlt++-7.so.7.40.0
+lrwxrwxrwx	root/root	usr/lib/libmlt++-7.so.7 -> libmlt++-7.so.7.42.0
+-rwxr-xr-x	root/root	usr/lib/libmlt++-7.so.7.42.0
 lrwxrwxrwx	root/root	usr/lib/libmlt-7.so -> libmlt-7.so.7
-lrwxrwxrwx	root/root	usr/lib/libmlt-7.so.7 -> libmlt-7.so.7.40.0
--rwxr-xr-x	root/root	usr/lib/libmlt-7.so.7.40.0
+lrwxrwxrwx	root/root	usr/lib/libmlt-7.so.7 -> libmlt-7.so.7.42.0
+-rwxr-xr-x	root/root	usr/lib/libmlt-7.so.7.42.0
 drwxr-xr-x	root/root	usr/lib/mlt-7/
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltavformat.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltcore.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltdecklink.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltfrei0r.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltgdk.so
--rwxr-xr-x	root/root	usr/lib/mlt-7/libmltjackrack.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltkdenlive.so
--rwxr-xr-x	root/root	usr/lib/mlt-7/libmltladspa.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltmovit.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltnormalize.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltoldfilm.so
@@ -35,10 +33,10 @@ drwxr-xr-x	root/root	usr/lib/mlt-7/
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltvorbis.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltxine.so
 -rwxr-xr-x	root/root	usr/lib/mlt-7/libmltxml.so
-drwxr-xr-x	root/root	usr/lib/python3.14/
-drwxr-xr-x	root/root	usr/lib/python3.14/site-packages/
--rwxr-xr-x	root/root	usr/lib/python3.14/site-packages/_mlt7.so
--rw-r--r--	root/root	usr/lib/python3.14/site-packages/mlt7.py
+drwxr-xr-x	root/root	usr/lib/python3.15/
+drwxr-xr-x	root/root	usr/lib/python3.15/site-packages/
+-rwxr-xr-x	root/root	usr/lib/python3.15/site-packages/_mlt7.so
+-rw-r--r--	root/root	usr/lib/python3.15/site-packages/mlt7.py
 drwxr-xr-x	root/root	usr/share/
 drwxr-xr-x	root/root	usr/share/licenses/
 drwxr-xr-x	root/root	usr/share/licenses/mlt/
@@ -127,15 +125,6 @@ drwxr-xr-x	root/root	usr/share/mlt-7/gdk/
 -rw-r--r--	root/root	usr/share/mlt-7/gdk/filter_rescale.yml
 -rw-r--r--	root/root	usr/share/mlt-7/gdk/producer_pango.yml
 -rw-r--r--	root/root	usr/share/mlt-7/gdk/producer_pixbuf.yml
-drwxr-xr-x	root/root	usr/share/mlt-7/jackrack/
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/blacklist.txt
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/consumer_jack.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/filter_jack.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/filter_jackrack.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/filter_ladspa.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/filter_vst2.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/producer_ladspa.yml
--rw-r--r--	root/root	usr/share/mlt-7/jackrack/producer_vst2.yml
 drwxr-xr-x	root/root	usr/share/mlt-7/kdenlive/
 -rw-r--r--	root/root	usr/share/mlt-7/kdenlive/filter_boxblur.yml
 -rw-r--r--	root/root	usr/share/mlt-7/kdenlive/filter_freeze.yml

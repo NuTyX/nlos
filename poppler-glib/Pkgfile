@@ -3,16 +3,16 @@ url="URL: http://poppler.freedesktop.org/"
 
 license="GPL2 GPL3"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Alienus,Fabienwang,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Alienus,Fabienwang,Spiky"
 
 makedepends=(nss poppler xorg-libxxf86vm libpng xorg-fontconfig
              libjpeg-turbo cairo libxml2 openjpeg lcms2
              glib gobject-introspection gtk3)
 
 name=poppler-glib
-version=26.08.0
-release=1
+version=26.10.0
+release=2
 
 source=(https://poppler.freedesktop.org/poppler-$version.tar.xz)
 

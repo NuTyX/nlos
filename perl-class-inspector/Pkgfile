@@ -1,13 +1,14 @@
 description='Get information about a class and its structure'
 url='https://metacpan.org/pod/Class::Inspector'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(perl)
 
 name=perl-class-inspector
 version=1.36
+release=2
 
 source=(https://cpan.metacpan.org/authors/id/P/PL/PLICEASE/Class-Inspector-$version.tar.gz)
 

@@ -1,13 +1,14 @@
 description='An efficient object serialization library'
 url='https://msgpack.org/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(cmake doxygen graphviz gtest)
 
 name=msgpack-c
-version=7.0.1
+version=7.0.2
+release=2
 
 source=(https://github.com/msgpack/msgpack-c/releases/download/c-${version}/$name-$version.tar.gz)
 

@@ -1,14 +1,15 @@
 description="Perl module for processing xml document"
 url="https://metacpan.org/pod/XML::Parser"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
 makedepends=(expat perl-file-sharedir-install perl-file-sharedir)
 run=(perl)
 
 name=perl-xml-parser
 version=2.59
+release=2
 
 source=(http://cpan.metacpan.org/authors/id/T/TO/TODDR/XML-Parser-$version.tar.gz)
 run=(perl)
