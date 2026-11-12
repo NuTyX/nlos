@@ -5,8 +5,7 @@ packager="spiky <spiky@nutyx.org>"
 contributors="Pierre,Tnut"
 
 name=live
-version=2025.05.24
-release=2
+version=2026.06.24
 
 source=(https://download.videolan.org/contrib/live555/$name.$version.tar.gz)
 
