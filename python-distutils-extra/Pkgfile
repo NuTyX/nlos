@@ -1,7 +1,7 @@
 description="Enhancements to the Python build system"
 url="https://launchpad.net/python-distutils-extra"
 
-packager="spiky <spiky@nutyx.org>"
+packager="tnut <tnut@nutyx.org>"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -10,7 +10,7 @@ _name="python-distutils-extra"
 alias=(${_name})
 
 version=2.39
-release=15
+release=16
 
 source=(http://launchpad.net/python-distutils-extra/trunk/$version/+download/python-distutils-extra-$version.tar.gz)
 
