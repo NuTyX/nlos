@@ -1,8 +1,8 @@
 description="Implements hyperfast and lightweight templating for the Python platform."
 url="https://pypi.org/project/Mako/"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-markupsafe)
 
@@ -11,6 +11,7 @@ _name="mako"
 alias=(${_name})
 
 version=1.4.3
+release=2
 
 source=(https://files.pythonhosted.org/packages/source/M/Mako/${_name}-$version.tar.gz)
 
