@@ -1,8 +1,8 @@
 description='Various helpers to pass trusted data to untrusted environments'
 url='https://pypi.org/project/itsdangerous/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -11,7 +11,7 @@ _name="itsdangerous"
 alias=(${_name})
 
 version=2.2.0
-release=4
+release=5
 
 source=(https://pypi.org/packages/source/i/itsdangerous/itsdangerous-$version.tar.gz)
 
