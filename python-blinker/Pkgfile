@@ -1,8 +1,8 @@
 description='Fast, simple object-to-object and broadcast signaling'
 url='https://pypi.org/project/blinker/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-flit-core)
 
@@ -11,7 +11,7 @@ _name="blinker"
 alias=(${_name})
 
 version=1.9.0
-release=5
+release=6
 
 source=(https://files.pythonhosted.org/packages/source/b/blinker/blinker-$version.tar.gz)
 
