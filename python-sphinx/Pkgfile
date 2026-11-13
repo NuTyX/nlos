@@ -17,7 +17,7 @@ _name="sphinx"
 alias=(${_name})
 
 version=9.1.0
-release=1
+release=2
 
 source=(https://pypi.org/packages/source/s/sphinx/sphinx-$version.tar.gz)
 
