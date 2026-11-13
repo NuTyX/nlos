@@ -1,8 +1,8 @@
 description='Getting image size from png/jpeg/jpeg2000/gif file'
 url='https://github.com/shibukawa/imagesize_py'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -11,6 +11,7 @@ _name="imagesize"
 alias=(${_name})
 
 version=2.0.1
+release=2
 
 source=(https://files.pythonhosted.org/packages/source/i/imagesize/imagesize-$version.tar.gz)
 
