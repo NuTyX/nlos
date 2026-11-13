@@ -1,8 +1,8 @@
 description='Cross platform time zone library for Python.'
 url='https://pypi.python.org/pypi/pytz'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Fanch,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Spiky"
 
 makedepends=(python-setuptools )
 
@@ -11,6 +11,7 @@ _name="pytz"
 alias=(${_name})
 
 version=2026.1
+release=2
 
 source=(https://pypi.io/packages/source/p/pytz/pytz-${version}.tar.gz
        0001-Use-the-system-zoneinfo-from-the-tzdata-package.patch)
