@@ -8,6 +8,7 @@ packager="tnut <tnut@nutyx.org>"
 
 makedepends=(gtk3 libnotify cython intltool)
 run=(python-cairo python-dbus python-gobject bluez)
+PKGMK_GROUPS=(man doc)
 
 name=blueman
 version=2.4.6
