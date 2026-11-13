@@ -8,7 +8,7 @@ makedepends=(python samba)
 
 name=python-smbc
 version=1.0.25.1
-release=4
+release=5
 
 _name=pysmbc
 source=(https://pypi.io/packages/source/p/pysmbc/pysmbc-$version.tar.gz)
