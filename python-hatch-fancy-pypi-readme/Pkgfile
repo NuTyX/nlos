@@ -1,8 +1,8 @@
 description='Fancy PyPI READMEs with Hatch'
 url='https://github.com/hynek/hatch-fancy-pypi-readme'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-hatchling)
 
@@ -11,7 +11,7 @@ _name="hatch-fancy-pypi-readme"
 alias=(${_name})
 
 version=25.1.0
-release=3
+release=4
 
 source=(https://github.com/hynek/hatch-fancy-pypi-readme/archive/$version/$name-$version.tar.gz)
 
