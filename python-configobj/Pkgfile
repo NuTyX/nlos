@@ -1,8 +1,8 @@
 description="Simple but powerful config file reader and writer for Python3"
 url="https://github.com/DiffSK/configobj"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Dania,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Dania,Spiky"
 
 makedepends=(python-setuptools python-six)
 
@@ -11,7 +11,7 @@ _name="configobj"
 alias=(${_name})
 
 version=5.0.9
-release=4
+release=5
 
 source=(https://github.com/DiffSK/configobj/archive/v$version.tar.gz)
 
