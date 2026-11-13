@@ -1,8 +1,8 @@
 description="Parse RSS and Atom feeds in Python"
 url="https://github.com/kurtmckee/feedparser"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Remy,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Remy,Spiky"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -11,6 +11,7 @@ _name="mutagen"
 alias=(${_name})
 
 version=1.48.1
+release=2
 
 source=(https://github.com/quodlibet/mutagen/releases/download/release-$version/mutagen-$version.tar.gz)
 
