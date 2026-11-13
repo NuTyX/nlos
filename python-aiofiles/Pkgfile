@@ -1,8 +1,8 @@
 description='File support for asyncio'
 url='https://pypi.org/project/aiofiles/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-hatchling python-hatch-vcs)
 
@@ -11,6 +11,7 @@ _name="aiofiles"
 alias=(${_name})
 
 version=25.1.0
+release=2
 
 source=(https://github.com/Tinche/aiofiles/archive/v$version/$name-$version.tar.gz)
 
