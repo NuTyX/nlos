@@ -1,8 +1,8 @@
 description='Pure-Python HPACK header compression'
 url='https://pypi.org/project/hpack/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools)
 
@@ -11,6 +11,7 @@ _name="hpack"
 alias=(${_name})
 
 version=4.2.0
+release=2
 
 source=(https://github.com/python-hyper/hpack/archive/refs/tags/v$version.tar.gz)
 
