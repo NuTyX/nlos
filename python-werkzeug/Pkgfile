@@ -1,8 +1,8 @@
 description='Swiss Army knife of Python web development'
 url='https://pypi.org/project/Werkzeug/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-flit-core python-markupsafe)
 
@@ -11,6 +11,7 @@ _name="werkzeug"
 alias=(${_name})
 
 version=3.1.9
+release=2
 
 source=(https://github.com/pallets/werkzeug/archive/$version/$name-$version.tar.gz)
 
