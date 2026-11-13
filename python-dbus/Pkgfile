@@ -1,8 +1,8 @@
 description="Python bindings for DBUS"
 url="http://dbus.freedesktop.org/"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
 makedepends=(python-setuptools dbus glib python-meson)
 run=(python)
@@ -12,6 +12,7 @@ _name="python_dbus"
 alias=(${_name})
 
 version=1.5.1
+release=2
 
 _name=dbus-python
 alias=(dbus_python)
