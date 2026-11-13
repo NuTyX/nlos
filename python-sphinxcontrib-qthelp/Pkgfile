@@ -1,8 +1,8 @@
 description='Sphinx extension which outputs QtHelp document'
 url='https://github.com/sphinx-doc/sphinxcontrib-qthelp'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-flit-core)
 
@@ -11,7 +11,7 @@ _name="sphinxcontrib-qthelp"
 alias=(${_name})
 
 version=2.0.0
-release=6
+release=7
 _name=sphinxcontrib-qthelp
 PKGMK_KEEP_SOURCES="no"
 
