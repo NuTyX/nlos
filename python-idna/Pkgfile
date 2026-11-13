@@ -1,8 +1,8 @@
 description="Internationalized Domain Names in Applications (IDNA)"
 url="https://github.com/kjd/idna"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel python-flit-core)
 
@@ -11,6 +11,7 @@ _name="idna"
 alias=(${_name})
 
 version=3.20
+release=2
 
 source=(https://github.com/kjd/idna/archive/v$version.tar.gz)
 
