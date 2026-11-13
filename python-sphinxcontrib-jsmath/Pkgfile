@@ -1,8 +1,8 @@
 description='Sphinx extension which renders display math in HTML via JavaScript'
 url='https://github.com/sphinx-doc/sphinxcontrib-jsmath'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -11,7 +11,7 @@ _name="sphinxcontrib-jsmath"
 alias=(${_name})
 
 version=1.0.1
-release=11
+release=12
 PKGMK_KEEP_SOURCES="no"
 
 source=(https://files.pythonhosted.org/packages/source/s/sphinxcontrib-jsmath/${_name}-$version.tar.gz)
