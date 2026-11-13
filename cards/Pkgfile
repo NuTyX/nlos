@@ -16,7 +16,7 @@ PKGMK_GROUPS=(devel doc man lib)
 PKGMK_LOCALES=()
 
 name=cards
-version=87d5cfd
+version=086ad6b
 set=(chroot)
 
 [ "$release" != "1" ] &&  patchname="$name-$version-consolidate-$release.patch"
