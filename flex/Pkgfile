@@ -10,8 +10,7 @@ contributors="Pierre,Tnut"
 makedepends=(m4)
 
 name=flex
-version=2.6.4
-release=6
+version=2.6.10
 
 set=(devel core)
 
