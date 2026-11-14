@@ -8,7 +8,7 @@ makedepends=(gmp python)
 run=()
 
 name=botan
-version=3.13.0
+version=3.14.1
 
 source=(https://botan.randombit.net/releases/Botan-$version.tar.xz)
 
