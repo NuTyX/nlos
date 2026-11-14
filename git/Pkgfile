@@ -7,7 +7,7 @@ contributors="Pierre,Rems,Fabienwang,Tnut"
 
 makedepends=(gettext python)
 name=git
-version=2.56.0
+version=2.56.1
 
 source=(https://mirrors.edge.kernel.org/pub/software/scm/$name/$name{,-manpages,-htmldocs}-$version.tar.xz)
 
