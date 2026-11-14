@@ -5,7 +5,7 @@ contributors="Greg,Tnut"
 packager="spiky <spiky@nutyx.org>"
 
 name=dash
-version=0.5.13.4
+version=0.5.13.5
 makedepends=(libedit)
 source=(http://gondor.apana.org.au/~herbert/dash/files/dash-$version.tar.gz)
 
