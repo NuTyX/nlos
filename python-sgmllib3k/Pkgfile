@@ -1,15 +1,15 @@
 description="Port of sgmllib to Python3"
 url='https://pypi.org/project/sgmllib3k/#description'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 name=python-sgmllib3k
 _name="sgmllib3k"
 alias=(${_name})
 
 version=1.0.0
-release=9
+release=10
 
 makedepends=(python-setuptools python-wheel)
 

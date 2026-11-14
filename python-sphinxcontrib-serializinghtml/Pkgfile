@@ -1,8 +1,8 @@
 description='Sphinx extension which outputs "serialized" HTML files (json and pickle)'
 url='https://github.com/sphinx-doc/sphinxcontrib-serializinghtml'
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-setuptools python-wheel)
 
@@ -11,7 +11,7 @@ _name="sphinxcontrib-serializinghtml"
 alias=(${_name})
 
 version=2.0.0
-release=6
+release=7
 PKGMK_KEEP_SOURCES="no"
 
 source=(https://github.com/sphinx-doc/sphinxcontrib-serializinghtml/archive/refs/tags/$version.tar.gz)

@@ -3,15 +3,15 @@ url='https://github.com/seb-m/pyinotify'
 
 makedepends=(python-setuptools python-wheel)
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Fanch,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Fanch,Spiky"
 
 name=python-pyinotify
 _name="pyinotify"
 alias=(${_name})
 
 version=0.9.6
-release=9
+release=10
 
 source=(https://github.com/seb-m/pyinotify/archive/${version}.tar.gz)
 

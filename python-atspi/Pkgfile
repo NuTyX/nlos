@@ -1,13 +1,14 @@
 description="Contains the bindings Python for the components of heart GNOME Accessibility"
 url="https://www.cairographics.org/"
 
-packager="spiky <spiky@nutyx.org>"
-contributors="Pierre,Tnut"
+packager="tnut <tnut@nutyx.org>"
+contributors="Pierre,Spiky"
 
 makedepends=(meson alsa-lib expat pulseaudio at-spi2-core python-gobject)
 
 name=python-atspi
 version=2.58.2
+release=2
 
 source=(http://ftp.gnome.org/pub/gnome/sources/pyatspi/${version%.*}/pyatspi-$version.tar.xz)
 

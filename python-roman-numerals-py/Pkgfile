@@ -1,8 +1,8 @@
 description='Manipulate well-formed Roman numerals'
 url='https://github.com/AA-Turner/roman-numerals/'
 
-packager="spiky <spiky@nutyx.org>"
-contributors=""
+packager="tnut <tnut@nutyx.org>"
+contributors="Spiky"
 
 makedepends=(python-flit-core python-build python-installer python-wheel)
 
@@ -11,7 +11,7 @@ _name="roman_numerals_py"
 alias=(${_name})
 
 version=3.1.0
-release=3
+release=4
 
 source=(https://pypi.org/packages/source/r/roman_numerals_py/roman_numerals_py-$version.tar.gz)
 
