@@ -3,12 +3,11 @@ url="https://sourceforge.net/p/libwpd/wiki/libodfgen/"
 
 license="LGPL-2.1-or-later OR MPL-2.0"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Tnut"
 
 name=libodfgen
-version=0.1.8
-release=1
+version=0.1.9
 
 makedepends=(librevenge libxml2)
 
