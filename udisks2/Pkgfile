@@ -10,7 +10,7 @@ makedepends=(acl attr systemd libgudev expat libatasmart libxslt polkit
              gobject-introspection docbook-xsl libblockdev)
 
 name=udisks2
-version=2.11.2
+version=2.12.0
 
 PKGMK_GROUPS=(devel doc man)
 
