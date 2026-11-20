@@ -38,6 +38,7 @@ lrwxrwxrwx	root/root	usr/bin/pw-sysex -> pw-cat
 -rwxr-xr-x	root/root	usr/bin/spa-monitor
 -rwxr-xr-x	root/root	usr/bin/spa-resample
 -rwxr-xr-x	root/root	usr/bin/wireplumber
+-rwxr-xr-x	root/root	usr/bin/wpconfig
 -rwxr-xr-x	root/root	usr/bin/wpctl
 -rwxr-xr-x	root/root	usr/bin/wpdot
 -rwxr-xr-x	root/root	usr/bin/wpexec
@@ -50,8 +51,8 @@ drwxr-xr-x	root/root	usr/lib/girepository-1.0/
 drwxr-xr-x	root/root	usr/lib/gstreamer-1.0/
 -rwxr-xr-x	root/root	usr/lib/gstreamer-1.0/libgstpipewire.so
 lrwxrwxrwx	root/root	usr/lib/libpipewire-0.3.so -> libpipewire-0.3.so.0
-lrwxrwxrwx	root/root	usr/lib/libpipewire-0.3.so.0 -> libpipewire-0.3.so.0.1610.0
--rwxr-xr-x	root/root	usr/lib/libpipewire-0.3.so.0.1610.0
+lrwxrwxrwx	root/root	usr/lib/libpipewire-0.3.so.0 -> libpipewire-0.3.so.0.1611.0
+-rwxr-xr-x	root/root	usr/lib/libpipewire-0.3.so.0.1611.0
 lrwxrwxrwx	root/root	usr/lib/libwireplumber-0.5.so -> libwireplumber-0.5.so.0
 lrwxrwxrwx	root/root	usr/lib/libwireplumber-0.5.so.0 -> libwireplumber-0.5.so.0.519.0
 -rwxr-xr-x	root/root	usr/lib/libwireplumber-0.5.so.0.519.0
