@@ -10,6 +10,7 @@ makedepends=(tar gwenhywfar xmlsec)
 
 name=aqbanking
 version=6.9.2
+release=2
 
 source=(https://www.aquamaniac.de/rdm/attachments/download/654/$name-$version.tar.gz)
 
