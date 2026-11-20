@@ -7,6 +7,7 @@ drwxr-xr-x	root/root	usr/share/doc/xmlsec1/api/
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_base64.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_bn.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_buffer.md
+-rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_crypto.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_dl.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_errors.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_helpers.md
@@ -21,6 +22,7 @@ drwxr-xr-x	root/root	usr/share/doc/xmlsec1/api/
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_parser.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_templates.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_transforms.md
+-rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_x509.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_xmldsig.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_xmlenc.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_core_xmltree.md
@@ -53,6 +55,7 @@ drwxr-xr-x	root/root	usr/share/doc/xmlsec1/api/
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl_app.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl_crypto.md
+-rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl_evp.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl_keysstore.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/api/xmlsec_openssl_x509.md
 -rw-r--r--	root/root	usr/share/doc/xmlsec1/bugs.md
