@@ -6,7 +6,7 @@ license="GPL-2"
 packager="spiky <spiky@nutyx.org>"
 contributors="Pierre,Tnut"
 
-makedepends=(acl attr systemd libgudev expat libatasmart libxslt polkit \
+makedepends=(acl attr systemd libgudev expat libatasmart libxslt polkit
              gobject-introspection docbook-xsl libblockdev)
 
 name=udisks2
