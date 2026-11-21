@@ -13,7 +13,9 @@ drwxr-xr-x	root/root	usr/share/man/man8/
 -rw-r--r--	root/root	usr/share/man/man8/mount.nfs.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/mountd.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/mountstats.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/nfs-fh-verify.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/nfsconf.8.gz
+-rw-r--r--	root/root	usr/share/man/man8/nfsd-iomode-advisor.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/nfsd.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/nfsdclnts.8.gz
 -rw-r--r--	root/root	usr/share/man/man8/nfsdctl.8.gz

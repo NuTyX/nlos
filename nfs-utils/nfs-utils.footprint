@@ -8,7 +8,9 @@ drwxr-xr-x	root/root	usr/bin/
 -rwsr-xr-x	root/root	usr/bin/mount.nfs
 lrwxrwxrwx	root/root	usr/bin/mount.nfs4 -> mount.nfs
 -rwxr-xr-x	root/root	usr/bin/mountstats
+-rwxr-xr-x	root/root	usr/bin/nfs-fh-verify
 -rwxr-xr-x	root/root	usr/bin/nfsconf
+-rwxr-xr-x	root/root	usr/bin/nfsd-iomode-advisor
 -rwxr-xr-x	root/root	usr/bin/nfsdclnts
 -rwxr-xr-x	root/root	usr/bin/nfsdctl
 -rwxr-xr-x	root/root	usr/bin/nfsiostat
