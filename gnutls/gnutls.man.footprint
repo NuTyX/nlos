@@ -334,6 +334,8 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_derive_keypair.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_encap.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_export.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_export_pubkey.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_import_pubkey.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_init.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_open.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_hpke_seal.3.gz
@@ -665,6 +667,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_ecc_raw2.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_ecc_x962.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_gost_raw2.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_mldsa_raw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_rsa_raw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_export_rsa_raw2.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_get_key_id.3.gz
@@ -679,6 +682,7 @@ drwxr-xr-x	root/root	usr/share/man/man3/
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_ecc_raw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_ecc_x962.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_gost_raw.3.gz
+-rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_mldsa_raw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_openpgp.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_openpgp_raw.3.gz
 -rw-r--r--	root/root	usr/share/man/man3/gnutls_pubkey_import_pkcs11.3.gz
