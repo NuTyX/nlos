@@ -1,14 +1,13 @@
 description="The GRUB package contains the GRand Unified Bootloader."
 url="https://www.gnu.org/software/grub/"
 
-packager="tnut <tnut@nutyx.org>"
-contributors="Pierre,Schrodinger72,Spiky"
+packager="spiky <spiky@nutyx.org>"
+contributors="Pierre,Schrodinger72,Tnut"
 
 set=(core)
 
 name=grub
-version=2.14
-release=4
+version=2.16
 
 dejavu_version=2.37
 splash_version=26.06.1
@@ -19,7 +18,7 @@ makedepends=(automake m4 bison flex gettext texinfo python
 source=(https://downloads.sourceforge.net/nutyx/splash-${splash_version}.png
         https://ftp.gnu.org/gnu/unifont/unifont-13.0.06/unifont-13.0.06.pcf.gz
         http://downloads.sourceforge.net/nutyx/dejavu/dejavu-fonts-ttf-${dejavu_version}.tar.bz2
-        https://ftp.gnu.org/gnu/grub/grub-$version.tar.xz
+        https://gitlab.freedesktop.org/api/v4/projects/26558/packages/generic/source-assets/grub-$version/grub-$version.tar.xz
         grub ext2-fixe.patch grub.cfg)
 
 PKGMK_GROUPS=(man)
